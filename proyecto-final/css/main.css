@@ -29,6 +29,9 @@ a:active{
 	padding: 0;
 	box-sizing: border-box;
 }
+.list-group-item.active {
+	background-color: #fa6400;
+}
 .divider{
 	width: 95%;
 	display: block;

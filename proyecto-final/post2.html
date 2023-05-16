@@ -3,9 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <title>Anuncios</title>
+  <title>Servicios Escolares</title>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="css/main.css">
+
+  <!--styles for icons-->
+  <style>
+    .contact-info {
+      text-align: left;
+      color: #F09000;
+      font-size: 15px;
+    }
+
+    .contact-icons {
+      width: 20px;
+      height: 20px;
+    }
+  </style>
 </head>
 <body>
 <!-- ====== Barra de navegacion ======-->
@@ -121,30 +135,16 @@
 <!-- ====== Contenido de pagina ======-->
 <section class="section">
   <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <form action="commercial.html" class="form-inline text-center">
-          <div class="form-group">
-            <input type="text" class="form-control input-lg" placeholder="...">
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control input-lg" placeholder="Ciudad, Provincia, Distrito...">
-          </div>
-          <button type="submit" class="btn btn-danger btn-lg">BUSCAR</button>
-        </form>
-      </div>
-    </div>
-  </div>
-  <hr>
-  <div class="container">
+    <h1 style="text-align: center;">Servicios Escolares UAO</h1>
     <div class="row">
       <div class="col-xs-12 col-sm-8">
-        <ol class="breadcrumb">
+        <!--ol class="breadcrumb">
           <li><a href="#">Vehículos</a></li>
           <li><a href="#">Marca</a></li>
           <li class="active">Modelo</li>
-        </ol>
-        <div id="slider-commercial" class="carousel slide" data-ride="carousel">
+        </ol-->
+        <!--aqui necesitamos conseguir un carrusel de imagenes-->
+        <div id="slider-commercial" class="carousel slide" data-ride="carousel" data-interval="false">
           <ol class="carousel-indicators">
             <li data-target="#slider-commercial" data-slide-to="0" class="active"></li>
             <li data-target="#slider-commercial" data-slide-to="1"></li>
@@ -161,70 +161,76 @@
               <img src="assets/img/post.jpg" alt="">
             </div>
           </div>
-          <a class="left carousel-control" href="#slider-commercial" role="button" data-slide="prev">
+          <a class="left carousel-control" href="#slider-commercial" role="button" data-slide="prev" id="previous-button">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
           </a>
-          <a class="right carousel-control" href="#slider-commercial" role="button" data-slide="next">
+          <a class="right carousel-control" href="#slider-commercial" role="button" data-slide="next" id="next-button">
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
           </a>
         </div>
+
+        <h2 id="content-title">Test</h2>
+        <p id="content-text">Testing</p>
+
+        <h2>CASA</h2>
         <p class="lead text-justify">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. At voluptate possimus molestiae et ipsum ad dignissimos dolore voluptatem velit, ratione error dolor mollitia animi nihil nisi similique. Perferendis, officiis, id.
+          El Centro de Atención y Servicios al Alumnado es un servicio proporcionado a los alumnos para recibir ayuda en su proceso de inscripción, o con cualquier otra situación académica que les pueda surgir. Los alumnos pueden contar con Ana, su asistente digital que los puede atender a cualquier hora por WhatsApp al número: 951 501 6250. También nos puedes localizar en la planta baja del edificio B en un horario de: ... a .... <a href="#">Haz click aquí para ver la ubicación en el mapa</a>
         </p>
-        <div class="full-width div-table">
-          <div class="full-width div-table-row">
-            <div class="div-table-cell div-table-cell-xs div-table-cell-c">
-              Matriculación: 2007
-            </div>
-            <div class="div-table-cell div-table-cell-xs div-table-cell-c">
-              Km: 150.000 - 159.999
-            </div>
-            <div class="div-table-cell div-table-cell-xs div-table-cell-c">
-              Combustible: Gasolina
-            </div>
-            <div class="div-table-cell div-table-cell-xs div-table-cell-c">
-              Cambio: Manual
-            </div>
-          </div>
-        </div>
-        <p class="lead">
-          <strong>Publicado: hoy</strong>
-          &nbsp; <strong>Visto 250 veces</strong>
+
+        <h2>Caja</h2>
+        <p class="lead text-justify">
+          La caja está ubicada en el segundo piso del edificio B. Aquí los alumnos pueden realizar el pago de servicios escolares en un horario de ... a .... <a href="#">Haz click aquí para ver la ubicación en el mapa</a>
+        </p>
+
+        <h2>Administración Escolar</h2>
+        <p class="lead text-justify">
+          Administración escolar se encarga de los temas académicos de los alumnos que tengan problemas en alguna materia o con algún requisito de titulación. Puedes localizarlos en la segunda planta del edificio B en un horario de ... a .... <a href="#">Haz click aquí para ver la ubicación en el mapa</a>
+        </p>
+
+        <h2>Investigación y Posgrado</h2>
+        <p class="lead text-justify">
+          Los egresados de la Universidad Anáhuac que deseen continuar con sus estudios pueden acudir al área de investigación y posgrado para preguntar por las diferentes opciones que tienen disponibles. Esta sección se encuentra en la segunda planta del edificio F y su horario de atención va de ... a .... <a href="#">Haz click aquí para ver la ubicación en el mapa</a>
+        </p>
+
+        <h2>Acompañamiento Sanamente</h2>
+        <p class="lead text-justify">
+          La Red de Universidades Anáhuac se preocupa por el bienestar de sus alumnos tanto física como psicológicamente, es por eso que contamos con un área designada para el acompañamiento psicológico de los alumnos. Esta zona está ubicada en la planta baja del edifició B. su horario de atención es de ... a .... <a href="#">Haz click aquí para ver la ubicación en el mapa</a>
+        </p>
+
+        <h2>Centro de Lenguas</h2>
+        <p class="lead text-justify">
+          La Red de Universidades Anáhuac tiene convenios con ... universidades a lo largo del mundo. Si estás buscando irte de intercambio a otro país o simplemente quieres aprender un idioma nuevo, el Centro de Lenguas está dispuesto a ayudarte. Estamos localizados en la planta baja del edificio B y te podemos atender en un horario de ... a .... <a href="#">Haz click aquí para ver la ubicación en el mapa</a>
+        </p>
+
+        <h2>Soporte Técnico</h2>
+        <p class="lead text-justify">
+          Si tienes problemas con tu cuenta Anáhuac o encuentras algún problema en las instalaciones, te recomendamos acudir a Soporte Técnico, ellos te pueden ayudar a resolver tus problemas. Su horario de atencio es de ... a .... y los puedes encontrar en la planta baja del edificio A. <a href="#">Haz click aquí para ver la ubicación en el mapa</a>
+        </p>
+
+        <h2>A-STORE</h2>
+        <p class="lead text-justify">
+          ¿Eres un León de corazón o te gusta coleccionar cosas? Te invitamos a que te des una vuelta por la Anahuac Store y veas los articulos que tenemos para leones de corazón. La tienda está abierta en un horario de ... a .... estamos ubicados en la planta baja del edifico B. <a href="#">Haz click aquí para ver la ubicación en el mapa</a>
         </p>
       </div>
       <div class="col-xs-12 col-sm-4">
-        <div class="full-width div-table">
-          <div class="full-width div-table-row">
-            <div class="div-table-cell div-table-cell-xs">
-              <a href="commercial.html" class="btn btn-default btn-block"><i class="fa fa-angle-left" aria-hidden="true"></i> Volver al listado</a>
-            </div>
-            <div class="div-table-cell div-table-cell-xs">
-              <a href="#!" class="btn btn-default btn-block">Siguiente anuncio <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="full-width" style="padding:10px; background-color: #F5F5F5; margin: 7px 0;">
-          <p class="lead text-center"><strong>Honda S2000</strong></p>
-          <p class="lead text-center" style="color: #F09000;"><strong>$7,000</strong></p>
+        <div class="full-width" style="padding:10px; background-color: #F5F5F5; margin: 7px 0; text-align: left;">
+          <p class="lead text-center"><strong><small>Contacto</small></strong></p>
+          <p class="lead text-center contact-info" id="contact-phone"><img src="./assets/icons/whatsapp.svg" alt="WhatsApp" class="contact-icons"><strong> test</strong></p>
+          <p class="lead text-center contact-info" id="contact-mail"><img src="./assets/icons/mail.svg" alt="Correo" class="contact-icons"><strong> hola</strong></p>
         </div>
         <div class="full-width post-user-info">
-          <i class="fa fa-user NavBar-Nav-icon" aria-hidden="true"></i>
           <div>
-            <p class="full-width lead">Nombre usuario</p>
-            <p class="full-width"><i class="fa fa-mobile" aria-hidden="true"></i> 12345678</p>
+            <p class="lead text-center"><strong><small>Horario</small></strong></p>
+            <p class="full-width" id="schedule">123 UDP</p>
           </div>
         </div>
         <div class="clearfix"></div>
-        <a href="#!" class="btn btn-success btn-block">ENVIAR MENSAJE</a>
-        <a href="#!" class="btn btn-success btn-block">LLAMAR</a>
-        <p class="lead text-light" style="margin: 7px 0; background-color: #F5F5F5;">
-          <i class="fa fa-map-marker fa-fw" aria-hidden="true"></i> Valencia (46011)
-        </p>
-        <div class="page-header">
-          <h3 class="text-light text-center">Comparte este anuncio</small></h1>
-        </div>
+        <a href="#!" class="btn btn-success btn-block">
+        <p class="lead text-light" style="margin: 7px 0;">
+          <i class="fa fa-map-marker fa-fw" aria-hidden="true"></i> Ver ubicación en el mapa
+        </p></a>
         <ul class="list-unstyled fullwidth text-center footer-social social-post">
           <li>
             <a href="#!">
@@ -257,8 +263,101 @@
             </a>
           </li>
         </ul>
-        <a href="#!">¿ES TUYO? GESTIONAR ESTE ANUNCIO</a>
       </div>
+
+      <script>
+        // title and text of the document
+        let title = document.getElementById("content-title");
+        let text = document.getElementById("content-text");
+        let contact_phone = document.getElementById("contact-phone");
+        let contact_mail = document.getElementById("contact-mail");
+        let schedule = document.getElementById("schedule");
+        let map_link = document.getElementById("map-link");
+
+        // variable used for button cooldown
+        let buttonCooldown = false;
+
+        // function that cooldowns carousel buttons
+        function cooldown() {
+          buttonCooldown = true;
+          setTimeout(function() {
+            buttonCooldown = false;
+          }, 5000);
+        }
+
+        // carousel buttons
+        let previous_button = document.getElementById("previous-button");
+        let next_button = document.getElementById("next-button");
+
+        // content ID and data
+        let contentID = 0;
+        //! aquí falta agregar todos los hipervínculos al mapa
+        let data = [ // data format: title, text, contact1, contact2, schedule, link to map.
+          [
+            "CASA",
+            "El Centro de Atención y Servicios al Alumnado es un servicio proporcionado a los alumnos para recibir ayuda en su proceso de inscripción, o con cualquier otra situación académica que les pueda surgir. Los alumnos pueden contar con Ana, su asistente digital que los puede atender a cualquier hora por WhatsApp.",
+            "951 501 6250",
+            "atencionalumnado.uao@anahuac.mx",
+            "9:00 - 6:00",
+            "#"
+          ],
+          [
+            "Administración Escolar",
+            "Administración escolar se encarga de los temas académicos de los alumnos que tengan problemas en alguna materia o con algún requisito de titulación.",
+            "",
+            "aescolar.uao@anahuac.mx",
+            "9:00 - 6:00",
+            "#"
+          ],
+          [
+            "string7",
+            "string8",
+            "string9",
+            "string0",
+            "hola",
+            "#"
+          ]
+        ];
+
+        // function used when previous button is pressed
+        previous_button.addEventListener("click", function() {
+          if (!buttonCooldown) {
+            contentID = (contentID == 0 ? data.length-1 : contentID-1);
+            updateData()
+            cooldown();
+          }
+        });
+
+        // function used when next button is pressed
+        next_button.addEventListener("click", function() {
+          if (!buttonCooldown) {
+            contentID = (contentID + 1) % data.length;
+            updateData()
+            cooldown();
+          }
+        });
+
+        // updates the text content on the page based on current slide
+        function updateData() {
+          title.textContent = data[contentID][0];
+          text.textContent = data[contentID][1];
+
+          if(data[contentID][2] != "") {
+            contact_phone.innerHTML = '<img src="./assets/icons/whatsapp.svg" alt="WhatsApp" class="contact-icons"><strong> ' + data[contentID][2] + '</strong>';
+          } else {
+            contact_phone.textContent = "";
+          }
+
+          if(data[contentID][3] != "") {
+            contact_mail.innerHTML = '<img src="./assets/icons/mail.svg" alt="Correo" class="contact-icons"><strong> ' + data[contentID][3] + '</strong>';
+          } else {
+            contact_mail.textContent = "";
+          }
+            
+          schedule.textContent = data[contentID][4];
+          map_link.setAttribute("href", data[contentID][5]);
+        }
+      </script>
     </div>
   </div>
 </section>

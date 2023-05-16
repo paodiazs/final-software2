@@ -29,6 +29,9 @@ a:active{
 	padding: 0;
 	box-sizing: border-box;
 }
+.list-group-item.active {
+	background-color: #fa6400;
+}
 .divider{
 	width: 95%;
 	display: block;
@@ -154,8 +157,9 @@ a:active{
 	box-sizing: border-box;
 	text-align: center;
 	font-size: 14px;
+	font-weight: bold;
 	padding: 0 5px;
-	color: #999;
+	color: #fa6400;
 	position: relative;
 	transition: all .3s ease-in-out;
 	display: block;

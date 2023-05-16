@@ -712,3 +712,15 @@ login.html & newaccount.html*/
 		display: inherit !important;
 	}
 }
+/*=========================
+=========== Luis Mario icons*/
+.contact-info {
+	text-align: left;
+	color: #F09000;
+	font-size: 15px;
+}
+
+.contact-icons {
+	width: 20px;
+	height: 20px;
+}

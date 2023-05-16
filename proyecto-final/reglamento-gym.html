@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reglamento uso de Gimnasio</title>
+	<style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        #back-button {
+            width: 10%;
+            height: 8vh;
+            margin: 2vh 2.5%;
+            text-decoration: none;
+            float: left;
+            font-size: medium;
+            background: url('./assets/icons/left-arrow.svg');
+            background-repeat:  no-repeat;
+            background-size: 90%;
+            background-position: center center;
+            background-color: blanchedalmond;
+            color:lightskyblue;
+        }
+    
+        #forms-link-button {
+            width: 80%;
+            height: 8vh;
+            margin: 2vh 2.5%;
+            font-size: medium;
+            background-repeat:  no-repeat;
+            background-color: blanchedalmond;
+            color:lightskyblue;
+        }
+
+        #reglamento {
+            width: 70%;
+        }
+
+        nav {
+            background-color: orange;
+            height: 12vh;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul style="list-style: none;">
+            <li><a href="#" style="text-decoration: none;"><button id="back-button">Back to Map</button></a></li>
+            <li><a href="https://login.microsoftonline.com/common/oauth2/authorize?client_id=00000002-0000-0ff1-ce00-000000000000&redirect_uri=https%3a%2f%2foutlook.office365.com%2fowa%2fcalendar%2f&resource=00000002-0000-0ff1-ce00-000000000000&response_mode=form_post&response_type=code+id_token&scope=openid&msafed=1&msaredir=1&client-request-id=942a2208-ad90-91f5-4f86-9a05d3a5f90d&protectedtoken=true&claims=%7b%22id_token%22%3a%7b%22xms_cc%22%3a%7b%22values%22%3a%5b%22CP1%22%5d%7d%7d%7d&nonce=638193483856100710.cd9305fc-c52f-41c5-956e-23c0ed02e4cc&state=Dcu7DoIwFIDhos9TenqDssnEojExQoyLqacFCdJGifHy9Hb4_u3PCCHrZJVkkELKQhpeSWWk0QUHKDnk6CoJukeKWvRUcdS00oWnQiJ4B8IrxCy9DYtvy9DefXD2yZpxDnYZY1vvNzbY28tiPn_YNcZpDMPCFvY7dMetMrup_Ybucm5Pj1rMg_gD" target="_blank" style="text-decoration: none;"><button id="forms-link-button">Reserva tu lugar en el Gym</button></a></li>
+        </ul>
+    </nav>    
+	<div id="reglamento" style="margin: 0px 50px;">
+        <h1>Reglamento del gimnasio</h1>
+        <ol>
+            <li>
+                Serán considerados usuarios y con derecho de uso de las instalaciones las siguientes personas:
+                <ul>
+                    <li>Alumnos</li>
+                    <li>Egresados</li>
+                    <li>Empleados</li>
+                </ul>
+            </li>
+            <li>El Gimnasio permanecera abierto de lunes a viernes de 6:00 a 19:30 hrs. y sábados de 9:00 a 14:00 hrs.</li>
+            <li>Para acceder al Gimnasio se requiere registrarse en la bitácora diaria</li>
+            <li>Presentarse con ropa adecuada (tenis, pants, playera, sudadera y en general ropa propia para la práctica deportiva en gimnasio).</li>
+            <li>Por higiene, es indispensable llevar una toalla o un paño limpio para colocarla sobre las máquinas o aparatos cuando realices tus ejercicios</li>
+            <li>Se recomienda a todo usuario practicarse un examen médico antes de iniciar su programa de acondicionamiento</li>
+            <li>Antes de utilizar cualquier aparato o equipo, verificar que se encuentre en buen estado y con las medidas y cargas de acuerdo al trabajo que se va a realizar</li>
+            <li>El levantamiento de pesas y mancuernas se hará en el lugar dispuesto para tal fin</li>
+            <li>Debe hacerse un uso correcto de los aparatos y pesas, en caso de duda, se debe consultar en la Coordinación.</li>
+            <li>Pida ayuda a otros usuarios en el manejo de barras y pesos libres</li>
+            <li>Las máquinas de pesas se alternarán con otro usuario para su mejor aprovechamiento. Cuando un usuario descanse en una de sus series de ejercicios, otro pasara a ocupar la máquina de pesas para realizar su rutina</li>
+            <li>No se podrá retirar, bajo ningún concepto, material del gimnasio para utilizarlo fuera de este. Si no es con autorización de la Coordinación.</li>
+            <li>En la caminadora no usar ropa suelta que pueda engancharse. Se recomienda usar ropa ajustada</li>
+            <li>Siempre se deben de utilizar los dispositivos de seguridad de la caminadora.</li>
+            <li>En horarios "pico" el tiempo máximo de uso de caminadora y elíptica será de 20 minutos.</li>
+            <li>Se deben cuidar de las instalaciones y equipos. En caso de descompostura se debe avisar inmediatamente al encargado del área para su reparación.</li>
+            <li>Abstenerse de usar vocabulario obsceno o pasado de tono, así como cualquier tipo de conducta que atente contra el respeto y la moral.</li>
+            <li>No se permite realizar ejercicios con el torso desnudo</li>
+            <li>Las mochilas y ropa deberán colocarse en los espacios destinados para ello.</li>
+            <li>Se prohibe fumar en el gimnasio</li>
+            <li>Se prohibe ingresar alimentos y bebidas alcohólicas al gimnasio, las bebidas hidratantes están permitidas en envases de plástico que no derramen.</li>
+            <li>Se recomienda no llevar objetos de valor. La pérdida de objetos personales será responsabilidad de los usuarios</li>
+            <li>La Coordinación de Deportes proporcionará las rutinas de entrenamiento a los usuarios que así lo soliciten</li>
+            <li>
+                La Coordinación de Deportes en todo momento puede solicitar a los usuarios:
+                <ul>
+                    <li>Presentar la credencial</li>
+                    <li>Abandonar el Gimnasio por mal comportamiento</li>
+                    <li>Abandonar el Gimnasio por reincidir en no colocar el equipo en su lugar, una vez que el usuario lo ha terminado de usar.</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+	<script>
+        // create floating window
+        var floatingWindow = document.createElement("div");
+        floatingWindow.style.position = "fixed";
+        floatingWindow.style.bottom = "20px";
+        floatingWindow.style.right = "20px";
+        floatingWindow.style.backgroundColor = "white";
+        floatingWindow.style.boxShadow = "0 0 10px gray";
+        document.body.appendChild(floatingWindow);
+
+        // add leonel picture
+        var leonel_picture = document.createElement("img");
+        leonel_picture.src = "./assets/img/leonel.png";
+        leonel_picture.style.padding = "Auto";
+        floatingWindow.appendChild(leonel_picture);
+
+        // add message
+        var leonel_message = document.createElement("p");
+        leonel_message.style.width = "300px";
+        leonel_message.style.textAlign = "center";
+        leonel_message.textContent = "Este es el edificio G, el gimnasio. Aquí es donde los leones venimos a entrrenarrr y ejerrcitarrnos.";
+        floatingWindow.appendChild(leonel_message);
+
+        // modify text when hover on rules
+        var reglamento_message = document.getElementById("reglamento");
+        reglamento_message.addEventListener("mouseover", function() {
+            leonel_message.textContent = "El reglamento nos ayuda a los leones a comporrtarrnos. Te rrrecomiendo que lo leas detalladamente";
+        });
+
+        // modify text when hover on forms
+        var formulario_message = document.getElementById("forms-link-button");
+        formulario_message.addEventListener("mouseover", function() {
+            leonel_message.textContent = "¿Listo para entrrenarrr? Rrellena el forrmulario antes de visitarr el gimnasio.";
+        });
+
+        // modify text when hover on back button
+        var back_to_map_message = document.getElementById("back-button");
+        back_to_map_message.addEventListener("mouseover", function() {
+            leonel_message.textContent = "¿Quierres rregrresarr al mapa parra continuarrr con el rrrecorrido?";
+        });
+    </script>
+</body>
+</html>

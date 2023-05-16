@@ -6,20 +6,6 @@
   <title>Servicios Escolares</title>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="css/main.css">
-
-  <!--styles for icons-->
-  <style>
-    .contact-info {
-      text-align: left;
-      color: #F09000;
-      font-size: 15px;
-    }
-
-    .contact-icons {
-      width: 20px;
-      height: 20px;
-    }
-  </style>
 </head>
 <body>
 <!-- ====== Barra de navegacion ======-->
@@ -138,20 +124,32 @@
     <h1 style="text-align: center;">Servicios Escolares UAO</h1>
     <div class="row">
       <div class="col-xs-12 col-sm-8">
-        <!--ol class="breadcrumb">
-          <li><a href="#">Vehículos</a></li>
-          <li><a href="#">Marca</a></li>
-          <li class="active">Modelo</li>
-        </ol-->
+        
         <!--aqui necesitamos conseguir un carrusel de imagenes-->
         <div id="slider-commercial" class="carousel slide" data-ride="carousel" data-interval="false">
           <ol class="carousel-indicators">
-            <li data-target="#slider-commercial" data-slide-to="0" class="active"></li>
-            <li data-target="#slider-commercial" data-slide-to="1"></li>
-            <li data-target="#slider-commercial" data-slide-to="2"></li>
+            <li data-target="#slider-commercial" data-slide-to="0" class="active slide-buttons"></li>
+            <li data-target="#slider-commercial" data-slide-to="1" class="slide-buttons"></li>
+            <li data-target="#slider-commercial" data-slide-to="2" class="slide-buttons"></li>
+            <li data-target="#slider-commercial" data-slide-to="3" class="slide-buttons"></li>
+            <li data-target="#slider-commercial" data-slide-to="4" class="slide-buttons"></li>
+            <li data-target="#slider-commercial" data-slide-to="5" class="slide-buttons"></li>
+            <li data-target="#slider-commercial" data-slide-to="6" class="slide-buttons"></li>
           </ol>
           <div class="carousel-inner" role="listbox">
             <div class="item active">
+              <img src="assets/img/post.jpg" alt="">
+            </div>
+            <div class="item">
+              <img src="assets/img/post.jpg" alt="">
+            </div>
+            <div class="item">
+              <img src="assets/img/post.jpg" alt="">
+            </div>
+            <div class="item">
+              <img src="assets/img/post.jpg" alt="">
+            </div>
+            <div class="item">
               <img src="assets/img/post.jpg" alt="">
             </div>
             <div class="item">
@@ -170,60 +168,19 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
-
-        <h2 id="content-title">Test</h2>
-        <p id="content-text">Testing</p>
-
-        <h2>CASA</h2>
-        <p class="lead text-justify">
-          El Centro de Atención y Servicios al Alumnado es un servicio proporcionado a los alumnos para recibir ayuda en su proceso de inscripción, o con cualquier otra situación académica que les pueda surgir. Los alumnos pueden contar con Ana, su asistente digital que los puede atender a cualquier hora por WhatsApp al número: 951 501 6250. También nos puedes localizar en la planta baja del edificio B en un horario de: ... a .... <a href="#">Haz click aquí para ver la ubicación en el mapa</a>
-        </p>
-
-        <h2>Caja</h2>
-        <p class="lead text-justify">
-          La caja está ubicada en el segundo piso del edificio B. Aquí los alumnos pueden realizar el pago de servicios escolares en un horario de ... a .... <a href="#">Haz click aquí para ver la ubicación en el mapa</a>
-        </p>
-
-        <h2>Administración Escolar</h2>
-        <p class="lead text-justify">
-          Administración escolar se encarga de los temas académicos de los alumnos que tengan problemas en alguna materia o con algún requisito de titulación. Puedes localizarlos en la segunda planta del edificio B en un horario de ... a .... <a href="#">Haz click aquí para ver la ubicación en el mapa</a>
-        </p>
-
-        <h2>Investigación y Posgrado</h2>
-        <p class="lead text-justify">
-          Los egresados de la Universidad Anáhuac que deseen continuar con sus estudios pueden acudir al área de investigación y posgrado para preguntar por las diferentes opciones que tienen disponibles. Esta sección se encuentra en la segunda planta del edificio F y su horario de atención va de ... a .... <a href="#">Haz click aquí para ver la ubicación en el mapa</a>
-        </p>
-
-        <h2>Acompañamiento Sanamente</h2>
-        <p class="lead text-justify">
-          La Red de Universidades Anáhuac se preocupa por el bienestar de sus alumnos tanto física como psicológicamente, es por eso que contamos con un área designada para el acompañamiento psicológico de los alumnos. Esta zona está ubicada en la planta baja del edifició B. su horario de atención es de ... a .... <a href="#">Haz click aquí para ver la ubicación en el mapa</a>
-        </p>
-
-        <h2>Centro de Lenguas</h2>
-        <p class="lead text-justify">
-          La Red de Universidades Anáhuac tiene convenios con ... universidades a lo largo del mundo. Si estás buscando irte de intercambio a otro país o simplemente quieres aprender un idioma nuevo, el Centro de Lenguas está dispuesto a ayudarte. Estamos localizados en la planta baja del edificio B y te podemos atender en un horario de ... a .... <a href="#">Haz click aquí para ver la ubicación en el mapa</a>
-        </p>
-
-        <h2>Soporte Técnico</h2>
-        <p class="lead text-justify">
-          Si tienes problemas con tu cuenta Anáhuac o encuentras algún problema en las instalaciones, te recomendamos acudir a Soporte Técnico, ellos te pueden ayudar a resolver tus problemas. Su horario de atencio es de ... a .... y los puedes encontrar en la planta baja del edificio A. <a href="#">Haz click aquí para ver la ubicación en el mapa</a>
-        </p>
-
-        <h2>A-STORE</h2>
-        <p class="lead text-justify">
-          ¿Eres un León de corazón o te gusta coleccionar cosas? Te invitamos a que te des una vuelta por la Anahuac Store y veas los articulos que tenemos para leones de corazón. La tienda está abierta en un horario de ... a .... estamos ubicados en la planta baja del edifico B. <a href="#">Haz click aquí para ver la ubicación en el mapa</a>
-        </p>
       </div>
       <div class="col-xs-12 col-sm-4">
+        <h2 id="content-title">CASA</h2>
+        <p id="content-text">El Centro de Atención y Servicios al Alumnado es un servicio proporcionado a los alumnos para recibir ayuda en su proceso de inscripción, o con cualquier otra situación académica que les pueda surgir. Los alumnos pueden contar con Ana, su asistente digital que los puede atender a cualquier hora por WhatsApp.</p>
         <div class="full-width" style="padding:10px; background-color: #F5F5F5; margin: 7px 0; text-align: left;">
           <p class="lead text-center"><strong><small>Contacto</small></strong></p>
-          <p class="lead text-center contact-info" id="contact-phone"><img src="./assets/icons/whatsapp.svg" alt="WhatsApp" class="contact-icons"><strong> test</strong></p>
-          <p class="lead text-center contact-info" id="contact-mail"><img src="./assets/icons/mail.svg" alt="Correo" class="contact-icons"><strong> hola</strong></p>
+          <p class="lead text-center contact-info" id="contact-phone"><img src="./assets/icons/whatsapp.svg" alt="WhatsApp" class="contact-icons"><strong> 951 501 6250</strong></p>
+          <p class="lead text-center contact-info" id="contact-mail"><img src="./assets/icons/mail.svg" alt="Correo" class="contact-icons"><strong> atencionalumnado.uao@anahuac.mx</strong></p>
         </div>
         <div class="full-width post-user-info">
           <div>
             <p class="lead text-center"><strong><small>Horario</small></strong></p>
-            <p class="full-width" id="schedule">123 UDP</p>
+            <p class="full-width" id="schedule">9:00 - 18:00 hrs</p>
           </div>
         </div>
         <div class="clearfix"></div>
@@ -231,74 +188,25 @@
         <p class="lead text-light" style="margin: 7px 0;">
           <i class="fa fa-map-marker fa-fw" aria-hidden="true"></i> Ver ubicación en el mapa
         </p></a>
-        <ul class="list-unstyled fullwidth text-center footer-social social-post">
-          <li>
-            <a href="#!">
-              <i class="fa fa-facebook" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#!">
-              <i class="fa fa-linkedin" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#!">
-              <i class="fa fa-google-plus" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#!">
-              <i class="fa fa-twitter" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#!">
-              <i class="fa fa-youtube" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#!">
-              <i class="fa fa-instagram" aria-hidden="true"></i>
-            </a>
-          </li>
-        </ul>
       </div>
 
+      <script src="./js/dynamic-carousel.js"></script>
       <script>
-        // title and text of the document
-        let title = document.getElementById("content-title");
-        let text = document.getElementById("content-text");
-        let contact_phone = document.getElementById("contact-phone");
-        let contact_mail = document.getElementById("contact-mail");
-        let schedule = document.getElementById("schedule");
-        let map_link = document.getElementById("map-link");
-
-        // variable used for button cooldown
-        let buttonCooldown = false;
-
-        // function that cooldowns carousel buttons
-        function cooldown() {
-          buttonCooldown = true;
-          setTimeout(function() {
-            buttonCooldown = false;
-          }, 5000);
-        }
-
-        // carousel buttons
-        let previous_button = document.getElementById("previous-button");
-        let next_button = document.getElementById("next-button");
-
-        // content ID and data
-        let contentID = 0;
-        //! aquí falta agregar todos los hipervínculos al mapa
-        let data = [ // data format: title, text, contact1, contact2, schedule, link to map.
+        data = [ // data format: title, text, contact1, contact2, schedule, link to map.
           [
             "CASA",
             "El Centro de Atención y Servicios al Alumnado es un servicio proporcionado a los alumnos para recibir ayuda en su proceso de inscripción, o con cualquier otra situación académica que les pueda surgir. Los alumnos pueden contar con Ana, su asistente digital que los puede atender a cualquier hora por WhatsApp.",
             "951 501 6250",
             "atencionalumnado.uao@anahuac.mx",
-            "9:00 - 6:00",
+            "9:00 - 18:00 hrs",
+            "#"
+          ],
+          [
+            "Caja",
+            "La caja es el lugar donde los alumnos pueden realizar pagos con dinero o tarjeta sobre los servicios escolares.",
+            "",
+            "caja.uao@anahuac.mx",
+            "9:00 - 18:00 hrs",
             "#"
           ],
           [
@@ -306,57 +214,42 @@
             "Administración escolar se encarga de los temas académicos de los alumnos que tengan problemas en alguna materia o con algún requisito de titulación.",
             "",
             "aescolar.uao@anahuac.mx",
-            "9:00 - 6:00",
+            "9:00 - 18:00 hrs",
             "#"
           ],
           [
-            "string7",
-            "string8",
-            "string9",
-            "string0",
-            "hola",
+            "Acompañamiento Sanamente",
+            "La Red de Universidades Anáhuac se preocupa por el bienestar de sus alumnos tanto física como psicológicamente, es por eso que contamos con un área designada para el acompañamiento psicológico de los alumnos.",
+            "951 128 2357",
+            "sanamente.uao@anahuac.mx",
+            "9:00 - 18:00 hrs",
+            "#"
+          ],
+          [
+            "Centro de Lenguas",
+            "La Red de Universidades Anáhuac tiene convenios con ... universidades a lo largo del mundo. Si estás buscando irte de intercambio a otro país o simplemente quieres aprender un idioma nuevo, el Centro de Lenguas está dispuesto a ayudarte.",
+            "",
+            "diego.arroyo@anahuac.mx",
+            "9:00 - 18:00 hrs",
+            "#"
+          ],
+          [
+            "Soporte Técnico",
+            "Si tienes problemas con tu cuenta Anáhuac o encuentras algún problema en las instalaciones, te recomendamos acudir a Soporte Técnico, ellos te pueden ayudar a resolver tus problemas.",
+            "",
+            "soporte.uao@anahuac.mx",
+            "9:00 - 18:00 hrs",
+            "#"
+          ],
+          [
+            "A-STORE",
+            "¿Eres un León de corazón o te gusta coleccionar cosas? Te invitamos a que te des una vuelta por la Anahuac Store y veas los articulos que tenemos para leones de corazón.",
+            "",
+            "",
+            "9:00 - 18:00 hrs",
             "#"
           ]
         ];
-
-        // function used when previous button is pressed
-        previous_button.addEventListener("click", function() {
-          if (!buttonCooldown) {
-            contentID = (contentID == 0 ? data.length-1 : contentID-1);
-            updateData()
-            cooldown();
-          }
-        });
-
-        // function used when next button is pressed
-        next_button.addEventListener("click", function() {
-          if (!buttonCooldown) {
-            contentID = (contentID + 1) % data.length;
-            updateData()
-            cooldown();
-          }
-        });
-
-        // updates the text content on the page based on current slide
-        function updateData() {
-          title.textContent = data[contentID][0];
-          text.textContent = data[contentID][1];
-
-          if(data[contentID][2] != "") {
-            contact_phone.innerHTML = '<img src="./assets/icons/whatsapp.svg" alt="WhatsApp" class="contact-icons"><strong> ' + data[contentID][2] + '</strong>';
-          } else {
-            contact_phone.textContent = "";
-          }
-
-          if(data[contentID][3] != "") {
-            contact_mail.innerHTML = '<img src="./assets/icons/mail.svg" alt="Correo" class="contact-icons"><strong> ' + data[contentID][3] + '</strong>';
-          } else {
-            contact_mail.textContent = "";
-          }
-            
-          schedule.textContent = data[contentID][4];
-          map_link.setAttribute("href", data[contentID][5]);
-        }
       </script>
     </div>
   </div>
@@ -444,7 +337,7 @@
     </div>
   </div>
 </footer>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!--script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></!script-->
 <script>window.jQuery || document.write('<script src="js/jquery-1.11.2.min.js"><\/script>')</script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>

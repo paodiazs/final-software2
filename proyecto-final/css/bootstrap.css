@@ -1537,7 +1537,7 @@ samp {
 code {
   padding: 2px 4px;
   font-size: 90%;
-  color: #c7254e;
+  color: #fa6400;
   background-color: #f9f2f4;
   border-radius: 4px;
 }
@@ -2562,7 +2562,7 @@ output {
   transition: border-color ease-in-out .15s;
 }
 .form-control:focus, .form-control:hover {
-  border-color: #D30A52;
+  border-color: #fa6400;
   outline: 0;
 }
 .form-control::-moz-placeholder {
@@ -3325,8 +3325,8 @@ fieldset[disabled] .btn-warning.focus {
 }
 .btn-danger {
   color: #fff;
-  background-color: #D30A52;
-  border-color: #D30A52;
+  background-color: #fa6400;
+  border-color: #E65100;
 }
 .btn-danger:focus,
 .btn-danger.focus {
@@ -3336,8 +3336,8 @@ fieldset[disabled] .btn-warning.focus {
 }
 .btn-danger:hover {
   color: #fff;
-  background-color: #bc0746;
-  border-color: #bc0746;
+  background-color: #fa6400;
+  border-color: #E65100;
 }
 .btn-danger:active,
 .btn-danger.active,

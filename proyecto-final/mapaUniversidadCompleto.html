@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Maps</title>
+    <meta charset="UTF-8">
+
+    <style>
+        #map {
+            height: 500px;
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    function iniciarMap(){
+        var coord = {lat:16.9956106 ,lng: -96.7527389};
+        var coordCafeteria = {lat:16.995819 ,lng: -96.751595};
+        var coordIngenieria = {lat: 16.996547, lng: -96.753338};
+        var coordGym = {lat: 16.994731, lng: -96.753082};
+        var coordMed = {lat: 16.995969, lng: -96.753193};
+        var coordBasquet = {lat: 16.994806, lng: -96.751965};
+        var coordBiblioteca = {lat: 16.996225, lng: -96.753277};
+
+        var map = new google.maps.Map(document.getElementById('map'),{
+            zoom: 18,
+            center: coord,
+            draggable: true, //desplazar en el mapa
+            minZoom: 18,
+            streetViewControl: false, //Quitar muñequito de google
+            fullscreenControl: false, //quitar la opcion de pantalla completa
+            mapTypeControl: false, //quitar la opcion de satelite
+            styles: [{ featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }]}] //Quitar los marcadores de google
+        });
+
+        var marker = new google.maps.Marker({
+            position: coord,
+            map: map
+        });
+
+        var iconoCafeteria = {
+            url: 'logo2.png',
+            scaledSize: new google.maps.Size(75, 75)
+        };
+
+        var markerCafeteria = new google.maps.Marker({
+            position: coordCafeteria,
+            map: map,
+            icon: iconoCafeteria
+        });
+
+
+        var iconoIngenieria = {
+            url: 'logoInge.png',
+            scaledSize: new google.maps.Size(60, 60)
+        };
+
+        var markerIngenieria = new google.maps.Marker({
+            position: coordIngenieria,
+            map: map,
+            icon: iconoIngenieria
+        });
+
+        var iconoGym = {
+            url: 'logoGym.png',
+            scaledSize: new google.maps.Size(60, 60)
+        };
+
+        var markerGym = new google.maps.Marker({
+            position: coordGym,
+            map: map,
+            icon: iconoGym
+        });
+
+        var iconoMedicina = {
+            url: 'logoMedicina.png',
+            scaledSize: new google.maps.Size(60, 60)
+        };
+
+        var markerMedicina = new google.maps.Marker({
+            position: coordMed,
+            map: map,
+            icon: iconoMedicina
+        });
+
+        var iconoBasquet = {
+            url: 'logoBasq.png',
+            scaledSize: new google.maps.Size(60, 60)
+        };
+
+        var markerBasquet = new google.maps.Marker({
+            position: coordBasquet,
+            map: map,
+            icon: iconoBasquet
+        });
+
+        var iconoBiblioteca = {
+            url: 'logoBiblio.png',
+            scaledSize: new google.maps.Size(60, 60)
+        };
+
+        var markerBiblioteca = new google.maps.Marker({
+            position: coordBiblioteca,
+            map: map,
+            icon: iconoBiblioteca
+        });
+
+
+
+        var zonaUniversidadCoords = [
+            {lat:16.996972,lng:-96.754344},
+            {lat:16.994056,lng:-96.754328},
+            {lat:16.994068,lng:-96.751822},
+            {lat:16.994366,lng:-96.751643},
+            {lat:16.994813,lng:-96.751289},
+            {lat:16.994885,lng:-96.751265},
+            {lat:16.994931,lng:-96.751254},
+            {lat:16.995035,lng:-96.751238},
+            {lat:16.996497,lng:-96.751119},
+            {lat:16.996558,lng:-96.751119},
+            {lat:16.996627,lng:-96.751139},
+            {lat:16.996821,lng:-96.751268},
+            {lat:16.996853,lng:-96.751283},
+            {lat:16.996873,lng:-96.751297},
+            {lat:16.996899,lng:-96.752458},
+        ];
+
+        var zonaUniversidad = new google.maps.Polygon({
+            paths: zonaUniversidadCoords,
+            strokeColor: '#e76800',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#f38f0c',
+            fillOpacity: 0.5 //0.35
+        });
+
+
+
+
+        zonaUniversidad.setMap(map);
+
+        // Crear el marcador de la ubicación del usuario
+        var marker = new google.maps.Marker({
+            map: map,
+            icon: {
+                path: google.maps.SymbolPath.CIRCLE,
+                scale: 10,
+                fillColor: '#039be5',
+                fillOpacity: 1,
+                strokeColor: '#039be5',
+                strokeOpacity: 1,
+                strokeWeight: 1,
+            },
+            zIndex: 1000
+        });
+
+        // Obtener la ubicación del usuario en tiempo real
+        if (navigator.geolocation) {
+            navigator.geolocation.watchPosition(function(position) {
+                var pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                // Centrar el mapa en la ubicación del usuario
+                map.setCenter(pos);
+                // Actualizar la posición del marcador
+                marker.setPosition(pos);
+            }, function() {
+                // Error al obtener la ubicación del usuario
+                handleLocationError(true, marker, map.getCenter());
+            });
+        } else {
+            // El navegador no soporta geolocalización
+            handleLocationError(false, marker, map.getCenter());
+        }
+
+
+
+
+    }
+
+    function handleLocationError(browserHasGeolocation, marker, pos) {
+        // Mostrar un mensaje de error si no se puede obtener la ubicación del usuario
+        var infoWindow = new google.maps.InfoWindow({map: map});
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+            'Error: No se pudo obtener tu ubicación' :
+            'Error: Tu navegador no soporta geolocalización');
+    }
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGn7mLYMk_m978YH-QjDc_pb9JCWTaWH4&callback=iniciarMap"></script>
+</body>
+</html>

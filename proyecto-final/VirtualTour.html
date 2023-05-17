@@ -1,9 +1,39 @@
 <!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Virtual Tour Anahuac Oaxaca</title>
 </head>
 <body>
-    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4" width="1100" height="950" style="border:0;" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade" ></iframe>
+<button type="button" onclick="pos1()">GPS detecta posición en cafetería</button>
+<button type="button" onclick="pos2()">GPS detecta posición en gimnacio</button>
+<button type="button" onclick="pos3()">GPS detecta posición en ingeniería</button>
+<div id="tourd">
+    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4" width="1100" height="950" style="border:0;" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
 </body>
+<script >
+
+    function pos1(){
+        var tour3d = document.getElementById("tourd");
+        tour3d.innerHTML = `
+        <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/23/p/23" width="1100" height="950" style="border:0;" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    `
+        reload()
+    }
+    function pos2(){
+        var tour3d = document.getElementById("tourd");
+        tour3d.innerHTML = `
+        <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/32/p/32" width="1100" height="950" style="border:0;" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    `
+        reload()
+    }
+    function pos3(){
+        var tour3d = document.getElementById("tourd");
+        tour3d.innerHTML = `
+        <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/44/p/44" width="1100" height="950" style="border:0;" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    `
+        reload()
+    }
+</script>
 </html>

@@ -369,18 +369,18 @@ login.html & newaccount.html*/
 	height: 60px;
 	bottom: 0;
 }
-#categori-1:hover{ background-color: #E65100; border-color: #E65100; }
-#categori-2:hover{ background-color: #B71C1C; border-color: #B71C1C; }
-#categori-3:hover{ background-color: #1A237E; border-color: #1A237E; }
-#categori-4:hover{ background-color: #03A9F4; border-color: #03A9F4; }
-#categori-5:hover{ background-color: #263238; border-color: #263238; }
-#categori-6:hover{ background-color: #AFB42B; border-color: #AFB42B; }
-#categori-7:hover{ background-color: #00ACC1; border-color: #00ACC1; }
-#categori-8:hover{ background-color: #EF6C00; border-color: #EF6C00; }
-#categori-9:hover{ background-color: #00695C; border-color: #00695C; }
-#categori-10:hover{ background-color: #607D8B; border-color: #607D8B; }
-#categori-11:hover{ background-color: #1976D2; border-color: #1976D2; }
-#categori-12:hover{ background-color: #3949AB; border-color: #3949AB; }
+#categori-1:hover{ background-color: #fa6400; border-color: #E65100; }
+#categori-2:hover{ background-color: #fa6400; border-color: #E65100; }
+#categori-3:hover{ background-color: #fa6400; border-color: #E65100; }
+#categori-4:hover{ background-color: #fa6400; border-color: #E65100; }
+#categori-5:hover{ background-color: #fa6400; border-color: #E65100; }
+#categori-6:hover{ background-color: #fa6400; border-color: #E65100; }
+#categori-7:hover{ background-color: #fa6400; border-color: #E65100; }
+#categori-8:hover{ background-color: #fa6400; border-color: #E65100; }
+#categori-9:hover{ background-color: #fa6400; border-color: #E65100; }
+#categori-10:hover{ background-color: #fa6400; border-color: #E65100; }
+#categori-11:hover{ background-color: #fa6400; border-color: #E65100; }
+#categori-12:hover{ background-color: #fa6400; border-color: #E65100; }
 .icon-index{
 	font-size: 90px;
 	width: 170px;

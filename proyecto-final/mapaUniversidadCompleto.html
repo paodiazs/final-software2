@@ -158,7 +158,8 @@
         var coordBasquet = {lat: 16.994806, lng: -96.751965};
         var coordFutbol = {lat: 16.99461, lng: -96.75249};
         var coordBiblioteca = {lat: 16.996225, lng: -96.753277};
-        var coord
+        var coordA = {lat: 16.99659, lng:-96.75199006422191};
+        var coordB = {lat: 16.99629322285019, lnag: -96.75175201817626};
 
         var map = new google.maps.Map(document.getElementById('map'),{
             zoom: 18,
@@ -175,6 +176,34 @@
             position: coord,
             map: map
         });
+
+        var iconoA = {
+            url: 'A.png',
+            scaledSize: new google.maps.Size(50, 50)
+        };
+        var markerA = new google.maps.Marker({
+            position: coordA,
+            map: map,
+            icon: iconoA
+        });
+        var infoWindowA = new google.maps.InfoWindow({
+        content: "Edificio A-Edith Stein: <br> Salones de uso comun: Piso 1 y 2 <br> Gastronomia: Piso 3"
+        });
+        // Add a click event listener to the marker
+        markerA.addListener("click", function() {
+            infoWindowA.open(map, markerA); // Open the info window when marker is clicked
+        });
+
+        var iconoB = {
+            url: 'B.png',
+            scaledSize: new google.maps.Size(50,50)
+        };
+        var markerB  =new google.maps.Marker({
+            position: coordB,
+            map: map,
+            icon: iconoB
+        });
+
 
         var iconoCafeteria = {
             url: 'logo2.png',

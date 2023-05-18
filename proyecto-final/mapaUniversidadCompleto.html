@@ -158,6 +158,7 @@
         var coordBasquet = {lat: 16.994806, lng: -96.751965};
         var coordFutbol = {lat: 16.99461, lng: -96.75249};
         var coordBiblioteca = {lat: 16.996225, lng: -96.753277};
+        var coord
 
         var map = new google.maps.Map(document.getElementById('map'),{
             zoom: 18,
@@ -175,130 +176,26 @@
             map: map
         });
 
-        //Edificio A
-        var iconoA = {
-            url: 'A.png',
+        var iconoCafeteria = {
+            url: 'logo2.png',
             scaledSize: new google.maps.Size(50, 50)
         };
-        var markerA = new google.maps.Marker({
-            position: coordA,
+
+        var markerCafeteria = new google.maps.Marker({
+            position: coordCafeteria,
             map: map,
-            icon: iconoA
+            icon: iconoCafeteria
         });
-        var infoWindowA = new google.maps.InfoWindow({
-            content: "Edificio A-Edith Stein: <br> Salones de uso comun: Piso 1 y 2 <br> Gastronomia: Piso 3"
+        var infoWindowCafeteria = new google.maps.InfoWindow({
+            content: "Cuckoo <br> Horario: <br> Lun-Vie 8:00-19:00. <br> Sab 8:00-13:30 <br> 4,9 ⭐⭐⭐⭐⭐"
         });
         // Add a click event listener to the marker
         markerCafeteria.addListener("click", function() {
-            infoWindowA.open(map, markerA); // Open the info window when marker is clicked
+            infoWindowCafeteria.open(map, markerCafeteria); // Open the info window when marker is clicked
         });
 
-        //Edificio B
-        var iconoB = {
-            url: 'B.png',
-            scaledSize: new google.maps.Size(50, 50)
-        };
-        var markerB = new google.maps.Marker({
-            position: coordB,
-            map: map,
-            icon: iconoB
-        });
-        var infoWindowB = new google.maps.InfoWindow({
-            content: "Edificio B-: <br> Oficinas centrales"
-        });
-        // Add a click event listener to the marker
-        markerCafeteria.addListener("click", function() {
-            infoWindowB.open(map, markerB); // Open the info window when marker is clicked
-        });
 
-        //Edificio C
-        var iconoC = {
-            url: 'C.png',
-            scaledSize: new google.maps.Size(50, 50)
-        };
-        var markerC = new google.maps.Marker({
-            position: coordC,
-            map: map,
-            icon: iconoC
-        });
-        var infoWindowC = new google.maps.InfoWindow({
-            content: "Edificio C-Antonio Caso <br> Biblioteca: Piso 1 <br> Salones de uso comun: Piso 2"
-        });
-        // Add a click event listener to the marker
-        markerCafeteria.addListener("click", function() {
-            infoWindowC.open(map, markerC); // Open the info window when marker is clicked
-        });
-        //Biblioteca
-        var iconoBiblioteca = {
-            url: 'logoBiblio.png',
-            scaledSize: new google.maps.Size(50, 50)
-        };
-        var markerBiblioteca = new google.maps.Marker({
-            position: coordBiblioteca,
-            map: map,
-            icon: iconoBiblioteca
-        });
-        var infoWindow = new google.maps.InfoWindow({
-            content: "This is the pop-up window content." // Replace with your desired content
-        });
-        // Add a click event listener to the marker
-        markerBiblioteca.addListener("click", function() {
-            infoWindow.open(map, markerBiblioteca); // Open the info window when marker is clicked
-        });
 
-        //Edifico D
-        var iconoD = {
-            url: 'D.png',
-            scaledSize: new google.maps.Size(50, 50)
-        };
-        var markerD = new google.maps.Marker({
-            position: coordD,
-            map: map,
-            icon: iconoD
-        });
-        var infoWindowD = new google.maps.InfoWindow({
-            content: "Edificio D-Jerome Lejeune: <br> Medicina: Piso 1 <br> Slones de uso comun: Piso 2"
-        });
-        // Add a click event listener to the marker
-        markerCafeteria.addListener("click", function() {
-            infoWindowD.open(map, markerD); // Open the info window when marker is clicked
-        });
-        //Medicina
-        var iconoMedicina = {
-            url: 'logoMedicina.png',
-            scaledSize: new google.maps.Size(50, 50)
-        };
-        var markerMedicina = new google.maps.Marker({
-            position: coordMed,
-            map: map,
-            icon: iconoMedicina
-        });
-        var infoWindow = new google.maps.InfoWindow({
-            content: "This is the pop-up window content." // Replace with your desired content
-        });
-        // Add a click event listener to the marker
-        markerMedicina.addListener("click", function() {
-            infoWindow.open(map, markerMedicina); // Open the info window when marker is clicked
-        });
-
-        //Edificio E
-        var iconoE = {
-            url: 'A.png',
-            scaledSize: new google.maps.Size(50, 50)
-        };
-        var markerE = new google.maps.Marker({
-            position: coordE,
-            map: map,
-            icon: iconoE
-        });
-        var infoWindowE = new google.maps.InfoWindow({
-            content: "Edificio E-Anne Sullivan <br> Ingenieria y Comunicacion: Piso 1 <br> Diseño y Oficinas: Piso 2"
-        });
-        // Add a click event listener to the marker
-        markerCafeteria.addListener("click", function() {
-            infoWindowE.open(map, markerE); // Open the info window when marker is clicked
-        });
-        //Ingenieria
         var iconoIngenieria = {
             url: 'logoInge.png',
             scaledSize: new google.maps.Size(50, 50)
@@ -317,29 +214,11 @@
             infoWindow.open(map, markerIngenieria); // Open the info window when marker is clicked
         });
 
-        //Cuckoo
-        var iconoCafeteria = {
-            url: 'logo2.png',
-            scaledSize: new google.maps.Size(50, 50)
-        };
-        var markerCafeteria = new google.maps.Marker({
-            position: coordCafeteria,
-            map: map,
-            icon: iconoCafeteria
-        });
-        var infoWindowCafeteria = new google.maps.InfoWindow({
-            content: "Cuckoo <br> Horario: <br> Lun-Vie 8:00-19:00. <br> Sab 8:00-13:30 <br> 4,9 ⭐⭐⭐⭐⭐"
-        });
-        // Add a click event listener to the marker
-        markerCafeteria.addListener("click", function() {
-            infoWindowCafeteria.open(map, markerCafeteria); // Open the info window when marker is clicked
-        });
-
-
         var iconoGym = {
             url: 'logoGym.png',
             scaledSize: new google.maps.Size(50, 50)
         };
+
         var markerGym = new google.maps.Marker({
             position: coordGym,
             map: map,
@@ -351,6 +230,24 @@
         // Add a click event listener to the marker
         markerGym.addListener("click", function() {
             infoWindow.open(map, markerGym); // Open the info window when marker is clicked
+        });
+
+        var iconoMedicina = {
+            url: 'logoMedicina.png',
+            scaledSize: new google.maps.Size(50, 50)
+        };
+
+        var markerMedicina = new google.maps.Marker({
+            position: coordMed,
+            map: map,
+            icon: iconoMedicina
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+        // Add a click event listener to the marker
+        markerMedicina.addListener("click", function() {
+            infoWindow.open(map, markerMedicina); // Open the info window when marker is clicked
         });
 
         var iconoBasquet = {
@@ -387,6 +284,24 @@
         // Add a click event listener to the marker
         markerFutbol.addListener("click", function() {
             infoWindow.open(map, markerFutbol); // Open the info window when marker is clicked
+        });
+
+        var iconoBiblioteca = {
+            url: 'logoBiblio.png',
+            scaledSize: new google.maps.Size(50, 50)
+        };
+
+        var markerBiblioteca = new google.maps.Marker({
+            position: coordBiblioteca,
+            map: map,
+            icon: iconoBiblioteca
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+        // Add a click event listener to the marker
+        markerBiblioteca.addListener("click", function() {
+            infoWindow.open(map, markerBiblioteca); // Open the info window when marker is clicked
         });
 
 

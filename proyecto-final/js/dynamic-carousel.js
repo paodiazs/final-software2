@@ -30,7 +30,6 @@ let data;
 
 // function used when previous button is pressed
 previous_button.addEventListener("click", function() {
-    console.log('buttonCooldown: ', buttonCooldown);
     if (!buttonCooldown) {
         contentID = (contentID == 0 ? data.length-1 : contentID-1);
         updateData()
@@ -40,7 +39,6 @@ previous_button.addEventListener("click", function() {
 
 // function used when next button is pressed
 next_button.addEventListener("click", function() {
-    console.log('buttonCooldown: ', buttonCooldown);
     if (!buttonCooldown) {
         contentID = (parseInt(contentID) + 1) % data.length;
         updateData()
@@ -72,7 +70,6 @@ function updateData() {
 // listeners for all carousel buttons
 for (let i = 0; i < slide_buttons.length; i++) {
     slide_buttons[i].addEventListener('click', function() {
-        console.log('buttonCooldown: ', buttonCooldown);
         if (!buttonCooldown) {
             const SlideID = this.getAttribute('data-slide-to');
             contentID = SlideID;

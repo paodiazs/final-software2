@@ -63,6 +63,13 @@
             map: map,
             icon: iconoIngenieria
         });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+        // Add a click event listener to the marker
+        markerIngenieria.addListener("click", function() {
+            infoWindow.open(map, markerIngenieria); // Open the info window when marker is clicked
+        });
 
         var iconoGym = {
             url: 'logoGym.png',

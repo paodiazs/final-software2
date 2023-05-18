@@ -6,9 +6,6 @@ let contact_mail = document.getElementById("contact-mail");
 let schedule = document.getElementById("schedule");
 let map_link = document.getElementById("map-link");
 
-// carousel detector test
-// const carousel = document.getElementById('slider-commercial');
-
 // variable used for button cooldown
 let buttonCooldown = false;
 

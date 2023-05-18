@@ -156,6 +156,7 @@
         var coordGym = {lat: 16.994731, lng: -96.753082};
         var coordMed = {lat: 16.995969, lng: -96.753193};
         var coordBasquet = {lat: 16.994806, lng: -96.751965};
+        var coordFutbol = {lat: 16.99461, lng: -96.75249};
         var coordBiblioteca = {lat: 16.996225, lng: -96.753277};
 
         var map = new google.maps.Map(document.getElementById('map'),{
@@ -264,6 +265,24 @@
         // Add a click event listener to the marker
         markerBasquet.addListener("click", function() {
             infoWindow.open(map, markerBasquet); // Open the info window when marker is clicked
+        });
+
+        var iconoFutbol = {
+            url: 'futbolLogo.png',
+            scaledSize: new google.maps.Size(60, 60)
+        };
+
+        var markerFutbol = new google.maps.Marker({
+            position: coordFutbol,
+            map: map,
+            icon: iconoFutbol
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+        // Add a click event listener to the marker
+        markerFutbol.addListener("click", function() {
+            infoWindow.open(map, markerFutbol); // Open the info window when marker is clicked
         });
 
         var iconoBiblioteca = {

@@ -6,8 +6,8 @@
 
     <style>
         #map {
-            height: 500px;
-            width: 500px;
+            height: 600px;
+            width: 800px;
         }
     </style>
 </head>
@@ -151,7 +151,7 @@
 
     function iniciarMap(){
         var coord = {lat:16.9956106 ,lng: -96.7527389};
-        var coordCafeteria = {lat:16.995819 ,lng: -96.751595};
+        var coordCafeteria = {lat:16.99601 ,lng: -96.75136};
         var coordIngenieria = {lat: 16.996547, lng: -96.753338};
         var coordGym = {lat: 16.994731, lng: -96.753082};
         var coordMed = {lat: 16.995969, lng: -96.753193};
@@ -184,6 +184,14 @@
             map: map,
             icon: iconoCafeteria
         });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+        // Add a click event listener to the marker
+        markerCafeteria.addListener("click", function() {
+            infoWindow.open(map, markerCafeteria); // Open the info window when marker is clicked
+        });
+
 
 
         var iconoIngenieria = {
@@ -196,6 +204,13 @@
             map: map,
             icon: iconoIngenieria
         });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+        // Add a click event listener to the marker
+        markerIngenieria.addListener("click", function() {
+            infoWindow.open(map, markerIngenieria); // Open the info window when marker is clicked
+        });
 
         var iconoGym = {
             url: 'logoGym.png',
@@ -206,6 +221,13 @@
             position: coordGym,
             map: map,
             icon: iconoGym
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+        // Add a click event listener to the marker
+        markerGym.addListener("click", function() {
+            infoWindow.open(map, markerGym); // Open the info window when marker is clicked
         });
 
         var iconoMedicina = {
@@ -218,6 +240,13 @@
             map: map,
             icon: iconoMedicina
         });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+        // Add a click event listener to the marker
+        markerMedicina.addListener("click", function() {
+            infoWindow.open(map, markerMedicina); // Open the info window when marker is clicked
+        });
 
         var iconoBasquet = {
             url: 'logoBasq.png',
@@ -229,6 +258,13 @@
             map: map,
             icon: iconoBasquet
         });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+        // Add a click event listener to the marker
+        markerBasquet.addListener("click", function() {
+            infoWindow.open(map, markerBasquet); // Open the info window when marker is clicked
+        });
 
         var iconoBiblioteca = {
             url: 'logoBiblio.png',
@@ -239,6 +275,13 @@
             position: coordBiblioteca,
             map: map,
             icon: iconoBiblioteca
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+        // Add a click event listener to the marker
+        markerBiblioteca.addListener("click", function() {
+            infoWindow.open(map, markerBiblioteca); // Open the info window when marker is clicked
         });
 
 

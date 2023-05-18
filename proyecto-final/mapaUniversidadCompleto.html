@@ -185,12 +185,12 @@
             map: map,
             icon: iconoCafeteria
         });
-        var infoWindow = new google.maps.InfoWindow({
-            content: "This is the pop-up window content." // Replace with your desired content
+        var infoWindowCafeteria = new google.maps.InfoWindow({
+            content: "Cuckoo <br> Horario: <br> Lun-Vie 8:00-19:00. <br> Sab 8:00-13:30 <br> 4,9 ⭐⭐⭐⭐⭐"
         });
         // Add a click event listener to the marker
         markerCafeteria.addListener("click", function() {
-            infoWindow.open(map, markerCafeteria); // Open the info window when marker is clicked
+            infoWindowCafeteria.open(map, markerCafeteria); // Open the info window when marker is clicked
         });
 
 

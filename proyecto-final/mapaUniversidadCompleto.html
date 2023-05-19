@@ -34,8 +34,8 @@
     }
 
     // starting and ending nodes
-    let starting_node = "F_building";
-    let final_node = "F_building";
+    let starting_node = "engineering_school";
+    let final_node = "engineering_school";
 
     const map_database = {
         "engineering_parking_lot": Object.create(link_state).constructor(
@@ -44,23 +44,15 @@
         ),
         "F_building": Object.create(link_state).constructor(
             {lat: 16.996541, lng: -96.753211}, 
-            ["engineering_parking_lot", "cuckoo_box", "west_path"]
-        ),
-        "cuckoo_box": Object.create(link_state).constructor(
-            {lat: 16.996437, lng: -96.753485},
-            ["F_building", "dely_full"]
-        ),
-        "dely_full": Object.create(link_state).constructor(
-            {lat: 16.996145, lng: -96.753427},
-            ["C_building", "cuckoo_box", "D_building"]
+            ["engineering_parking_lot", "cuckoo_box", "west_path", "engineering_school", "design_school", "comunication_scool", "posgrades_department"]
         ),
         "C_building": Object.create(link_state).constructor(
             {lat: 16.996239, lng: -96.753046},
-            ["dely_full", "west_path", "D_building"]
+            ["dely_full", "west_path", "D_building", "library", "court_room"]
         ),
         "D_building": Object.create(link_state).constructor(
             {lat: 16.996085, lng: -96.753080},
-            ["dely_full", "C_building"]
+            ["dely_full", "C_building", "medicine_auditorium", "medicine_school"]
         ),
         "west_path": Object.create(link_state).constructor(
             {lat: 16.996348, lng: -96.752854},
@@ -80,19 +72,19 @@
         ),
         "A_building": Object.create(link_state).constructor(
             {lat: 16.996576, lng: -96.751958},
-            ["chess_board", "B_building"]
+            ["chess_board", "B_building", "gastronomy_school", "turism_school", "language_center"]
         ),
         "B_building": Object.create(link_state).constructor(
             {lat: 16.996343, lng: -96.751704},
-            ["A_building", "cafeteria"]
+            ["A_building", "cafeteria", "language_center", "psicologic_orientation_department", "administrative_services", "A_Store"]
         ),
         "cafeteria": Object.create(link_state).constructor(
             {lat: 16.995988, lng: -96.751676},
-            ["B_building", "garden", "cafeteria_parking_lot"]
+            ["B_building", "garden", "cafeteria_parking_lot", "A_Store", "Albet_Einstein_auditorium", "Cuckoo_Coffee", "stationery", "chapel", "music_room"]
         ),
         "garden": Object.create(link_state).constructor(
             {lat: 16.996011, lng: -96.752061},
-            ["chess_board", "cafeteria", "central_plaza"]
+            ["chess_board", "cafeteria", "central_plaza", "music_room", "dance_room"]
         ),
         "central_plaza": Object.create(link_state).constructor(
             {lat: 16.995951, lng: -96.752470},
@@ -129,6 +121,97 @@
         "archery_zone": Object.create(link_state).constructor(
             {lat: 16.994429, lng: -96.753083},
             ["gym", "soccer_field"]
+        ),
+
+
+        // locations these must have icons and final places
+        "cuckoo_box": Object.create(link_state).constructor(
+            {lat: 16.996437, lng: -96.753485},
+            ["F_building", "dely_full"]
+        ),
+        "dely_full": Object.create(link_state).constructor(
+            {lat: 16.996145, lng: -96.753427},
+            ["C_building", "cuckoo_box", "D_building", "library"]
+        ),
+        "engineering_school": Object.create(link_state).constructor(
+            {lat: 16.996565, lng: -96.753392},
+            ["F_building"]
+        ),
+        "design_school": Object.create(link_state).constructor(
+            {lat: 16.996608, lng: -96.753263},
+            ["F_building"]
+        ),
+        "comunication_scool": Object.create(link_state).constructor(
+            {lat: 16.996572, lng: -96.753146},
+            ["F_building"]
+        ),
+        "posgrades_department": Object.create(link_state).constructor(
+            {lat: 16.997616, lng: -96.753081},
+            ["F_building"]
+        ),
+        "library": Object.create(link_state).constructor(
+            {lat: 16.996225, lng: -96.753277},
+            ["dely_full", "C_building"]
+        ),
+        "court_room": Object.create(link_state).constructor(
+            {lat: 16.996299, lng: -96.753152},
+            ["C_building"]
+        ),
+        "medicine_school": Object.create(link_state).constructor(
+            {lat: 16.996032, lng: -96.753318},
+            ["D_building"]
+        ),
+        "medicine_auditorium": Object.create(link_state).constructor(
+            {lat: 16.995993, lng: -96.753152},
+            ["D_building"]
+        ),
+        "gastronomy_school": Object.create(link_state).constructor(
+            {lat: 16.996617, lng: -96.751865},
+            ["A_building"]
+        ),
+        "turism_school": Object.create(link_state).constructor(
+            {lat: 16.996613, lng: -96.752245},
+            ["A_building"]
+        ),
+        "language_center": Object.create(link_state).constructor(
+            {lat: 16.996366, lng: -96.751847},
+            ["A_building", "B_building"]
+        ),
+        "psicologic_orientation_department": Object.create(link_state).constructor(
+            {lat: 16.996316, lng: -96.751781},
+            ["B_building"]
+        ),
+        "administrative_services": Object.create(link_state).constructor(
+            {lat: 16.996319, lng: -96.751630},
+            ["B_building"]
+        ),
+        "A_Store": Object.create(link_state).constructor(
+            {lat: 16.996243, lng: -96.751632},
+            ["B_building", "cafeteria"]
+        ),
+        "Albet_Einstein_auditorium": Object.create(link_state).constructor(
+            {lat: 16.996565, lng: -96.753392}, // pending
+            ["cafeteria"]
+        ),
+        "Cuckoo_Coffee": Object.create(link_state).constructor(
+            {lat: 16.995888, lng: -96.751476},
+            ["cafeteria"]
+        ),
+        "stationery": Object.create(link_state).constructor(
+            {lat: 16.995920, lng: -96.751732},
+            ["cafeteria"]
+        ),
+        "chapel": Object.create(link_state).constructor(
+            {lat: 16.995925, lng: -96.751853},
+            ["cafeteria"]
+        ),
+        "music_room": Object.create(link_state).constructor(
+            {lat: 16.995919, lng: -96.751938},
+            ["cafeteria", "garden"]
+        ),
+        "dance_room": Object.create(link_state).constructor(
+            {lat: 16.995915, lng: -96.752021},
+            ["garden"]
         )
     };
 
@@ -179,6 +262,10 @@
             node = predecessor[node];
         }
         route.push(map_database[starting_node].coordinates);
+
+        for(i = route.length-1; i >= 0; --i) {
+            console.log("Next Hop: ", route[i]);
+        }
         return route;
     }
 
@@ -189,7 +276,7 @@
     function iniciarMap(){
         var coord = {lat:16.9956106 ,lng: -96.7527389};
         var coordCafeteria = {lat: 16.995888, lng: -96.751476};
-        var coordIngenieria = {lat: 16.996547, lng: -96.753338};
+        var coordIngenieria = {lat: 16.996577, lng: -96.753338};
         var coordGym = {lat: 16.994731, lng: -96.753082};
         var coordMed = {lat: 16.995969, lng: -96.753193};
         var coordBasquet = {lat: 16.994806, lng: -96.751965};
@@ -197,10 +284,6 @@
         var coordBiblioteca = {lat: 16.996225, lng: -96.753277};
         var coordA = {lat: 16.99659, lng:-96.75199006422191};
         var coordB = {lat: 16.99629322285019, lnag: -96.75175201817626};
-
-        /* -------------------------------------------------------- */
-        /* ----------------- map starting values ------------------ */
-        /* -------------------------------------------------------- */
 
         /* -------------------------------------------------------- */
         /* ----------------- map starting values ------------------ */
@@ -222,12 +305,47 @@
         /* --------------------- map icons ------------------------- */
         /* --------------------------------------------------------- */
 
+        /* ------------- engineering parking lot -------------------- */
+
+
+
+
+        /* ---------------------- F building ------------------------ */
+
+
+
+
+
+        /* ----------------------- C building ----------------------- */
+
+
+
+
+
+
+
+        /* ----------------------- D building ------------------------ */
+
+
+
+
+
+        /* ----------------------- chess board ------------------------ */
+
+
+
+
+        
+
+        /* ---------------------- A building ------------------------ */
+
         var iconoA = {
             url: 'A.png',
             scaledSize: new google.maps.Size(50, 50)
         };
         var markerA = new google.maps.Marker({
-            position: coordA,
+            //position: coordA,
+            position: map_database["A_building"].coordinates,
             map: map,
             icon: iconoA
         });
@@ -239,46 +357,114 @@
             infoWindowA.open(map, markerA); // Open the info window when marker is clicked
         });
 
+        /* ---------------------- B building ------------------------ */
+
         var iconoB = {
             url: 'B.png',
             scaledSize: new google.maps.Size(50,50)
         };
         var markerB  =new google.maps.Marker({
-            position: coordB,
+            //position: coordB,
+            position: map_database["B_building"].coordinates,
             map: map,
             icon: iconoB
         });
 
 
-        var iconoCafeteria = {
-            url: 'logo2.png',
-            originalSize: new google.maps.Size(30, 30),
-            scaledSize: new google.maps.Size(30, 30),
+        /* --------------------- central plaza ----------------------- */
+
+
+
+
+        /* ----------------- cafeteria parking lot ------------------- */
+
+
+
+        /* ------------------- multisport field ---------------------- */
+
+        var iconoBasquet = {
+            url: 'logoBasq.png',
+            scaledSize: new google.maps.Size(50, 50)
         };
 
-        var markerCafeteria = new google.maps.Marker({
-            position: coordCafeteria,
+        var markerBasquet = new google.maps.Marker({
+            //position: coordBasquet,
+            position: map_database["multisport_field"].coordinates,
             map: map,
-            icon: iconoCafeteria
+            icon: iconoBasquet
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+        // Add a click event listener to the marker
+        markerBasquet.addListener("click", function() {
+            infoWindow.open(map, markerBasquet); // Open the info window when marker is clicked
         });
 
-        var infoWindowCafeteria = new google.maps.InfoWindow({
-            content: "Cuckoo <br> Horario: <br> Lun-Vie 8:00-19:00. <br> Sab 8:00-13:30 <br> 4,9 ⭐⭐⭐⭐⭐"
+        /* --------------------- futbol soccer ---------------------- */
+
+        var iconoFutbol = {
+            url: 'futbolLogo.png',
+            scaledSize: new google.maps.Size(50, 50)
+        };
+
+        var markerFutbol = new google.maps.Marker({
+            //position: coordFutbol,
+            position: map_database["soccer_field"].coordinates,
+            map: map,
+            icon: iconoFutbol
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+        // Add a click event listener to the marker
+        markerFutbol.addListener("click", function() {
+            infoWindow.open(map, markerFutbol); // Open the info window when marker is clicked
         });
 
-        markerCafeteria.addListener("click", function() {
-            infoWindowCafeteria.open(map, markerCafeteria); // Open the info window when marker is clicked
-            updateRoute("cafeteria");
+        /* ---------------------- gym ------------------------ */
+
+        var iconoGym = {
+            url: 'logoGym.png',
+            scaledSize: new google.maps.Size(50, 50)
+        };
+
+        var markerGym = new google.maps.Marker({
+            position: map_database["gym"].coordinates,
+            //position: coordGym,
+            map: map,
+            icon: iconoGym
         });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+
+        // Add a click event listener to the marker
+        markerGym.addListener("click", function() {
+            infoWindow.open(map, markerGym); // Open the info window when marker is clicked
+        });
+
+        /* --------------------- archery zone ----------------------- */
+
+
+
+        /* -----------------------Cuckoo Box ------------------------ */
+
+
+
+        /* ----------------------- Dely Full ------------------------ */
+
 
         /* ---------------------- ingeniería ------------------------ */
         var iconoIngenieria = {
             url: 'logoInge.png',
-            scaledSize: new google.maps.Size(50, 50)
+            originalSize: new google.maps.Size(50, 50),
+            scaledSize: new google.maps.Size(30, 30),
         };
 
         var markerIngenieria = new google.maps.Marker({
-            position: coordIngenieria,
+            //position: coordIngenieria,
+            position: map_database["engineering_school"].coordinates,
             map: map,
             icon: iconoIngenieria
         });
@@ -292,26 +478,37 @@
             infoWindow.open(map, markerIngenieria); // Open the info window when marker is clicked
         });
 
-        /* ---------------------- gym ------------------------ */
+        /* ------------------------ diseño ------------------------ */
 
-        var iconoGym = {
-            url: 'logoGym.png',
+
+        /* -------------------- comunicacion ---------------------- */
+
+
+        /* ---------------------- posgrados ----------------------- */
+
+
+        /* ---------------------- biblioteca ------------------------ */
+
+        var iconoBiblioteca = {
+            url: 'logoBiblio.png',
             scaledSize: new google.maps.Size(50, 50)
         };
 
-        var markerGym = new google.maps.Marker({
-            position: coordGym,
+        var markerBiblioteca = new google.maps.Marker({
+            //position: coordBiblioteca,
+            position: map_database["library"].coordinates,
             map: map,
-            icon: iconoGym
+            icon: iconoBiblioteca
         });
         var infoWindow = new google.maps.InfoWindow({
             content: "This is the pop-up window content." // Replace with your desired content
         });
-
         // Add a click event listener to the marker
-        markerGym.addListener("click", function() {
-            infoWindow.open(map, markerGym); // Open the info window when marker is clicked
+        markerBiblioteca.addListener("click", function() {
+            infoWindow.open(map, markerBiblioteca); // Open the info window when marker is clicked
         });
+
+        /* --------------- sala de juicios orales ------------------ */
 
         /* ---------------------- medicina ------------------------ */
 
@@ -321,7 +518,8 @@
         };
 
         var markerMedicina = new google.maps.Marker({
-            position: coordMed,
+            //position: coordMed,
+            position: map_database["medicine_school"].coordinates,
             map: map,
             icon: iconoMedicina
         });
@@ -334,67 +532,76 @@
             infoWindow.open(map, markerMedicina); // Open the info window when marker is clicked
         });
 
-        /* ---------------------- Basket ------------------------ */
+        /* ----------------- auditorio de medicina ------------------- */
 
-        var iconoBasquet = {
-            url: 'logoBasq.png',
-            scaledSize: new google.maps.Size(50, 50)
+
+        /* ---------------------- gastronomia ------------------------ */
+
+
+        /* ---------------------- turismo ------------------------ */
+
+
+        /* ------------------- centro de lenguas --------------------- */
+
+        /* ---------------- orientación psicológica ------------------ */
+
+
+        /* ------------------ administracion escolar ------------------ */
+
+
+        /* ---------------------- A-Store ------------------------ */
+
+
+        /* ---------------- auditorio Albert Einstein ----------------- */
+        
+
+        /* --------------------- Cuckoo Coffee ----------------------- */
+
+        var iconoCafeteria = {
+            url: 'logo2.png',
+            originalSize: new google.maps.Size(30, 30),
+            scaledSize: new google.maps.Size(30, 30),
         };
 
-        var markerBasquet = new google.maps.Marker({
-            position: coordBasquet,
+        var markerCafeteria = new google.maps.Marker({
+            position: map_database["Cuckoo_Coffee"].coordinates,
+            //position: coordCafeteria,
             map: map,
-            icon: iconoBasquet
-        });
-        var infoWindow = new google.maps.InfoWindow({
-            content: "This is the pop-up window content." // Replace with your desired content
-        });
-        // Add a click event listener to the marker
-        markerBasquet.addListener("click", function() {
-            infoWindow.open(map, markerBasquet); // Open the info window when marker is clicked
+            icon: iconoCafeteria
         });
 
-        /* ---------------------- futbol ------------------------ */
-
-        var iconoFutbol = {
-            url: 'futbolLogo.png',
-            scaledSize: new google.maps.Size(50, 50)
-        };
-
-        var markerFutbol = new google.maps.Marker({
-            position: coordFutbol,
-            map: map,
-            icon: iconoFutbol
-        });
-        var infoWindow = new google.maps.InfoWindow({
-            content: "This is the pop-up window content." // Replace with your desired content
-        });
-        // Add a click event listener to the marker
-        markerFutbol.addListener("click", function() {
-            infoWindow.open(map, markerFutbol); // Open the info window when marker is clicked
+        var infoWindowCafeteria = new google.maps.InfoWindow({
+            content: "Cuckoo <br> Horario: <br> Lun-Vie 8:00-19:00. <br> Sab 8:00-13:30 <br> 4,9 ⭐⭐⭐⭐⭐"
         });
 
-        /* ---------------------- biblioteca ------------------------ */
-
-        var iconoBiblioteca = {
-            url: 'logoBiblio.png',
-            scaledSize: new google.maps.Size(50, 50)
-        };
-
-        var markerBiblioteca = new google.maps.Marker({
-            position: coordBiblioteca,
-            map: map,
-            icon: iconoBiblioteca
-        });
-        var infoWindow = new google.maps.InfoWindow({
-            content: "This is the pop-up window content." // Replace with your desired content
-        });
-        // Add a click event listener to the marker
-        markerBiblioteca.addListener("click", function() {
-            infoWindow.open(map, markerBiblioteca); // Open the info window when marker is clicked
+        markerCafeteria.addListener("click", function() {
+            infoWindowCafeteria.open(map, markerCafeteria); // Open the info window when marker is clicked
+            updateRoute("Cuckoo_Coffee");
         });
 
-        /* -------------- zoom adaptation size for icons --------------*/
+
+        /* ---------------- papeleria ----------------- */
+
+
+
+
+        /* ---------------- capilla ----------------- */
+
+
+        /* ---------------- salon de musica ----------------- */
+
+
+        /* ---------------- salon de danza ----------------- */
+
+
+
+
+
+
+        
+        /* ----------------------------------------------------------- */
+        /* -------------- zoom adaptation size for icons ------------- */
+        /* ----------------------------------------------------------- */
 
         // Listen to the "zoom_changed" event of the map
         google.maps.event.addListener(map, 'zoom_changed', function() {
@@ -402,14 +609,24 @@
 
             // Adjust the scaled size of the marker icon based on the zoom level
             var scaleFactor = Math.pow(2, zoomLevel - 18); // Adjust the scaling factor as needed
-            var scaledSize = new google.maps.Size(
+            var cafeteriaScaledSize = new google.maps.Size(
                 iconoCafeteria.originalSize.width * scaleFactor,
                 iconoCafeteria.originalSize.height * scaleFactor
             );
 
             markerCafeteria.setIcon({
                 url: iconoCafeteria.url,
-                scaledSize: scaledSize
+                scaledSize: cafeteriaScaledSize
+            });
+
+            var ingenieriaScaledSize = new google.maps.Size(
+                iconoIngenieria.originalSize.width * scaleFactor,
+                iconoIngenieria.originalSize.height * scaleFactor
+            );
+
+            markerIngenieria.setIcon({
+                url: iconoIngenieria,
+                scaledSize: ingenieriaScaledSize
             });
         });
 

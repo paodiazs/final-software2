@@ -150,6 +150,13 @@
     }
 
     function iniciarMap(){
+        var zonaDelimitada = {
+            north: 16.996910783051042, // Límite norte
+            south: 16.9940741352538, // Límite sur
+            east: -96.75117488200935, // Límite este
+            west: -96.75433787680308  // Límite oeste
+        };
+
         var coord = {lat:16.9956106 ,lng: -96.7527389};
         var coordCafeteria = {lat:16.99601 ,lng: -96.75136};
         var coordIngenieria = {lat: 16.996547, lng: -96.753338};
@@ -167,11 +174,15 @@
         var map = new google.maps.Map(document.getElementById('map'),{
             zoom: 18,
             center: coord,
-            draggable: true, //desplazar en el mapa
+            draggable: false, //desplazar en el mapa
             minZoom: 18,
             streetViewControl: false, //Quitar muñequito de google
             fullscreenControl: false, //quitar la opcion de pantalla completa
-            mapTypeControl: false, //quitar la opcion de satelite
+            mapTypeControl: true, //quitar la opcion de satelite
+            restriction: {
+                latLngBounds: zonaDelimitada,
+                strictBounds: false
+            },
             styles: [{ featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }]}] //Quitar los marcadores de google
         });
 

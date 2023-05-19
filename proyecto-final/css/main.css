@@ -329,9 +329,9 @@ login.html & newaccount.html*/
 /*============================
 ==================index.html*/
 .header-index{
-	background: url(../assets/img/header-index.jpg) #fff no-repeat bottom left;
+	background: url(../assets/img/index_anahuac.jpg) #fff no-repeat bottom left;
 	background-size: cover;
-	min-height: 500px;
+	min-height: 700px;
 	padding: 70px 0;
 }
 .container-category{
@@ -342,7 +342,7 @@ login.html & newaccount.html*/
 	width: 150px;
 	height: 150px;
 	background-color: #FFF;
-	border: 1px solid #B3E5FC;
+	border: 1px solid #fa6400;
 	box-sizing: border-box;
 	margin: 5px;
 	display: inline-block;

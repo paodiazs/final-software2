@@ -6,6 +6,7 @@
 	<title>Inicio de sesión</title>
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/main.css">
+	<script src="login.js"></script>
 	<style>
 		.NavBar {
 			background-color: #fffcfa;
@@ -59,7 +60,7 @@
 			<div class="full-width hidden-md hidden-lg header-menu-mobile">
 				<i class="fa fa-times header-menu-mobile-close-btn show-menu-mobile" aria-hidden="true"></i>
 				<i class="fa fa-user NavBar-Nav-icon header-menu-mobile-icon" aria-hidden="true"></i>
-				<a href="login.html" class="btn btn-info header-menu-mobile-btn">INICIAR SESIÓN</a>
+				<a href="#!" class="btn btn-info header-menu-mobile-btn">INICIAR SESIÓN</a>
 				<div class="divider"></div>
 				<a href="newaccount.html" class="btn btn-primary header-menu-mobile-btn">CRÉATE UNA CUENTA</a>
 			</div>
@@ -68,16 +69,8 @@
 					<i class="fa fa-home fa-fw hidden-md hidden-lg" aria-hidden="true"></i> INICIO
 				</a>
 			</li>
-			<li>
-				<a href="adcommercial.html" style="color: #fa6400; font-weight: bold;">
-					<i class="fa fa-pencil-square-o fa-fw hidden-md hidden-lg" aria-hidden="true"></i>  PON TU ANUNCIO
-				</a>
-			</li>
-			<li>
-				<a href="yourcommercial.html" style="color: #fa6400; font-weight: bold;">
-					<i class="fa fa-object-group fa-fw hidden-md hidden-lg" aria-hidden="true"></i> TUS ANUNCIOS
-				</a>
-			</li>
+			
+			
 			<li>
 				<a href="messages.html" style="color: #fa6400; font-weight: bold;">
 					<i class="fa fa-commenting-o fa-fw hidden-md hidden-lg" aria-hidden="true"></i> MENSAJES
@@ -88,11 +81,7 @@
 					<i class="fa fa-heart-o fa-fw hidden-md hidden-lg" aria-hidden="true"></i> FAVORITOS
 				</a>
 			</li>
-			<li>
-				<a href="help.html" style="color: #fa6400; font-weight: bold;">
-					<i class="fa fa-life-ring fa-fw hidden-md hidden-lg" aria-hidden="true"></i> AYUDA
-				</a>
-			</li>
+			
 			<li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin" href="#!" style="color: #fa6400; font-weight: bold;">INICIAR SESIÓN</a></li>
 			<li class="hidden-xs hidden-sm"><i class="fa fa-user NavBar-Nav-icon btn-PopUpLogin" aria-hidden="true"></i></li>
 		</ul>
@@ -103,19 +92,17 @@
 <!-- ====== PopUpLogin ======-->
 <section class=" full-width PopUpLogin">
 	<ul class="nav nav-tabs nav-justified" role="tablist">
-		<li role="presentation" class="active"><a href="#LoginTab1" aria-controls="LoginTab1" role="tab" data-toggle="tab">PARTICULAR</a></li>
-		<li role="presentation"><a href="#LoginTab2" aria-controls="LoginTab2" role="tab" data-toggle="tab">TIENDA VIRTUAL</a></li>
+		<li role="presentation" class="active"><a href="#!"" aria-controls="LoginTab1" role="tab" data-toggle="tab">INICIAR SESIÓN</a></li>
 	</ul>
 	<div class="tab-content">
 		<div role="tabpanel" class="tab-pane fade in active" id="LoginTab1">
-			<form action="login.html" style="padding-top: 15px;">
+			<form action="login.html" onsubmit="return login(event)" style="padding-top: 15px;">
 				<div class="form-group">
-					<input type="email" class="form-control input-lg" placeholder="Email" required="">
+					<input type="text" id="username" class="form-control input-lg" placeholder="Email" required>
 				</div>
 				<div class="form-group">
-					<input type="password" class="form-control input-lg" placeholder="Contraseña" required="">
+					<input type="password" id="password" class="form-control input-lg" placeholder="Contraseña" required>
 				</div>
-				<a class="text-left text-light" href="#!">No recuerdo mi contraseña</a>
 				<div class="checkbox full-width">
 					<label>
 						<input type="checkbox"> No cerrar sesión
@@ -128,36 +115,24 @@
 			<a class="text-light" href="newaccount.html">CRÉATE UNA GRATIS</a>
 		</div>
 		<div role="tabpanel" class="tab-pane fade" id="LoginTab2">
-			<form action="login.html" style="padding-top: 15px;">
+			<form action="login.html"  style="padding-top: 15px;">
 				<div class="form-group">
-					<input type="email" class="form-control input-lg" placeholder="Email" required="">
+					<input type="text" id="username" class="form-control input-lg" placeholder="Email" required>
 				</div>
 				<div class="form-group">
-					<input type="password" class="form-control input-lg" placeholder="Contraseña" required="">
+					<input type="password" id="password" class="form-control input-lg" placeholder="Contraseña" required>
 				</div>
-				<a class="text-left text-light" href="#!" style="color: black;">No recuerdo mi contraseña</a>
 				<div class="checkbox full-width">
 					<label>
 						<input type="checkbox"> No cerrar sesión
 					</label>
 				</div>
-				<button class="btn btn-danger btn-lg" type="submit">INICIAR SESIÓN</button>
+				<button class="btn btn-danger btn-lg" type="submit">INICIAR SESIÓN</button> 
 			</form>
 		</div>
 	</div>
 </section>
-<!-- ====== Buscador movil ======-->
-<section class="full-width hidden-md hidden-lg Search-mobile">
-	<form action="commercial.html" style="padding-top: 15px;">
-		<div class="form-group">
-			<input type="text" class="form-control input-lg" placeholder="Estoy buscado..." required="">
-		</div>
-		<div class="form-group">
-			<input type="text" class="form-control input-lg" placeholder="Provincia, ciudad, distrito..." required="">
-		</div>
-		<button class="btn btn-danger btn-lg" type="submit">BUSCAR</button>
-	</form>
-</section>
+
 <!-- ====== Contenido de pagina ======-->
 <section class="full-width section">
 	<div class="container">
@@ -167,27 +142,26 @@
 					<i class="fa fa-user container-login-icon" aria-hidden="true"></i>
 					<h4 class="text-center text-light">INICIAR SESIÓN</h4>
 					<br>
-					<form action=""">
-					<div class="form-group">
-						<input type="email" class="form-control input-lg" placeholder="Email" required="">
-					</div>
-					<div class="form-group">
-						<input type="password" class="form-control input-lg" placeholder="Contraseña" required="">
-					</div>
-					<a class="text-left text-light" href="#!" style="color: black;">No recuerdo mi contraseña</a>
-					<div class="checkbox full-width" style="margin: 20px 0;">
-						<label>
-							<input type="checkbox"> No cerrar sesión
-						</label>
-					</div>
-					<button class="btn btn-danger btn-lg" type="submit">INICIAR SESIÓN</button>
-					<a href="newaccount.html" class="text-center" style="color: black;">Si eres nuevo ¡Crea una cuenta!</a>
+					<form action="login.html" onsubmit="return login(event)" style="padding-top: 15px;">
+						<div class="form-group">
+							<input type="text" id="username" class="form-control input-lg" placeholder="Email" required="">
+						</div>
+						<div class="form-group">
+							<input type="password" id="password" class="form-control input-lg" placeholder="Contraseña" required="">
+						</div>
+						<div class="checkbox full-width">
+							<label>
+								<input type="checkbox"> No cerrar sesión
+							</label>
+						</div>
+						<button class="btn btn-danger btn-lg" type="submit">INICIAR SESIÓN</button>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
+
 <!-- ====== Pie de pagina ======-->
 <footer class="full-width footer">
 	<div class="container">

@@ -283,9 +283,15 @@
 
         var coord = {lat:16.9956106 ,lng: -96.7527389};
         var coordCafeteria = {lat: 16.995888, lng: -96.751476};
+        var coordCB = {lat: 16.996440630852607, lng: -96.75343632121756};
+        var coordajedrez = {lat: 16.99604693405557, lng: -96.7520685290419}
         var coordIngenieria = {lat: 16.996577, lng: -96.753338};
         var coordGym = {lat: 16.994731, lng: -96.753082};
         var coordMed = {lat: 16.995969, lng: -96.753193};
+        var coordEst = {lat: 16.99522687664391, lng: -96.7515722692146};
+        var coordEst2 = {lat: 16.996594866043072, lng: -96.7514552321965};
+        var coordEst3 = {lat: 16.99677869084291, lng: -96.75321143006741};
+        var coordgasrto = {lat:16.99660532350971, lng:-96.75214547917045};
         var coordBasquet = {lat: 16.994806, lng: -96.751965};
         var coordFutbol = {lat: 16.99461, lng: -96.75249};
         var coordBiblioteca = {lat: 16.99628, lng: -96.75340};
@@ -353,11 +359,23 @@
 
 
         /* ----------------------- chess board ------------------------ */
+        var iconoajedrez = {
+            url: 'Ajedrez.png',
+            scaledSize: new google.maps.Size(50, 50)
+        };
+        var markerajedrez = new google.maps.Marker({
+            position: coordajedrez,
+            map: map,
+            icon: iconoajedrez
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+        // Add a click event listener to the marker
+        markerajedrez.addListener("click", function() {
+            infoWindow.open(map, markerajedrez); // Open the info window when marker is clicked
+        });
 
-
-
-
-        
 
         /* ---------------------- A building ------------------------ */
 
@@ -470,6 +488,59 @@
             infoWindowCafeteria.open(map, markerCafeteria); // Open the info window when marker is clicked
         });
 
+        /*------------------------------Estacionamiento-------------------------*/
+        var iconoEstacionamiento = {
+            url: 'logoEst.png',
+            scaledSize: new google.maps.Size(50, 50)
+        };
+        var markerEstacionamiento = new google.maps.Marker({
+            position: coordEst,
+            map: map,
+            icon: iconoEstacionamiento
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+        // Add a click event listener to the marker
+        markerEstacionamiento.addListener("click", function() {
+            infoWindow.open(map, markerEstacionamiento); // Open the info window when marker is clicked
+        });
+
+        //estacionamiento 2
+        var iconoEstacionamiento2 = {
+            url: 'logoEst.png',
+            scaledSize: new google.maps.Size(50, 50)
+        };
+        var markerEstacionamiento2 = new google.maps.Marker({
+            position: coordEst2,
+            map: map,
+            icon: iconoEstacionamiento
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+        // Add a click event listener to the marker
+        markerEstacionamiento2.addListener("click", function() {
+            infoWindow.open(map, markerEstacionamiento2); // Open the info window when marker is clicked
+        });
+
+        //Estacionamiento 3
+        var iconoEstacionamiento3 = {
+            url: 'logoEst.png',
+            scaledSize: new google.maps.Size(50, 50)
+        };
+        var markerEstacionamiento3 = new google.maps.Marker({
+            position: coordEst3,
+            map: map,
+            icon: iconoEstacionamiento3
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+        // Add a click event listener to the marker
+        markerEstacionamiento3.addListener("click", function() {
+            infoWindow.open(map, markerEstacionamiento3); // Open the info window when marker is clicked
+        });
 
 
         var iconoIngenieria = {
@@ -555,9 +626,44 @@
 
         /* --------------------- archery zone ----------------------- */
 
+        var iconoArchery = {
+            url: 'Archery2.png',
+            scaledSize: new google.maps.Size(30, 30)
+        };
+
+        var markerArchery = new google.maps.Marker({
+            position: map_database["archery_zone"].coordinates,
+            //position: coordGym,
+            map: map,
+            icon: iconoArchery
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+
+        // Add a click event listener to the marker
+        markerArchery.addListener("click", function() {
+            infoWindow.open(map, markerArchery); // Open the info window when marker is clicked
+        });
 
 
         /* -----------------------Cuckoo Box ------------------------ */
+        var iconoCB = {
+            url: 'logo2.png',
+            scaledSize: new google.maps.Size(25, 25)
+        };
+        var markerCB = new google.maps.Marker({
+            position: coordCB,
+            map: map,
+            icon: iconoCB
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+        // Add a click event listener to the marker
+        markerCB.addListener("click", function() {
+            infoWindow.open(map, markerCB); // Open the info window when marker is clicked
+        });
 
 
 
@@ -644,6 +750,22 @@
 
 
         /* ---------------------- gastronomia ------------------------ */
+        var iconogastro = {
+            url: 'gastro2.png',
+            scaledSize: new google.maps.Size(30, 30)
+        };
+        var markergastro = new google.maps.Marker({
+            position: coordgasrto,
+            map: map,
+            icon: iconogastro
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+        // Add a click event listener to the marker
+        markergastro.addListener("click", function() {
+            infoWindow.open(map, markergastro); // Open the info window when marker is clicked
+        });
 
 
         /* ---------------------- turismo ------------------------ */
@@ -686,6 +808,7 @@
             infoWindowCafeteria.open(map, markerCafeteria); // Open the info window when marker is clicked
             updateRoute("Cuckoo_Coffee");
         });
+
 
 
         /* ---------------- papeleria ----------------- */

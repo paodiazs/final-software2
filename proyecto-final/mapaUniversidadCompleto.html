@@ -274,6 +274,13 @@
     /* -------------------------------------------------------- */
 
     function iniciarMap(){
+        var zonaDelimitada = {
+            north: 16.996910783051042, // Límite norte
+            south: 16.9940741352538, // Límite sur
+            east: -96.75117488200935, // Límite este
+            west: -96.75433787680308  // Límite oeste
+        };
+
         var coord = {lat:16.9956106 ,lng: -96.7527389};
         var coordCafeteria = {lat: 16.995888, lng: -96.751476};
         var coordIngenieria = {lat: 16.996577, lng: -96.753338};
@@ -281,9 +288,12 @@
         var coordMed = {lat: 16.995969, lng: -96.753193};
         var coordBasquet = {lat: 16.994806, lng: -96.751965};
         var coordFutbol = {lat: 16.99461, lng: -96.75249};
-        var coordBiblioteca = {lat: 16.996225, lng: -96.753277};
+        var coordBiblioteca = {lat: 16.99628, lng: -96.75340};
         var coordA = {lat: 16.99659, lng:-96.75199006422191};
-        var coordB = {lat: 16.99629322285019, lnag: -96.75175201817626};
+        var coordB = {lat: 16.99629322285019, lng: -96.75175201817626};
+        var coordC = {lat: 16.996298341782893, lng: -96.75320091553742};
+        var coordD = {lat: 16.99603093409722, lng: -96.75322036154847};
+        var coordE = { lat: 16.99655805391819, lng: -96.75318884559634}
 
         /* -------------------------------------------------------- */
         /* ----------------- map starting values ------------------ */
@@ -292,11 +302,23 @@
         var map = new google.maps.Map(document.getElementById('map'),{
             zoom: 18,
             center: coord,
-            draggable: true, //desplazar en el mapa
+            draggable: false, //desplazar en el mapa
             minZoom: 18,
             streetViewControl: false, //Quitar muñequito de google
             fullscreenControl: false, //quitar la opcion de pantalla completa
-            mapTypeControl: false, //quitar la opcion de satelite
+            mapTypeControl: true, //quitar la opcion de satelite
+            mapTypeControlOptions: {
+                style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+                position: google.maps.ControlPosition.TOP_LEFT,
+                zoomControl: true,
+                zoomControlOptions: {
+                    position: google.maps.ControlPosition.RIGHT_BOTTOM
+                }
+            },
+            restriction: {
+                latLngBounds: zonaDelimitada,
+                strictBounds: false
+            },
             styles: [{ featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }]}] //Quitar los marcadores de google
         });
 
@@ -339,6 +361,7 @@
 
         /* ---------------------- A building ------------------------ */
 
+        //Edifico A
         var iconoA = {
             url: 'A.png',
             scaledSize: new google.maps.Size(50, 50)
@@ -361,23 +384,111 @@
 
         var iconoB = {
             url: 'B.png',
-            scaledSize: new google.maps.Size(50,50)
+            scaledSize: new google.maps.Size(50, 50)
         };
         var markerB  =new google.maps.Marker({
-            //position: coordB,
-            position: map_database["B_building"].coordinates,
+            position: coordB,
             map: map,
             icon: iconoB
         });
+        var infoWindowB = new google.maps.InfoWindow({
+            content: "Edificio B: <br> Oficinas centrales"
+        });
+        // Add a click event listener to the marker
+        markerB.addListener("click", function() {
+            infoWindowB.open(map, markerB); // Open the info window when marker is clicked
+        });
+
+        //Edifico C
+        var iconoC = {
+            url: 'C.png',
+            scaledSize: new google.maps.Size(50, 50)
+        };
+        var markerC = new google.maps.Marker({
+            position: coordC,
+            map: map,
+            icon: iconoC
+        });
+        var infoWindowC = new google.maps.InfoWindow({
+            content: "Edificio C-Antonio Caso <br> Biblioteca: Piso 1 <br> Salones de uso comun: Piso 2"
+        });
+        // Add a click event listener to the marker
+        markerC.addListener("click", function() {
+            infoWindowC.open(map, markerC); // Open the info window when marker is clicked
+        });
+
+        //Edificio D
+        var iconoD = {
+            url: 'D.png',
+            scaledSize: new google.maps.Size(50, 50)
+        };
+        var markerD = new google.maps.Marker({
+            position: coordD,
+            map: map,
+            icon: iconoD
+        });
+        var infoWindowD = new google.maps.InfoWindow({
+            content: "Edificio D-Jerome Lejeune: <br> Medicina: Piso 1 <br> Slones de uso comun: Piso 2"
+        });
+        // Add a click event listener to the marker
+        markerD.addListener("click", function() {
+            infoWindowD.open(map, markerD); // Open the info window when marker is clicked
+        });
+
+        //Edificio E
+        var iconoE = {
+            url: 'E.png',
+            scaledSize: new google.maps.Size(50, 50)
+        };
+        var markerE = new google.maps.Marker({
+            position: coordE,
+            map: map,
+            icon: iconoE
+        });
+        var infoWindowE = new google.maps.InfoWindow({
+            content: "Edificio E-Anne Sullivan <br> Ingenieria y Comunicacion: Piso 1 <br> Diseño y Oficinas: Piso 2"
+        });
+        markerE.addListener("click", function() {
+            infoWindowE.open(map, markerE); // Open the info window when marker is clicked
+        });
+
+        var iconoCafeteria = {
+            url: 'logo2.png',
+            scaledSize: new google.maps.Size(50, 50)
+        };
+
+        var markerCafeteria = new google.maps.Marker({
+            position: coordCafeteria,
+            map: map,
+            icon: iconoCafeteria
+        });
+        var infoWindowCafeteria = new google.maps.InfoWindow({
+            content: "Cuckoo <br> Horario: <br> Lun-Vie 8:00-19:00. <br> Sab 8:00-13:30 <br> 4,9 ⭐⭐⭐⭐⭐"
+        });
+        // Add a click event listener to the marker
+        markerCafeteria.addListener("click", function() {
+            infoWindowCafeteria.open(map, markerCafeteria); // Open the info window when marker is clicked
+        });
 
 
-        /* --------------------- central plaza ----------------------- */
 
+        var iconoIngenieria = {
+            url: 'logoInge.png',
+            scaledSize: new google.maps.Size(50, 50)
+        };
 
-
-
-        /* ----------------- cafeteria parking lot ------------------- */
-
+        var markerIngenieria = new google.maps.Marker({
+            position: coordIngenieria,
+            map: map,
+            icon: iconoIngenieria
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+        // Add a click event listener to the marker
+        markerIngenieria.addListener("click", function() {
+            infoWindow.open(map, markerIngenieria); // Open the info window when marker is clicked
+        });
 
 
         /* ------------------- multisport field ---------------------- */
@@ -386,19 +497,18 @@
             url: 'logoBasq.png',
             scaledSize: new google.maps.Size(50, 50)
         };
-
         var markerBasquet = new google.maps.Marker({
             //position: coordBasquet,
             position: map_database["multisport_field"].coordinates,
             map: map,
             icon: iconoBasquet
         });
-        var infoWindow = new google.maps.InfoWindow({
-            content: "This is the pop-up window content." // Replace with your desired content
+        var infoWindowBasquet = new google.maps.InfoWindow({
+            content: "Canchas de Basquetbol" // Replace with your desired content
         });
         // Add a click event listener to the marker
         markerBasquet.addListener("click", function() {
-            infoWindow.open(map, markerBasquet); // Open the info window when marker is clicked
+            infoWindowBasquet.open(map, markerBasquet); // Open the info window when marker is clicked
         });
 
         /* --------------------- futbol soccer ---------------------- */
@@ -407,19 +517,18 @@
             url: 'futbolLogo.png',
             scaledSize: new google.maps.Size(50, 50)
         };
-
         var markerFutbol = new google.maps.Marker({
             //position: coordFutbol,
             position: map_database["soccer_field"].coordinates,
             map: map,
             icon: iconoFutbol
         });
-        var infoWindow = new google.maps.InfoWindow({
-            content: "This is the pop-up window content." // Replace with your desired content
+        var infoWindowFutbol = new google.maps.InfoWindow({
+            content: "Cancha de futbol 11" // Replace with your desired content
         });
         // Add a click event listener to the marker
         markerFutbol.addListener("click", function() {
-            infoWindow.open(map, markerFutbol); // Open the info window when marker is clicked
+            infoWindowFutbol.open(map, markerFutbol); // Open the info window when marker is clicked
         });
 
         /* ---------------------- gym ------------------------ */
@@ -493,19 +602,140 @@
             url: 'logoBiblio.png',
             scaledSize: new google.maps.Size(50, 50)
         };
-
         var markerBiblioteca = new google.maps.Marker({
             //position: coordBiblioteca,
             position: map_database["library"].coordinates,
             map: map,
             icon: iconoBiblioteca
         });
-        var infoWindow = new google.maps.InfoWindow({
-            content: "This is the pop-up window content." // Replace with your desired content
+        var infoWindowBiblioteca = new google.maps.InfoWindow({
+            content: "Biblioteca <br> Para mas informacion comunicate con: <br> Coordinador de Biblioteca: julio.mendoza@anahuac.mx <br> Asistente de Biblioteca: agripino.garcia@anahuac.mx" // Replace with your desired content
         });
         // Add a click event listener to the marker
         markerBiblioteca.addListener("click", function() {
-            infoWindow.open(map, markerBiblioteca); // Open the info window when marker is clicked
+            infoWindowBiblioteca.open(map, markerBiblioteca); // Open the info window when marker is clicked
+        });
+
+        /* --------------- sala de juicios orales ------------------ */
+
+        /* ---------------------- medicina ------------------------ */
+
+        var iconoMedicina = {
+            url: 'logoMedicina.png',
+            scaledSize: new google.maps.Size(50, 50)
+        };
+
+        var markerMedicina = new google.maps.Marker({
+            //position: coordMed,
+            position: map_database["medicine_school"].coordinates,
+            map: map,
+            icon: iconoMedicina
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+
+        // Add a click event listener to the marker
+        markerMedicina.addListener("click", function() {
+            infoWindow.open(map, markerMedicina); // Open the info window when marker is clicked
+        });
+
+        /* ----------------- auditorio de medicina ------------------- */
+
+
+        /* ---------------------- gastronomia ------------------------ */
+
+
+        /* ---------------------- turismo ------------------------ */
+
+
+        /* ------------------- centro de lenguas --------------------- */
+
+        /* ---------------- orientación psicológica ------------------ */
+
+
+        /* ------------------ administracion escolar ------------------ */
+
+
+        /* ---------------------- A-Store ------------------------ */
+
+
+        /* ---------------- auditorio Albert Einstein ----------------- */
+        
+
+        /* --------------------- Cuckoo Coffee ----------------------- */
+
+        var iconoCafeteria = {
+            url: 'logo2.png',
+            originalSize: new google.maps.Size(30, 30),
+            scaledSize: new google.maps.Size(30, 30),
+        };
+
+        var markerCafeteria = new google.maps.Marker({
+            position: map_database["Cuckoo_Coffee"].coordinates,
+            //position: coordCafeteria,
+            map: map,
+            icon: iconoCafeteria
+        });
+
+        var infoWindowCafeteria = new google.maps.InfoWindow({
+            content: "Cuckoo <br> Horario: <br> Lun-Vie 8:00-19:00. <br> Sab 8:00-13:30 <br> 4,9 ⭐⭐⭐⭐⭐"
+        });
+
+        markerCafeteria.addListener("click", function() {
+            infoWindowCafeteria.open(map, markerCafeteria); // Open the info window when marker is clicked
+            updateRoute("Cuckoo_Coffee");
+        });
+
+
+        /* ---------------- papeleria ----------------- */
+
+
+
+
+        /* ---------------- capilla ----------------- */
+
+
+        /* ---------------- salon de musica ----------------- */
+
+
+        /* ---------------- salon de danza ----------------- */
+
+
+
+
+
+
+        
+        /* ----------------------------------------------------------- */
+        /* -------------- zoom adaptation size for icons ------------- */
+        /* ----------------------------------------------------------- */
+
+        // Listen to the "zoom_changed" event of the map
+        google.maps.event.addListener(map, 'zoom_changed', function() {
+            var zoomLevel = map.getZoom();
+
+            // Adjust the scaled size of the marker icon based on the zoom level
+            var scaleFactor = Math.pow(2, zoomLevel - 18); // Adjust the scaling factor as needed
+            var cafeteriaScaledSize = new google.maps.Size(
+                iconoCafeteria.originalSize.width * scaleFactor,
+                iconoCafeteria.originalSize.height * scaleFactor
+            );
+
+            markerCafeteria.setIcon({
+                url: iconoCafeteria.url,
+                scaledSize: cafeteriaScaledSize
+            });
+
+            var ingenieriaScaledSize = new google.maps.Size(
+                iconoIngenieria.originalSize.width * scaleFactor,
+                iconoIngenieria.originalSize.height * scaleFactor
+            );
+
+            markerIngenieria.setIcon({
+                url: iconoIngenieria,
+                scaledSize: ingenieriaScaledSize
+            });
         });
 
         /* --------------- sala de juicios orales ------------------ */

@@ -3,15 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>Ayuda</title>
+	<title>Inicio</title>
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 	<!-- ====== Barra de navegacion ======-->
+	<!--cambio-->
 	<div class="full-width NavBar">
 		<div class="full-width text-semi-bold NavBar-logo">
-			Company
+			<img src="https://alumno.anahuacoaxaca.edu.mx/Images/logo-anahuac.png" alt="Logo Anáhuac Oaxaca">
 		</div>
 		<nav class=" full-width NavBar-Nav">
 			<div class="full-width NavBar-Nav-bg hidden-md hidden-lg show-menu-mobile"></div>
@@ -19,7 +20,7 @@
 				<div class="full-width hidden-md hidden-lg header-menu-mobile">
 					<i class="fa fa-times header-menu-mobile-close-btn show-menu-mobile" aria-hidden="true"></i>
 					<i class="fa fa-user NavBar-Nav-icon header-menu-mobile-icon" aria-hidden="true"></i>
-					<a href="login.html" class="btn btn-info header-menu-mobile-btn">INICIAR SESIÓN</a>
+					<i  class="btn btn-info header-menu-mobile-btn">INICIAR SESIÓN</i>
 					<div class="divider"></div>
 					<a href="newaccount.html" class="btn btn-primary header-menu-mobile-btn">CRÉATE UNA CUENTA</a>
 				</div>
@@ -28,16 +29,7 @@
 						<i class="fa fa-home fa-fw hidden-md hidden-lg" aria-hidden="true"></i> INICIO
 					</a>
 				</li>
-				<li>
-					<a href="adcommercial.html">
-						<i class="fa fa-pencil-square-o fa-fw hidden-md hidden-lg" aria-hidden="true"></i>  PON TU ANUNCIO
-					</a>
-				</li>
-				<li>
-					<a href="yourcommercial.html">
-						<i class="fa fa-object-group fa-fw hidden-md hidden-lg" aria-hidden="true"></i> TUS ANUNCIOS
-					</a>
-				</li>
+				
 				<li>
 					<a href="messages.html">
 						<i class="fa fa-commenting-o fa-fw hidden-md hidden-lg" aria-hidden="true"></i> MENSAJES
@@ -48,112 +40,132 @@
 						<i class="fa fa-heart-o fa-fw hidden-md hidden-lg" aria-hidden="true"></i> FAVORITOS
 					</a>
 				</li>
-				<li>
-					<a href="help.html">
-						<i class="fa fa-life-ring fa-fw hidden-md hidden-lg" aria-hidden="true"></i> AYUDA
-					</a>
-				</li>
-				<li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin" href="#!">INICIAR SESIÓN</a></li>
+				
+				<li class="hidden-xs hidden-sm"><a class="btn-PopUpLogin">INICIAR SESIÓN</a></li>
 				<li class="hidden-xs hidden-sm"><i class="fa fa-user NavBar-Nav-icon btn-PopUpLogin" aria-hidden="true"></i></li>
 			</ul>
 		</nav>
 		<i class="fa fa-bars hidden-md hidden-lg btn-mobile-menu show-menu-mobile" aria-hidden="true"></i>
 		<i class="fa fa-search hidden-md hidden-lg btn-mobile-menu btn-search-mobile" aria-hidden="true"></i>
 	</div>
-	<!-- ====== PopUpLogin ======-->
-	<section class=" full-width PopUpLogin">
-		<ul class="nav nav-tabs nav-justified" role="tablist">
-			<li role="presentation" class="active"><a href="#LoginTab1" aria-controls="LoginTab1" role="tab" data-toggle="tab">PARTICULAR</a></li>
-			<li role="presentation"><a href="#LoginTab2" aria-controls="LoginTab2" role="tab" data-toggle="tab">TIENDA VIRTUAL</a></li>
-		</ul>
-		<div class="tab-content">
-			<div role="tabpanel" class="tab-pane fade in active" id="LoginTab1">
-				<form action="login.html" style="padding-top: 15px;">
-					<div class="form-group">
-					    <input type="email" class="form-control input-lg" placeholder="Email" required="">
-					</div>
-					<div class="form-group">
-					    <input type="password" class="form-control input-lg" placeholder="Contraseña" required="">
-					</div>
-					<a class="text-left text-light" href="#!">No recuerdo mi contraseña</a>
-					<div class="checkbox full-width">
-					    <label>
-					      <input type="checkbox"> No cerrar sesión
-					    </label>
-					</div>
-					<button class="btn btn-danger btn-lg" type="submit">INICIAR SESIÓN</button>
-				</form>
-				<div class="full-width divider"></div>
-				<h4 class="text-center">¿Aún no tienes cuenta?</h4>
-				<a class="text-light" href="newaccount.html">CRÉATE UNA GRATIS</a>
+<!-- ====== PopUpLogin ======-->
+<section class=" full-width PopUpLogin">
+	<ul class="nav nav-tabs nav-justified" role="tablist">
+		<li role="presentation" class="active"><a aria-controls="LoginTab1" role="tab" data-toggle="tab">INICIAR SESIÓN</a></li>
+	</ul>
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane fade in active" id="LoginTab1">
+			<form  onsubmit="return login(event)" style="padding-top: 15px;">
+				<div class="form-group">
+					<input type="text" id="username" class="form-control input-lg" placeholder="Email" required>
+				</div>
+				<div class="form-group">
+					<input type="password" id="password" class="form-control input-lg" placeholder="Contraseña" required>
+				</div>
+				<div class="checkbox full-width">
+					<label>
+						<input type="checkbox"> No cerrar sesión
+					</label>
+				</div>
+				<button class="btn btn-danger btn-lg" type="submit">INICIAR SESIÓN</button>
+			</form>
+			<div class="full-width divider"></div>
+			<h4 class="text-center">¿Aún no tienes cuenta?</h4>
+			<a class="text-light" href="newaccount.html">CRÉATE UNA GRATIS</a>
+		</div>
+		<div role="tabpanel" class="tab-pane fade" id="LoginTab2">
+			<form action="login.html" onsubmit="return login(event)" style="padding-top: 15px;">
+				<div class="form-group">
+					<input type="text" id="username" class="form-control input-lg" placeholder="Email" required>
+				</div>
+				<div class="form-group">
+					<input type="password" id="password" class="form-control input-lg" placeholder="Contraseña" required>
+				</div>
+				<div class="checkbox full-width">
+					<label>
+						<input type="checkbox"> No cerrar sesión
+					</label>
+				</div>
+				<button class="btn btn-danger btn-lg" type="submit">INICIAR SESIÓN</button> 
+			</form>
+		</div>
+	</div>
+</section>
+
+	<!-- ====== Contenido de pagina ======-->
+	<header class="full-width header-index">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<h1 style="color: #FFF;" class="text-center text-light">Visita la universidad</h1>
+					<h2 style="color: #FFF;" class="text-center text-light">Sin salir de casa</h2>
+				</div>
 			</div>
-			<div role="tabpanel" class="tab-pane fade" id="LoginTab2">
-				<form action="login.html" style="padding-top: 15px;">
-					<div class="form-group">
-					    <input type="email" class="form-control input-lg" placeholder="Email" required="">
-					</div>
-					<div class="form-group">
-					    <input type="password" class="form-control input-lg" placeholder="Contraseña" required="">
-					</div>
-					<a class="text-left text-light" href="#!">No recuerdo mi contraseña</a>
-					<div class="checkbox full-width">
-					    <label>
-					      <input type="checkbox"> No cerrar sesión
-					    </label>
-					</div>
-					<button class="btn btn-danger btn-lg" type="submit">INICIAR SESIÓN</button>
-				</form>
+		</div>
+		<br><br>
+		
+	</header>
+	<section class="section">
+		<h2 class="text-center text-light">Todos las lugares que imaginas</h2>
+		<div class="container">
+			<div class="full-width container-category">
+				<a href="post.html" id="categori-1">
+					<i class="fa fa-coffee" aria-hidden="true"></i>
+					<span>CAFETERÍA</span>
+				</a>	
+				<a href="post2.html" id="categori-3">
+					<i class="fa fa-car" aria-hidden="true"></i>
+					<span>ESTACIONAMIENTO</span>
+				</a>
+				<a href="post3.html" id="categori-7">
+					<i class="fa fa-futbol-o" aria-hidden="true"></i>
+					<span>DEPORTES</span>
+				</a>
+				<a href="post4.html" id="categori-8">
+					<i class="fa fa-medkit" aria-hidden="true"></i>
+					<span>MEDICINA</span>
+				</a>
+				<a href="post5.html" id="categori-9">
+					<i class="fa fa-calculator" aria-hidden="true"></i>
+					<span>INGENIERÍA</span>
+				</a>
+				<a href="post6.html" id="categori-10">
+					<i class="fa fa-book" aria-hidden="true"></i>
+					<span>BIBLIOTECA</span>
+				</a>
+				
 			</div>
 		</div>
 	</section>
-	<!-- ====== Buscador movil ======-->
-	<section class="full-width hidden-md hidden-lg Search-mobile">
-		<form action="commercial.html" style="padding-top: 15px;">
-			<div class="form-group">
-			    <input type="text" class="form-control input-lg" placeholder="Estoy buscado..." required="">
-			</div>
-			<div class="form-group">
-			    <input type="text" class="form-control input-lg" placeholder="Provincia, ciudad, distrito..." required="">
-			</div>
-			<button class="btn btn-danger btn-lg" type="submit">BUSCAR</button>
-		</form>
-	</section>
-	<!-- ====== Contenido de pagina ======-->
-	<section class="section">
-		<h2 class="text-center text-light"><i class="fa fa-life-ring" aria-hidden="true"></i> ¿En qué podemos ayudarte?</h2>
-		<br>
-		<div class="full-width" style="border-bottom: 5px solid #00a9e2; height: 0; margin: 25px 0;"></div>
+	<section class="section" style="background-color: #F5F5F5">
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 col-sm-4">
-					<div class="list-group">
-					  	<a href="#!" class="list-group-item active">Mi área de gestión</a>
-					  	<a href="#!" class="list-group-item">Gestión de mis anuncios</a>
-					  	<a href="#!" class="list-group-item">Modificación de datos</a>
-					  	<a href="#!" class="list-group-item">Consultas técnicas</a>
-					  	<a href="#!" class="list-group-item">Compra y vende seguro</a>
-					  	<a href="#!" class="list-group-item">Reglas de publicación</a>
-					</div>
+					<figure class="full-width">
+						<img src="assets/img/smartphone.png" alt="" class="img-responsive" style="width: 40%; margin: 0 auto;">
+					</figure>
 				</div>
 				<div class="col-xs-12 col-sm-8">
-					<div class="page-header">
-					  	<h3 class="text-light">Mi área de gestión</h3>
-					</div>
-				  	<p>
-				  		Aqui encontraras ayuda sobre el acceso a tu area privada, ademas de información para cualquier duda relacionada con los productos que tengas contratados.
-				  	</p>
-				  	<div class="list-group">
-					  	<a href="#!" class="list-group-item">Lorem ipsum dolor sit amet</a>
-					  	<a href="#!" class="list-group-item">Lorem ipsum dolor sit amet</a>
-					  	<a href="#!" class="list-group-item">Lorem ipsum dolor sit amet</a>
-					  	<a href="#!" class="list-group-item">Lorem ipsum dolor sit amet</a>
-					  	<a href="#!" class="list-group-item">Lorem ipsum dolor sit amet</a>
-					  	<a href="#!" class="list-group-item">Lorem ipsum dolor sit amet</a>
-					</div>
+					<h2 class="text-center text-light">¡Llévanos siempre contigo! Descárgate nuestra app</h2>
+					<h3 class="text-center text-light">Dinos tu número y recibirás el enlace para descargar nuestra app</h3>
+					<br>
+					<form class="form-inline text-center">
+						<div class="form-group">
+							<select class="form-control">
+							  	<option>Android</option>
+							  	<option>iPhone</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Escribe tu número móvil" required="">
+						</div>
+						<button type="submit" class="btn btn-danger" style="background-color: #fa6400;">DESCARGAR APP</button>
+					</form>
 				</div>
 			</div>
 		</div>
 	</section>
+	
 	<!-- ====== Pie de pagina ======-->
 	<footer class="full-width footer">
 		<div class="container">

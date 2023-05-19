@@ -157,9 +157,12 @@
         var coordMed = {lat: 16.995969, lng: -96.753193};
         var coordBasquet = {lat: 16.994806, lng: -96.751965};
         var coordFutbol = {lat: 16.99461, lng: -96.75249};
-        var coordBiblioteca = {lat: 16.996225, lng: -96.753277};
+        var coordBiblioteca = {lat: 16.99628, lng: -96.75340};
         var coordA = {lat: 16.99659, lng:-96.75199006422191};
-        var coordB = {lat: 16.99629322285019, lnag: -96.75175201817626};
+        var coordB = {lat: 16.99629322285019, lng: -96.75175201817626};
+        var coordC = {lat: 16.996298341782893, lng: -96.75320091553742};
+        var coordD = {lat: 16.99603093409722, lng: -96.75322036154847};
+        var coordE = { lat: 16.99655805391819, lng: -96.75318884559634}
 
         var map = new google.maps.Map(document.getElementById('map'),{
             zoom: 18,
@@ -177,6 +180,7 @@
             map: map
         });
 
+        //Edifico A
         var iconoA = {
             url: 'A.png',
             scaledSize: new google.maps.Size(50, 50)
@@ -194,16 +198,76 @@
             infoWindowA.open(map, markerA); // Open the info window when marker is clicked
         });
 
+        //Edifico B
         var iconoB = {
             url: 'B.png',
-            scaledSize: new google.maps.Size(50,50)
+            scaledSize: new google.maps.Size(50, 50)
         };
-        var markerB  =new google.maps.Marker({
+        var markerB = new google.maps.Marker({
             position: coordB,
             map: map,
             icon: iconoB
         });
+        var infoWindowB = new google.maps.InfoWindow({
+            content: "Edificio B: <br> Oficinas centrales"
+        });
+        // Add a click event listener to the marker
+        markerB.addListener("click", function() {
+            infoWindowB.open(map, markerB); // Open the info window when marker is clicked
+        });
 
+        //Edifico C
+        var iconoC = {
+            url: 'C.png',
+            scaledSize: new google.maps.Size(50, 50)
+        };
+        var markerC = new google.maps.Marker({
+            position: coordC,
+            map: map,
+            icon: iconoC
+        });
+        var infoWindowC = new google.maps.InfoWindow({
+            content: "Edificio C-Antonio Caso <br> Biblioteca: Piso 1 <br> Salones de uso comun: Piso 2"
+        });
+        // Add a click event listener to the marker
+        markerC.addListener("click", function() {
+            infoWindowC.open(map, markerC); // Open the info window when marker is clicked
+        });
+
+        //Edificio D
+        var iconoD = {
+            url: 'D.png',
+            scaledSize: new google.maps.Size(50, 50)
+        };
+        var markerD = new google.maps.Marker({
+            position: coordD,
+            map: map,
+            icon: iconoD
+        });
+        var infoWindowD = new google.maps.InfoWindow({
+            content: "Edificio D-Jerome Lejeune: <br> Medicina: Piso 1 <br> Slones de uso comun: Piso 2"
+        });
+        // Add a click event listener to the marker
+        markerD.addListener("click", function() {
+            infoWindowD.open(map, markerD); // Open the info window when marker is clicked
+        });
+
+        //Edificio E
+        var iconoE = {
+            url: 'E.png',
+            scaledSize: new google.maps.Size(50, 50)
+        };
+        var markerE = new google.maps.Marker({
+            position: coordE,
+            map: map,
+            icon: iconoE
+        });
+        var infoWindowE = new google.maps.InfoWindow({
+            content: "Edificio E-Anne Sullivan <br> Ingenieria y Comunicacion: Piso 1 <br> Diseño y Oficinas: Piso 2"
+        });
+        markerE.addListener("click", function() {
+            infoWindowE.open(map, markerE); // Open the info window when marker is clicked
+        });
 
         var iconoCafeteria = {
             url: 'logo2.png',

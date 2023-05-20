@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Maps</title>
+    <title>Mapa UAO</title>
     <meta charset="UTF-8">
 
     <style>
@@ -34,136 +34,149 @@
     }
 
     // starting and ending nodes
-    let starting_node = "engineering_school";
-    let final_node = "engineering_school";
+    let starting_node = "Cuckoo_Coffee";
+    let final_node = "archery_zone";
 
     const map_database = {
         "engineering_parking_lot": Object.create(link_state).constructor(
-            {lat: 16.996811, lng: -96.753212},
-            ["police_booth", "F_building"]
+            {lat: 16.996754, lng: -96.753210},
+            ["E_building_inside"]
         ),
-        "F_building": Object.create(link_state).constructor(
-            {lat: 16.996541, lng: -96.753211}, 
-            ["engineering_parking_lot", "cuckoo_box", "west_path", "engineering_school", "design_school", "comunication_scool", "posgrades_department"]
-        ),
-        "C_building": Object.create(link_state).constructor(
-            {lat: 16.996239, lng: -96.753046},
-            ["dely_full", "west_path", "D_building", "library", "court_room"]
-        ),
-        "D_building": Object.create(link_state).constructor(
-            {lat: 16.996085, lng: -96.753080},
-            ["dely_full", "C_building", "medicine_auditorium", "medicine_school"]
-        ),
-        "west_path": Object.create(link_state).constructor(
-            {lat: 16.996348, lng: -96.752854},
-            ["F_building", "C_building", "roundabout", "central_plaza"]
-        ),
-        "roundabout": Object.create(link_state).constructor(
-            {lat: 16.996289, lng: -96.752470},
-            ["police_booth", "west_path", "chess_board"]
-        ),
-        "police_booth": Object.create(link_state).constructor(
-            {lat: 16.996785, lng: -96.752466},
-            ["roundabout", "engineering_parking_lot"]
-        ),
-        "chess_board": Object.create(link_state).constructor(
-            {lat: 16.996275, lng: -96.752250},
-            ["roundabout", "A_building", "garden"]
-        ),
-        "A_building": Object.create(link_state).constructor(
-            {lat: 16.996576, lng: -96.751958},
-            ["chess_board", "B_building", "gastronomy_school", "turism_school", "language_center"]
-        ),
-        "B_building": Object.create(link_state).constructor(
-            {lat: 16.996343, lng: -96.751704},
-            ["A_building", "cafeteria", "language_center", "psicologic_orientation_department", "administrative_services", "A_Store"]
-        ),
-        "cafeteria": Object.create(link_state).constructor(
-            {lat: 16.995988, lng: -96.751676},
-            ["B_building", "garden", "cafeteria_parking_lot", "A_Store", "Albet_Einstein_auditorium", "Cuckoo_Coffee", "stationery", "chapel", "music_room"]
-        ),
-        "garden": Object.create(link_state).constructor(
-            {lat: 16.996011, lng: -96.752061},
-            ["chess_board", "cafeteria", "central_plaza", "music_room", "dance_room"]
-        ),
-        "central_plaza": Object.create(link_state).constructor(
-            {lat: 16.995951, lng: -96.752470},
-            ["west_path", "garden", "motorcycle_lot"]
-        ),
-        "cafeteria_parking_lot": Object.create(link_state).constructor(
-            {lat: 16.995663, lng: -96.751800},
-            ["cafeteria", "multisport_field", "motorcycle_lot"]
-        ),
-        "motorcycle_lot": Object.create(link_state).constructor(
-            {lat: 16.995630, lng: -96.752386},
-            ["central_plaza", "cafeteria_parking_lot", "soccer_field", "fast_soccer_field"]
-        ),
-        "multisport_field": Object.create(link_state).constructor(
-            {lat: 16.994908, lng: -96.751880},
-            ["cafeteria_parking_lot", "soccer_field", "tenis_field"]
-        ),
-        "tenis_field": Object.create(link_state).constructor(
-            {lat: 16.994419, lng: -96.751958},
-            ["multisport_field", "soccer_field"]
-        ),
-        "soccer_field": Object.create(link_state).constructor(
-            {lat: 16.995317, lng: -96.752479},
-            ["multisport_field", "motorcycle_lot", "fast_soccer_field", "gym", "tenis_field", "archery_zone"]
-        ),
-        "fast_soccer_field": Object.create(link_state).constructor(
-            {lat: 16.995340, lng: -96.752929},
-            ["soccer_field", "gym", "motorcycle_lot"]
-        ),
-        "gym": Object.create(link_state).constructor(
-            {lat: 16.994658, lng: -96.753015},
-            ["fast_soccer_field", "soccer_field", "archery_zone"]
-        ),
-        "archery_zone": Object.create(link_state).constructor(
-            {lat: 16.994429, lng: -96.753083},
-            ["gym", "soccer_field"]
-        ),
-
-
-        // locations these must have icons and final places
-        "cuckoo_box": Object.create(link_state).constructor(
-            {lat: 16.996437, lng: -96.753485},
-            ["F_building", "dely_full"]
-        ),
-        "dely_full": Object.create(link_state).constructor(
-            {lat: 16.996145, lng: -96.753427},
-            ["C_building", "cuckoo_box", "D_building", "library"]
+        "E_building_inside": Object.create(link_state).constructor(
+            {lat: 16.996603, lng: -96.753191}, 
+            ["engineering_parking_lot", "engineering_school", "design_school", "comunication_school", "posgrades_department", "E_building_entrance"]
         ),
         "engineering_school": Object.create(link_state).constructor(
-            {lat: 16.996565, lng: -96.753392},
-            ["F_building"]
+            {lat: 16.996589, lng: -96.753296},
+            ["E_building_inside"]
         ),
         "design_school": Object.create(link_state).constructor(
-            {lat: 16.996608, lng: -96.753263},
-            ["F_building"]
+            {lat: 16.996616, lng: -96.753370},
+            ["E_building_inside", "posgrades_department"]
         ),
-        "comunication_scool": Object.create(link_state).constructor(
+        "comunication_school": Object.create(link_state).constructor(
             {lat: 16.996572, lng: -96.753146},
-            ["F_building"]
+            ["E_building_inside"]
         ),
         "posgrades_department": Object.create(link_state).constructor(
             {lat: 16.997616, lng: -96.753081},
-            ["F_building"]
+            ["E_building_inside", "design_school"]
+        ),
+        "E_building_entrance": Object.create(link_state).constructor(
+            {lat: 16.996487, lng: -96.753185}, 
+            ["E_building_inside", "E_building_lunch_zone", "west_path_E", "west_path_X"]
+        ),
+        "E_building_lunch_zone": Object.create(link_state).constructor(
+            {lat: 16.996470, lng: -96.753323},
+            ["E_building_entrance", "cuckoo_box", "west_path_X"]
+        ),
+        "cuckoo_box": Object.create(link_state).constructor(
+            {lat: 16.996430, lng: -96.753480},
+            ["E_building_lunch_zone", "dely_full"]
+        ),
+        "dely_full": Object.create(link_state).constructor(
+            {lat: 16.996140, lng: -96.753429},
+            ["cuckoo_box", "D_building_entrance", "library"]
+        ),
+        "C_building_entrance": Object.create(link_state).constructor(
+            {lat: 16.996218, lng: -96.753051},
+            ["west_path_C", "D_building_entrance", "C_building_inside"]
+        ),
+        "C_building_inside": Object.create(link_state).constructor(
+            {lat: 16.996328, lng: -96.753051},
+            ["C_building_entrance", "library", "court_room", "west_path_X"]
         ),
         "library": Object.create(link_state).constructor(
-            {lat: 16.996225, lng: -96.753277},
-            ["dely_full", "C_building"]
+            {lat: 16.996325, lng: -96.753277},
+            ["dely_full", "C_building_inside"]
         ),
         "court_room": Object.create(link_state).constructor(
             {lat: 16.996299, lng: -96.753152},
-            ["C_building"]
+            ["C_building_inside"]
         ),
+        "D_building_entrance": Object.create(link_state).constructor(
+            {lat: 16.996133, lng: -96.753055},
+            ["C_building_entrance", "dely_full", "D_building_inside"]
+        ),
+        "D_building_inside": Object.create(link_state).constructor(
+            {lat: 16.996056, lng: -96.753071},
+            ["D_building_entrance", "medicine_auditorium", "medicine_school"]
+        ), // E building
         "medicine_school": Object.create(link_state).constructor(
             {lat: 16.996032, lng: -96.753318},
-            ["D_building"]
+            ["D_building_inside"]
         ),
         "medicine_auditorium": Object.create(link_state).constructor(
             {lat: 16.995993, lng: -96.753152},
-            ["D_building"]
+            ["D_building_inside"]
+        ),
+        "west_path_E": Object.create(link_state).constructor(
+            {lat: 16.996482, lng: -96.753021},
+            ["E_building_entrance", "west_path_X", "west_path_T", "west_path_C"]
+        ), // C building
+        "west_path_C": Object.create(link_state).constructor(
+            {lat: 16.996218, lng: -96.752963},
+            ["C_building_entrance", "west_path_T", "west_path_M", "west_path_E"]
+        ), // irrelevant
+        "west_path_X": Object.create(link_state).constructor(
+            {lat: 16.996475, lng: -96.752860},
+            ["west_path_E", "west_path_R", "west_path_M", "C_building_entrance", "E_building_lunch_zone"]
+        ),  // T shaped
+        "west_path_T": Object.create(link_state).constructor(
+            {lat: 16.996348, lng: -96.752963},
+            ["west_path_R", "west_path_C", "west_path_E"]
+        ),  // central plaza
+        "west_path_M": Object.create(link_state).constructor(
+            {lat: 16.996211, lng: -96.752866},
+            ["west_path_C", "west_path_R", "central_plaza_W", "west_path_X"]
+        ), // roundabout
+        "west_path_R": Object.create(link_state).constructor(
+            {lat: 16.996350, lng: -96.752857},
+            ["west_path_M", "west_path_X", "west_path_T", "roundabout_W"]
+        ),
+        "roundabout_W": Object.create(link_state).constructor(
+            {lat: 16.996353, lng: -96.752569},
+            ["west_path_R", "roundabout_S", "roundabout_N"]
+        ),
+        "roundabout_N": Object.create(link_state).constructor(
+            {lat: 16.996466, lng: -96.752469},
+            ["entrance", "roundabout_W", "roundabout_E"]
+        ),
+        "roundabout_E": Object.create(link_state).constructor(
+            {lat: 16.996368, lng: -96.752366},
+            ["roundabout_S", "roundabout_N", "chess_board", "A_elbow"]
+        ),
+        "roundabout_S": Object.create(link_state).constructor(
+            {lat: 16.996275, lng: -96.752466},
+            ["roundabout_E", "roundabout_W"]
+        ),
+        "entrance": Object.create(link_state).constructor(
+            {lat: 16.996688, lng: -96.752445},
+            ["roundabout_N", "A_elbow", "police_booth"]
+        ),
+        "police_booth": Object.create(link_state).constructor(
+            {lat: 16.996799, lng: -96.752452},
+            ["entrance"]
+        ),
+        "chess_board": Object.create(link_state).constructor(
+            {lat: 16.996301, lng: -96.752199},
+            ["roundabout_E", "A_elbow", "garden"]
+        ),
+        "A_elbow": Object.create(link_state).constructor(
+            {lat: 16.996465, lng: -96.752190},
+            ["roundabout_E", "entrance", "chess_board", "A_link", "B_building_north", ]
+        ),
+        "A_link": Object.create(link_state).constructor(
+            {lat: 16.996457, lng: -96.751970},
+            ["A_elbow", "A_building", "garden", "B_building_north"]
+        ),
+        "language_center": Object.create(link_state).constructor(
+            {lat: 16.996372, lng: -96.751909},
+            ["A_elbow"]
+        ),
+        "A_building": Object.create(link_state).constructor(
+            {lat: 16.996555, lng: -96.751959},
+            ["A_link", "gastronomy_school", "turism_school"]
         ),
         "gastronomy_school": Object.create(link_state).constructor(
             {lat: 16.996617, lng: -96.751865},
@@ -173,24 +186,40 @@
             {lat: 16.996613, lng: -96.752245},
             ["A_building"]
         ),
-        "language_center": Object.create(link_state).constructor(
-            {lat: 16.996366, lng: -96.751847},
-            ["A_building", "B_building"]
+        "B_building_north": Object.create(link_state).constructor(
+            {lat: 16.996450, lng: -96.751725},
+            ["A_link", "B_building_inside", "B_building_north", "A_elbow", "teachers_parking_lot"]
+        ),
+        "teachers_parking_lot": Object.create(link_state).constructor(
+            {lat: 16.996468, lng: -96.751562},
+            ["B_building_north"]
+        ),
+        "B_building_inside": Object.create(link_state).constructor(
+            {lat: 16.996321, lng: -96.751705},
+            ["B_building_north", "psicologic_orientation_department", "administrative_services", "B_building_south"]
         ),
         "psicologic_orientation_department": Object.create(link_state).constructor(
-            {lat: 16.996316, lng: -96.751781},
-            ["B_building"]
+            {lat: 16.996295, lng: -96.751791},
+            ["B_building_inside", "garden"]
         ),
         "administrative_services": Object.create(link_state).constructor(
-            {lat: 16.996319, lng: -96.751630},
-            ["B_building"]
+            {lat: 16.996322, lng: -96.751581},
+            ["B_building_inside"]
+        ),
+        "B_building_south": Object.create(link_state).constructor(
+            {lat: 16.996221, lng: -96.751707},
+            ["cafeteria", "A_Store", "B_building_inside"]
         ),
         "A_Store": Object.create(link_state).constructor(
-            {lat: 16.996243, lng: -96.751632},
-            ["B_building", "cafeteria"]
+            {lat: 16.996263, lng: -96.751632},
+            ["B_building_south"]
+        ),
+        "cafeteria": Object.create(link_state).constructor(
+            {lat: 16.995996, lng: -96.751693},
+            ["B_building_south", "dance_room", "Albet_Einstein_auditorium", "Cuckoo_Coffee", "stationery", "chapel", "music_room"]
         ),
         "Albet_Einstein_auditorium": Object.create(link_state).constructor(
-            {lat: 16.996565, lng: -96.753392}, // pending
+            {lat: 16.996077, lng: -96.751503},
             ["cafeteria"]
         ),
         "Cuckoo_Coffee": Object.create(link_state).constructor(
@@ -198,20 +227,100 @@
             ["cafeteria"]
         ),
         "stationery": Object.create(link_state).constructor(
-            {lat: 16.995920, lng: -96.751732},
-            ["cafeteria"]
+            {lat: 16.995888, lng: -96.751693},
+            ["cafeteria", "cafeteria_parking_lot"]
         ),
         "chapel": Object.create(link_state).constructor(
-            {lat: 16.995925, lng: -96.751853},
-            ["cafeteria"]
+            {lat: 16.995952, lng: -96.751855},
+            ["cafeteria", "dance_room"]
         ),
         "music_room": Object.create(link_state).constructor(
-            {lat: 16.995919, lng: -96.751938},
-            ["cafeteria", "garden"]
+            {lat: 16.995952, lng: -96.751931},
+            ["cafeteria", "dance_room"]
         ),
         "dance_room": Object.create(link_state).constructor(
-            {lat: 16.995915, lng: -96.752021},
-            ["garden"]
+            {lat: 16.995956, lng: -96.752017},
+            ["cafeteria", "tree_link", "chapel", "music_room", "motorcycle_parking_lot_N"]
+        ),
+        "tree_link": Object.create(link_state).constructor(
+            {lat: 16.996041, lng: -96.752190},
+            ["garden", "dance_room", "central_plaza_E"]
+        ),
+        "garden": Object.create(link_state).constructor(
+            {lat: 16.996209, lng: -96.751978},
+            ["A_link", "tree_link", "psicologic_orientation_department"]
+        ),
+        "central_plaza": Object.create(link_state).constructor(
+            {lat: 16.995936, lng: -96.752470},
+            ["central_plaza_W", "central_plaza_E", "monument"]
+        ),
+        "central_plaza_W": Object.create(link_state).constructor(
+            {lat: 16.996025, lng: -96.752695},
+            ["central_plaza", "west_path_M"]
+        ),
+        "central_plaza_E": Object.create(link_state).constructor(
+            {lat: 16.995976, lng: -96.752320},
+            ["central_plaza", "tree_link"]
+        ),
+        "cafeteria_parking_lot": Object.create(link_state).constructor(
+            {lat: 16.995662, lng: -96.751802},
+            ["stationery", "multisport_field", "motorcycle_parking_lot"]
+        ),
+        "monument": Object.create(link_state).constructor(
+            {lat: 16.995655, lng: -96.752479},
+            ["central_plaza", "motorcycle_parking_lot", "sports_elbow"]
+        ),
+        "motorcycle_parking_lot": Object.create(link_state).constructor(
+            {lat: 16.995659, lng: -96.752198},
+            ["monument", "cafeteria_parking_lot", "motorcycle_parking_lot_N"]
+        ),
+        "motorcycle_parking_lot_N": Object.create(link_state).constructor(
+            {lat: 16.995659, lng: -96.752198},
+            ["motorcycle_parking_lot", "dance_room"]
+        ),
+        "sports_elbow": Object.create(link_state).constructor(
+            {lat: 16.995359, lng: -96.752927},
+            ["sports_NE", "monument", "sports_S"]
+        ),
+        "sports_NE": Object.create(link_state).constructor(
+            {lat: 16.994781, lng: -96.752928},
+            ["sports_elbow", "sports_S", "sports_NW"]
+        ),
+        "sports_NW": Object.create(link_state).constructor(
+            {lat: 16.994779, lng: -96.753022},
+            ["sports_NE", "sports_B", "gym"]
+        ), // soccer field
+        "sports_S": Object.create(link_state).constructor(
+            {lat: 16.994661, lng: -96.752924},
+            ["sports_elbow", "soccer_field", "sports_NE", "gym"]
+        ), // backstage
+        "sports_B": Object.create(link_state).constructor(
+            {lat: 16.994783, lng: -96.753206},
+            ["fast_soccer_field", "sports_NW"]
+        ),
+        "multisport_field": Object.create(link_state).constructor(
+            {lat: 16.994900, lng: -96.751801},
+            ["tenis_field", "cafeteria_parking_lot"]
+        ),
+        "tenis_field": Object.create(link_state).constructor(
+            {lat: 16.994608, lng: -96.751818},
+            ["soccer_field", "multisport_field"]
+        ),
+        "soccer_field": Object.create(link_state).constructor(
+            {lat: 16.994593, lng: -96.752483},
+            ["tenis_field", "gym"]
+        ),
+        "fast_soccer_field": Object.create(link_state).constructor(
+            {lat: 16.995095, lng: -96.753219},
+            ["gym", "monument"]
+        ),
+        "gym": Object.create(link_state).constructor(
+            {lat: 16.994660, lng: -96.753021},
+            ["sports_NW", "sports_S", "archery_zone"]
+        ),
+        "archery_zone": Object.create(link_state).constructor(
+            {lat: 16.994592, lng: -96.753026},
+            ["gym"]
         )
     };
 
@@ -237,16 +346,20 @@
             queue.sort((a, b) => a.cost - b.cost);
             const { node, cost } = queue.shift();
 
+            console.log("iteration node: ", node);
+
             if (visited[node]) continue;
 
             visited[node] = true;
 
+            console.log("Cheking node connections");
             for (const neighbor of map_database[node].neighbors) {
                 const newDistance = distance[node] + 1;
                 if (newDistance < distance[neighbor]) {
                     distance[neighbor] = newDistance;
                     predecessor[neighbor] = node;
                     queue.push({ node: neighbor, cost: newDistance });
+                    console.log("adding path to: ", neighbor);
                 }
             }
         }

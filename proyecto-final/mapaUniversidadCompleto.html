@@ -17,9 +17,9 @@
 
 <script>
 
-    /* ------------------------------------------------------------- */
-    /* ---------------------- map database ------------------------- */
-    /* ------------------------------------------------------------- */
+    /* ------------------------------------------------- */
+    /* ----------------- map database ------------------ */
+    /* ------------------------------------------------- */
 
     const UAOcoordenates = {lat: 16.9956106, lng: -96.7527389};
 
@@ -32,10 +32,6 @@
             return this;
         }
     }
-
-    // starting and ending nodes
-    let starting_node = "Cuckoo_Coffee";
-    let final_node = "archery_zone";
 
     const map_database = {
         "engineering_parking_lot": Object.create(link_state).constructor(
@@ -120,7 +116,7 @@
         ), // irrelevant
         "west_path_X": Object.create(link_state).constructor(
             {lat: 16.996475, lng: -96.752860},
-            ["west_path_E", "west_path_R", "west_path_M", "C_building_entrance", "E_building_lunch_zone"]
+            ["west_path_E", "west_path_R", "west_path_M", "E_building_entrance", "E_building_lunch_zone"]
         ),  // T shaped
         "west_path_T": Object.create(link_state).constructor(
             {lat: 16.996348, lng: -96.752963},
@@ -324,6 +320,51 @@
         )
     };
 
+    /* ------------------------------------------------ */
+    /* ------------ find closest node to user --------- */
+    /* ------------------------------------------------ */
+
+    function findClosestCoordinates(userCoordinates, mapDatabase) {
+        let closestCoordinates = null;
+        let minDistance = Number.MAX_VALUE;
+
+        for (const key in mapDatabase) {
+            if (mapDatabase.hasOwnProperty(key)) {
+                const coordinates = mapDatabase[key].coordinates;
+                const distance = calculateDistance(userCoordinates, coordinates);
+
+                if (distance < minDistance) {
+                    closestCoordinates = key;
+                    minDistance = distance;
+                }
+            }
+        }
+
+        return closestCoordinates;
+    }
+
+    
+    function calculateDistance(coords1, coords2) {
+        const lat1 = coords1.lat;
+        const lng1 = coords1.lng;
+        const lat2 = coords2.lat;
+        const lng2 = coords2.lng;
+
+        const distance = Math.sqrt((lat2 - lat1) ** 2 + (lng2 - lng1) ** 2);
+
+        return distance;
+    }
+
+    // get user coordinates and find closest node
+    let userCoordinates = { lat: 16.995616, lng: -96.753155 };
+    let starting_node = findClosestCoordinates(userCoordinates, map_database);
+    //!!!let first_time = true;!!!
+
+    console.log("Closest Coordinates:", starting_node);
+
+    // starting nodes
+    //let starting_node = "police_booth";
+
     // predecesor array for disjkstra route
     let predecessor;
 
@@ -346,20 +387,20 @@
             queue.sort((a, b) => a.cost - b.cost);
             const { node, cost } = queue.shift();
 
-            console.log("iteration node: ", node);
+            //console.log("iteration node: ", node);
 
             if (visited[node]) continue;
 
             visited[node] = true;
 
-            console.log("Cheking node connections");
+            //console.log("Cheking node connections");
             for (const neighbor of map_database[node].neighbors) {
                 const newDistance = distance[node] + 1;
                 if (newDistance < distance[neighbor]) {
                     distance[neighbor] = newDistance;
                     predecessor[neighbor] = node;
                     queue.push({ node: neighbor, cost: newDistance });
-                    console.log("adding path to: ", neighbor);
+                    //console.log("adding path to: ", neighbor);
                 }
             }
         }
@@ -375,16 +416,17 @@
             node = predecessor[node];
         }
         route.push(map_database[starting_node].coordinates);
+        //!!!route.push(userCoordinates);!!!
 
-        for(i = route.length-1; i >= 0; --i) {
+        /*for(i = route.length-1; i >= 0; --i) {
             console.log("Next Hop: ", route[i]);
-        }
+        }*/
         return route;
     }
 
-    /* -------------------------------------------------------- */
-    /* --------------------- map creation --------------------- */
-    /* -------------------------------------------------------- */
+    /* ------------------------------------------------- */
+    /* ------------------ map creation ----------------- */
+    /* ------------------------------------------------- */
 
     function iniciarMap(){
         var zonaDelimitada = {
@@ -414,10 +456,6 @@
         var coordD = {lat: 16.99603093409722, lng: -96.75322036154847};
         var coordE = { lat: 16.99655805391819, lng: -96.75318884559634}
 
-        /* -------------------------------------------------------- */
-        /* ----------------- map starting values ------------------ */
-        /* -------------------------------------------------------- */
-
         var map = new google.maps.Map(document.getElementById('map'),{
             zoom: 18,
             center: coord,
@@ -442,36 +480,10 @@
         });
 
 
-        /* --------------------------------------------------------- */
-        /* --------------------- map icons ------------------------- */
-        /* --------------------------------------------------------- */
-
-        /* ------------- engineering parking lot -------------------- */
-
-
-
-
-        /* ---------------------- F building ------------------------ */
-
-
-
-
-
-        /* ----------------------- C building ----------------------- */
-
-
-
-
-
-
-
-        /* ----------------------- D building ------------------------ */
-
-
-
-
-
-        /* ----------------------- chess board ------------------------ */
+        /* --------------------------------------------- */
+        /* ----------------- pop-up icons -------------- */
+        /* --------------------------------------------- */
+        
         var iconoajedrez = {
             url: 'Ajedrez.png',
             scaledSize: new google.maps.Size(50, 50)
@@ -489,17 +501,13 @@
             infoWindow.open(map, markerajedrez); // Open the info window when marker is clicked
         });
 
-
-        /* ---------------------- A building ------------------------ */
-
         //Edifico A
         var iconoA = {
             url: 'A.png',
             scaledSize: new google.maps.Size(50, 50)
         };
         var markerA = new google.maps.Marker({
-            //position: coordA,
-            position: map_database["A_building"].coordinates,
+            position: coordA,
             map: map,
             icon: iconoA
         });
@@ -510,8 +518,6 @@
         markerA.addListener("click", function() {
             infoWindowA.open(map, markerA); // Open the info window when marker is clicked
         });
-
-        /* ---------------------- B building ------------------------ */
 
         var iconoB = {
             url: 'B.png',
@@ -601,7 +607,6 @@
             infoWindowCafeteria.open(map, markerCafeteria); // Open the info window when marker is clicked
         });
 
-        /*------------------------------Estacionamiento-------------------------*/
         var iconoEstacionamiento = {
             url: 'logoEst.png',
             scaledSize: new google.maps.Size(50, 50)
@@ -675,15 +680,12 @@
         });
 
 
-        /* ------------------- multisport field ---------------------- */
-
         var iconoBasquet = {
             url: 'logoBasq.png',
             scaledSize: new google.maps.Size(50, 50)
         };
         var markerBasquet = new google.maps.Marker({
-            //position: coordBasquet,
-            position: map_database["multisport_field"].coordinates,
+            position: coordBasquet,
             map: map,
             icon: iconoBasquet
         });
@@ -695,15 +697,12 @@
             infoWindowBasquet.open(map, markerBasquet); // Open the info window when marker is clicked
         });
 
-        /* --------------------- futbol soccer ---------------------- */
-
         var iconoFutbol = {
             url: 'futbolLogo.png',
             scaledSize: new google.maps.Size(50, 50)
         };
         var markerFutbol = new google.maps.Marker({
-            //position: coordFutbol,
-            position: map_database["soccer_field"].coordinates,
+            position: coordFutbol,
             map: map,
             icon: iconoFutbol
         });
@@ -715,16 +714,13 @@
             infoWindowFutbol.open(map, markerFutbol); // Open the info window when marker is clicked
         });
 
-        /* ---------------------- gym ------------------------ */
-
         var iconoGym = {
             url: 'logoGym.png',
             scaledSize: new google.maps.Size(50, 50)
         };
 
         var markerGym = new google.maps.Marker({
-            position: map_database["gym"].coordinates,
-            //position: coordGym,
+            position: coordGym,
             map: map,
             icon: iconoGym
         });
@@ -737,16 +733,13 @@
             infoWindow.open(map, markerGym); // Open the info window when marker is clicked
         });
 
-        /* --------------------- archery zone ----------------------- */
-
         var iconoArchery = {
             url: 'Archery2.png',
             scaledSize: new google.maps.Size(30, 30)
         };
 
         var markerArchery = new google.maps.Marker({
-            position: map_database["archery_zone"].coordinates,
-            //position: coordGym,
+            position: coordGym,
             map: map,
             icon: iconoArchery
         });
@@ -759,8 +752,6 @@
             infoWindow.open(map, markerArchery); // Open the info window when marker is clicked
         });
 
-
-        /* -----------------------Cuckoo Box ------------------------ */
         var iconoCB = {
             url: 'logo2.png',
             scaledSize: new google.maps.Size(25, 25)
@@ -778,12 +769,6 @@
             infoWindow.open(map, markerCB); // Open the info window when marker is clicked
         });
 
-
-
-        /* ----------------------- Dely Full ------------------------ */
-
-
-        /* ---------------------- ingeniería ------------------------ */
         var iconoIngenieria = {
             url: 'logoInge.png',
             originalSize: new google.maps.Size(50, 50),
@@ -791,8 +776,7 @@
         };
 
         var markerIngenieria = new google.maps.Marker({
-            //position: coordIngenieria,
-            position: map_database["engineering_school"].coordinates,
+            position: coordIngenieria,
             map: map,
             icon: iconoIngenieria
         });
@@ -806,24 +790,12 @@
             infoWindow.open(map, markerIngenieria); // Open the info window when marker is clicked
         });
 
-        /* ------------------------ diseño ------------------------ */
-
-
-        /* -------------------- comunicacion ---------------------- */
-
-
-        /* ---------------------- posgrados ----------------------- */
-
-
-        /* ---------------------- biblioteca ------------------------ */
-
         var iconoBiblioteca = {
             url: 'logoBiblio.png',
             scaledSize: new google.maps.Size(50, 50)
         };
         var markerBiblioteca = new google.maps.Marker({
-            //position: coordBiblioteca,
-            position: map_database["library"].coordinates,
+            position: coordBiblioteca,
             map: map,
             icon: iconoBiblioteca
         });
@@ -835,18 +807,13 @@
             infoWindowBiblioteca.open(map, markerBiblioteca); // Open the info window when marker is clicked
         });
 
-        /* --------------- sala de juicios orales ------------------ */
-
-        /* ---------------------- medicina ------------------------ */
-
         var iconoMedicina = {
             url: 'logoMedicina.png',
             scaledSize: new google.maps.Size(50, 50)
         };
 
         var markerMedicina = new google.maps.Marker({
-            //position: coordMed,
-            position: map_database["medicine_school"].coordinates,
+            position: coordMed,
             map: map,
             icon: iconoMedicina
         });
@@ -859,10 +826,6 @@
             infoWindow.open(map, markerMedicina); // Open the info window when marker is clicked
         });
 
-        /* ----------------- auditorio de medicina ------------------- */
-
-
-        /* ---------------------- gastronomia ------------------------ */
         var iconogastro = {
             url: 'gastro2.png',
             scaledSize: new google.maps.Size(30, 30)
@@ -880,35 +843,8 @@
             infoWindow.open(map, markergastro); // Open the info window when marker is clicked
         });
 
-
-        /* ---------------------- turismo ------------------------ */
-
-
-        /* ------------------- centro de lenguas --------------------- */
-
-        /* ---------------- orientación psicológica ------------------ */
-
-
-        /* ------------------ administracion escolar ------------------ */
-
-
-        /* ---------------------- A-Store ------------------------ */
-
-
-        /* ---------------- auditorio Albert Einstein ----------------- */
-        
-
-        /* --------------------- Cuckoo Coffee ----------------------- */
-
-        var iconoCafeteria = {
-            url: 'logo2.png',
-            originalSize: new google.maps.Size(30, 30),
-            scaledSize: new google.maps.Size(30, 30),
-        };
-
         var markerCafeteria = new google.maps.Marker({
-            position: map_database["Cuckoo_Coffee"].coordinates,
-            //position: coordCafeteria,
+            position: coordCafeteria,
             map: map,
             icon: iconoCafeteria
         });
@@ -922,184 +858,8 @@
             updateRoute("Cuckoo_Coffee");
         });
 
-
-
-        /* ---------------- papeleria ----------------- */
-
-
-
-
-        /* ---------------- capilla ----------------- */
-
-
-        /* ---------------- salon de musica ----------------- */
-
-
-        /* ---------------- salon de danza ----------------- */
-
-
-
-
-
-
         
-        /* ----------------------------------------------------------- */
-        /* -------------- zoom adaptation size for icons ------------- */
-        /* ----------------------------------------------------------- */
-
-        // Listen to the "zoom_changed" event of the map
-        google.maps.event.addListener(map, 'zoom_changed', function() {
-            var zoomLevel = map.getZoom();
-
-            // Adjust the scaled size of the marker icon based on the zoom level
-            var scaleFactor = Math.pow(2, zoomLevel - 18); // Adjust the scaling factor as needed
-            var cafeteriaScaledSize = new google.maps.Size(
-                iconoCafeteria.originalSize.width * scaleFactor,
-                iconoCafeteria.originalSize.height * scaleFactor
-            );
-
-            markerCafeteria.setIcon({
-                url: iconoCafeteria.url,
-                scaledSize: cafeteriaScaledSize
-            });
-
-            var ingenieriaScaledSize = new google.maps.Size(
-                iconoIngenieria.originalSize.width * scaleFactor,
-                iconoIngenieria.originalSize.height * scaleFactor
-            );
-
-            markerIngenieria.setIcon({
-                url: iconoIngenieria,
-                scaledSize: ingenieriaScaledSize
-            });
-        });
-
-        /* --------------- sala de juicios orales ------------------ */
-
-        /* ---------------------- medicina ------------------------ */
-
-        var iconoMedicina = {
-            url: 'logoMedicina.png',
-            scaledSize: new google.maps.Size(50, 50)
-        };
-
-        var markerMedicina = new google.maps.Marker({
-            //position: coordMed,
-            position: map_database["medicine_school"].coordinates,
-            map: map,
-            icon: iconoMedicina
-        });
-        var infoWindow = new google.maps.InfoWindow({
-            content: "This is the pop-up window content." // Replace with your desired content
-        });
-
-        // Add a click event listener to the marker
-        markerMedicina.addListener("click", function() {
-            infoWindow.open(map, markerMedicina); // Open the info window when marker is clicked
-        });
-
-        /* ----------------- auditorio de medicina ------------------- */
-
-
-        /* ---------------------- gastronomia ------------------------ */
-
-
-        /* ---------------------- turismo ------------------------ */
-
-
-        /* ------------------- centro de lenguas --------------------- */
-
-        /* ---------------- orientación psicológica ------------------ */
-
-
-        /* ------------------ administracion escolar ------------------ */
-
-
-        /* ---------------------- A-Store ------------------------ */
-
-
-        /* ---------------- auditorio Albert Einstein ----------------- */
         
-
-        /* --------------------- Cuckoo Coffee ----------------------- */
-
-        var iconoCafeteria = {
-            url: 'logo2.png',
-            originalSize: new google.maps.Size(30, 30),
-            scaledSize: new google.maps.Size(30, 30),
-        };
-
-        var markerCafeteria = new google.maps.Marker({
-            position: map_database["Cuckoo_Coffee"].coordinates,
-            //position: coordCafeteria,
-            map: map,
-            icon: iconoCafeteria
-        });
-
-        var infoWindowCafeteria = new google.maps.InfoWindow({
-            content: "Cuckoo <br> Horario: <br> Lun-Vie 8:00-19:00. <br> Sab 8:00-13:30 <br> 4,9 ⭐⭐⭐⭐⭐"
-        });
-
-        markerCafeteria.addListener("click", function() {
-            infoWindowCafeteria.open(map, markerCafeteria); // Open the info window when marker is clicked
-            updateRoute("Cuckoo_Coffee");
-        });
-
-
-        /* ---------------- papeleria ----------------- */
-
-
-
-
-        /* ---------------- capilla ----------------- */
-
-
-        /* ---------------- salon de musica ----------------- */
-
-
-        /* ---------------- salon de danza ----------------- */
-
-
-
-
-
-
-        
-        /* ----------------------------------------------------------- */
-        /* -------------- zoom adaptation size for icons ------------- */
-        /* ----------------------------------------------------------- */
-
-        // Listen to the "zoom_changed" event of the map
-        google.maps.event.addListener(map, 'zoom_changed', function() {
-            var zoomLevel = map.getZoom();
-
-            // Adjust the scaled size of the marker icon based on the zoom level
-            var scaleFactor = Math.pow(2, zoomLevel - 18); // Adjust the scaling factor as needed
-            var cafeteriaScaledSize = new google.maps.Size(
-                iconoCafeteria.originalSize.width * scaleFactor,
-                iconoCafeteria.originalSize.height * scaleFactor
-            );
-
-            markerCafeteria.setIcon({
-                url: iconoCafeteria.url,
-                scaledSize: cafeteriaScaledSize
-            });
-
-            var ingenieriaScaledSize = new google.maps.Size(
-                iconoIngenieria.originalSize.width * scaleFactor,
-                iconoIngenieria.originalSize.height * scaleFactor
-            );
-
-            markerIngenieria.setIcon({
-                url: iconoIngenieria,
-                scaledSize: ingenieriaScaledSize
-            });
-        });
-
-
-        /* ----------------------------------------------------------------------- */
-        /* --------------------- map icons for directions------------------------- */
-        /* ----------------------------------------------------------------------- */
 
 
         var iconoParaDirecciones = {
@@ -1172,58 +932,58 @@
         });
 
         markerDirectionCafeteria.addListener('click', function() {
-
-            //Aqui debe ir la funcion para el enrutamiento
-
+            updateRoute("Cuckoo_Coffee", function() {
+                starting_node = "Cuckoo_Coffee";
+            });
         });
 
         markerDirectionMedicina.addListener('click', function() {
-
-            //Aqui debe ir la funcion para el enrutamiento
-
+            updateRoute("medicine_school", function() {
+                starting_node = "medicine_school";
+            });
         });
 
 
         markerDirectionIngenieria.addListener('click', function() {
-
-            //Aqui debe ir la funcion para el enrutamiento
-
+            updateRoute("engineering_school", function() {
+                starting_node = "engineering_school";
+            });
         });
 
         markerDirectionBiblioteca.addListener('click', function() {
-
-            //Aqui debe ir la funcion para el enrutamiento
-
+            updateRoute("library", function() {
+                starting_node = "library";
+            });
         });
 
         markerDirectionEdificioA.addListener('click', function() {
-
-            //Aqui debe ir la funcion para el enrutamiento
-
+            updateRoute("A_building", function() {
+                starting_node = "A_building";
+            });
         });
 
         markerDirectionEdificioB.addListener('click', function() {
-
-            //Aqui debe ir la funcion para el enrutamiento
-
+            updateRoute("B_building_inside", function() {
+                starting_node = "B_building_inside";
+            });
         });
 
         markerDirectionBasquet.addListener('click', function() {
-
-            //Aqui debe ir la funcion para el enrutamiento
-
+            updateRoute("multisport_field", function() {
+                starting_node = "multisport_field";
+            });
         });
 
         markerDirectionGym.addListener('click', function() {
-
-            //Aqui debe ir la funcion para el enrutamiento
-
+            updateRoute("gym", function() {
+                starting_node = "gym";
+            });
         });
 
         markerDirectionFut.addListener('click', function() {
-
-            //Aqui debe ir la funcion para el enrutamiento
-
+            updateRoute("soccer_field", function() {
+                starting_node = "soccer_field";
+            });
         });
 
 
@@ -1245,25 +1005,34 @@
             {lat:16.996899,lng:-96.752458},
         ];
 
-        /* --------------------------------------------------------- */
-        /* ---------------------- path finding --------------------- */
-        /* --------------------------------------------------------- */
+        /* --------------------------------------------- */
+        /* ---------- path finding algorithm ----------- */
+        /* --------------------------------------------- */
 
-        /* --------------------- enable trace route ---------------- */
+        /* ------------ enable trace route ------------- */
 
         // Create a DirectionsService instance
         let directionsService = new google.maps.DirectionsService();
 
         // array that stores the path without starting and final nodes
         let inner_path = printRoute();
+        /*!!!if(!first_time) {
+            inner_path.pop();
+            //first_time = false;
+        }!!!*/
+        first_time = false;
         inner_path.pop();
         inner_path.shift();
+        /*if(first_time) {
+            inner_path.push(starting_node);
+            first_time = false;
+        }*/
 
         // Define the directions request
         let request = {
-            origin: map_database[starting_node].coordinates,
-            destination: map_database[final_node].coordinates,
-            waypoints: inner_path,
+            origin: userCoordinates,
+            destination: map_database[starting_node].coordinates,
+            waypoints: [],
             travelMode: google.maps.TravelMode.WALKING,
         };
 
@@ -1276,7 +1045,7 @@
                 directionsRenderer.setDirections(response);
 
                 // Create a Polyline for the custom route
-                let waypoints = printRoute(final_node);
+                let waypoints = printRoute(starting_node);
 
                 let polyline = new google.maps.Polyline({
                     path: waypoints,
@@ -1289,12 +1058,28 @@
                 polyline.setMap(map);
             }
         });
-        /* --------- update route when user press a button--------- */
 
-        // update route when user press a button
-        function updateRoute(destiny_node) {
+        
+        /* --------------------------------------------- */
+        /* --- update route when user press a button --- */
+        /* --------------------------------------------- */
+
+        // Define global variables to store references to DirectionsRenderer and Polyline
+        let directionsRenderer;
+        let polyline;
+
+        function updateRoute(destiny_node, callback) {
             // Create a new DirectionsService instance
             let directionsService = new google.maps.DirectionsService();
+
+            // Remove previous path from the map if it exists
+            if (directionsRenderer) {
+                directionsRenderer.setMap(null);
+            }
+            if (polyline) {
+                polyline.setMap(null);
+            }
+
             // Define the directions request with the updated destination
             let request = {
                 origin: map_database[starting_node].coordinates,
@@ -1306,30 +1091,36 @@
             // Make the directions request
             directionsService.route(request, function (response, status) {
                 if (status === google.maps.DirectionsStatus.OK) {
-                // Display the directions on the map
-                let directionsRenderer = new google.maps.DirectionsRenderer();
-                directionsRenderer.setMap(map);
-                directionsRenderer.setDirections(response);
+                    // Display the directions on the map
+                    directionsRenderer = new google.maps.DirectionsRenderer();
+                    directionsRenderer.setMap(map);
+                    directionsRenderer.setDirections(response);
 
-                // Create a Polyline for the custom route
-                let waypoints = printRoute(destiny_node);
+                    // Create a Polyline for the custom route
+                    let waypoints = printRoute(destiny_node);
 
-                let polyline = new google.maps.Polyline({
-                    path: waypoints,
-                    geodesic: true,
-                    strokeColor: "#FF0000",
-                    strokeOpacity: 1.0,
-                    strokeWeight: 2,
-                });
+                    polyline = new google.maps.Polyline({
+                        path: waypoints,
+                        geodesic: true,
+                        strokeColor: "#FF0000",
+                        strokeOpacity: 1.0,
+                        strokeWeight: 2,
+                    });
 
-                polyline.setMap(map);
+                    polyline.setMap(map);
+
+                    // Call the callback function to indicate that updateRoute has completed
+                    if (typeof callback === 'function') {
+                        callback();
+                    }
                 }
             });
         }
 
-        /* ---------------------------------------------------------*/
-        /* -------------------- user geolocalization ---------------*/
-        /* ---------------------------------------------------------*/
+
+        /* -------------------------------------------- */
+        /* ------------ user geolocalization ---------- */
+        /* -------------------------------------------- */
         
         // Crear el marcador de la ubicación del usuario
         var marker = new google.maps.Marker({

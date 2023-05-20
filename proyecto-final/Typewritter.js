@@ -7,6 +7,7 @@ const typewriter = new Typewriter(app, {
 
 typewriter
 
+
     .typeString('Todos los lugares que imaginas!')
     .pauseFor(1000)
     //.deleteChars(10)

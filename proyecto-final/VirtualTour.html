@@ -1,28 +1,148 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Maps</title>
+    <title>Mapa UAO</title>
     <meta charset="UTF-8">
 
     <style>
-        #map {
-            height: 600px;
-            width: 800px;
+        /* Estilos para el cuerpo y el documento HTML */
+        body, html {
+            height: 100%; /* Establece la altura al 100% de la ventana del navegador */
+            margin: 0; /* Elimina los márgenes alrededor del cuerpo y el documento HTML */
+            padding: 0; /* Elimina el relleno (padding) alrededor del cuerpo y el documento HTML */
+            background-color: orange; /* Establece el color de fondo a naranja */
         }
+
+        /* Estilos para el contenedor del mapa */
+        #map {
+            height: 60vh; /* Establece la altura al 90% de la ventana del navegador */
+            width: 60vw; /* Establece el ancho al 40% de la ventana del navegador */
+
+            margin: 14vh 2vw 10vh 10vw;
+            border: 12px solid black; /* Establece un borde de 12 píxeles de ancho y color negro */
+            border-radius: 15px; /* Establece un radio de borde de 15 píxeles para crear esquinas redondeadas */
+            flex: 1;
+        }
+
+        /* INICIO DEL MENU DESPLEGABLE */
+        /* Estilos para el ícono del menú */
+        .menu-icon {
+            position: absolute; /* Establece la posición absoluta en relación con el elemento primario */
+            top: 10px; /* Establece la posición superior a 10 píxeles desde la parte superior del elemento primario */
+            left: 10px; /* Establece la posición izquierda a 10 píxeles desde el borde izquierdo del elemento primario */
+            z-index: 1000; /* Establece el orden de apilamiento del elemento */
+            cursor: pointer; /* Cambia el cursor al puntero cuando se coloca sobre el elemento */
+            padding: 10px; /* Establece un relleno de 10 píxeles alrededor del ícono */
+        }
+
+        .menu-icon span {
+            display: block; /* Establece el elemento como bloque */
+            width: 70px; /* Establece el ancho del elemento a 24 píxeles */
+            height: 15px; /* Establece la altura del elemento a 2 píxeles */
+            background-color: #000; /* Establece el color de fondo del elemento a negro */
+            margin-bottom: 4px; /* Establece un margen inferior de 4 píxeles */
+        }
+
+        /* Estilos para el menú */
+        .menu {
+            position: fixed; /* Establece la posición fija en relación con la ventana del navegador */
+            top: 0; /* Establece la posición superior a 0 píxeles desde la parte superior de la ventana del navegador */
+            left: -100%; /* Cambia la posición inicial del menú fuera de la ventana del navegador */
+            width: 20%; /* Cambia el ancho del menú al 20% de la ventana del navegador */
+            height: 100%; /* Establece la altura del menú al 100% de la ventana del navegador */
+            background-color: #fff; /* Establece el color de fondo del menú a blanco */
+            transition: left 0.5s ease; /* Agrega una transición suave a la propiedad 'left' con una duración de 0.3 segundos y una aceleración suave */
+        }
+
+        .menu.open {
+            left: 0; /* Muestra el menú desplazándolo hacia la izquierda hasta la posición 0 */
+        }
+
+        .menu ul {
+            list-style-type: none; /* Elimina los estilos de lista predeterminados */
+            padding: 0; /* Elimina el relleno (padding) alrededor de la lista */
+            margin: 20px; /* Establece un margen de 20 píxeles alrededor de la lista */
+        }
+
+        .menu ul li {
+            margin-bottom: 10px; /* Establece un margen inferior de 10 píxeles entre elementos de lista */
+        }
+
+        .menu ul li a {
+            text-decoration: none; /* Elimina la decoración de subrayado del enlace */
+            color: #000; /* Establece el color del texto a negro */
+            font-weight: bold; /* Establece el peso de la fuente en negrita */
+            font-size: 50px; /* Establece el tamaño de la fuente en 30 píxeles */
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* FINAL DEL MENU DESPLEGABLE */
+
+        /* estilo invisible */
+        .invisible-char {
+            opacity: 0;
+        }
+        iframe{
+
+            height: 50vh;
+            width: 40vw;
+           /* Establece el ancho al 40% de la ventana del navegador */
+            border: 0;
+
+
+        }
+        /*creacion de fila de contenido*/
+        .row{
+            display: flex;
+
+        }
+        .bx2{
+            flex: 1;
+            position: relative;
+            margin: 20vh 5vw 5vh 5vw;
+        }
+
     </style>
 </head>
 <body>
-<div id="map"></div>
-<div id="tourd">
-    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4" width="1100" height="950" style="border:0;" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<div class="row" >
+    <div id="map"></div>
+    <div id="tourd" class="bx2">
+        <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
 </div>
+<!-- ICONO DEL MENU -->
+<div class="menu-icon" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<!-- PARTE DEL MENU CUANDO ESTA DESPLEGADO -->
+<div class="menu">
+    <ul>
+        <li><a href="#"><span class="invisible-char">&#8203;</span></a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">Opción 2</a></li>
+        <li><a href="#">Opción 3</a></li>
+        <li><a href="#">Opción 4</a></li>
+    </ul>
+</div>
+
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
 
-    /* ------------------------------------------------------------- */
-    /* ---------------------- map database ------------------------- */
-    /* ------------------------------------------------------------- */
+    //Funcion para que el menu desplegable funcione
+    function toggleMenu() {
+        var menu = document.querySelector('.menu');
+        menu.classList.toggle('open');
+    }
+
+    /* ------------------------------------------------- */
+    /* ----------------- map database ------------------ */
+    /* ------------------------------------------------- */
 
     const UAOcoordenates = {lat: 16.9956106, lng: -96.7527389};
 
@@ -36,137 +156,146 @@
         }
     }
 
-    // starting and ending nodes
-    let starting_node = "engineering_school";
-    let final_node = "engineering_school";
-
     const map_database = {
         "engineering_parking_lot": Object.create(link_state).constructor(
-            {lat: 16.996811, lng: -96.753212},
-            ["police_booth", "F_building"]
+            {lat: 16.996754, lng: -96.753210},
+            ["E_building_inside"]
         ),
-        "F_building": Object.create(link_state).constructor(
-            {lat: 16.996541, lng: -96.753211},
-            ["engineering_parking_lot", "cuckoo_box", "west_path", "engineering_school", "design_school", "comunication_scool", "posgrades_department"]
-        ),
-        "C_building": Object.create(link_state).constructor(
-            {lat: 16.996239, lng: -96.753046},
-            ["dely_full", "west_path", "D_building", "library", "court_room"]
-        ),
-        "D_building": Object.create(link_state).constructor(
-            {lat: 16.996085, lng: -96.753080},
-            ["dely_full", "C_building", "medicine_auditorium", "medicine_school"]
-        ),
-        "west_path": Object.create(link_state).constructor(
-            {lat: 16.996348, lng: -96.752854},
-            ["F_building", "C_building", "roundabout", "central_plaza"]
-        ),
-        "roundabout": Object.create(link_state).constructor(
-            {lat: 16.996289, lng: -96.752470},
-            ["police_booth", "west_path", "chess_board"]
-        ),
-        "police_booth": Object.create(link_state).constructor(
-            {lat: 16.996785, lng: -96.752466},
-            ["roundabout", "engineering_parking_lot"]
-        ),
-        "chess_board": Object.create(link_state).constructor(
-            {lat: 16.996275, lng: -96.752250},
-            ["roundabout", "A_building", "garden"]
-        ),
-        "A_building": Object.create(link_state).constructor(
-            {lat: 16.996576, lng: -96.751958},
-            ["chess_board", "B_building", "gastronomy_school", "turism_school", "language_center"]
-        ),
-        "B_building": Object.create(link_state).constructor(
-            {lat: 16.996343, lng: -96.751704},
-            ["A_building", "cafeteria", "language_center", "psicologic_orientation_department", "administrative_services", "A_Store"]
-        ),
-        "cafeteria": Object.create(link_state).constructor(
-            {lat: 16.995988, lng: -96.751676},
-            ["B_building", "garden", "cafeteria_parking_lot", "A_Store", "Albet_Einstein_auditorium", "Cuckoo_Coffee", "stationery", "chapel", "music_room"]
-        ),
-        "garden": Object.create(link_state).constructor(
-            {lat: 16.996011, lng: -96.752061},
-            ["chess_board", "cafeteria", "central_plaza", "music_room", "dance_room"]
-        ),
-        "central_plaza": Object.create(link_state).constructor(
-            {lat: 16.995951, lng: -96.752470},
-            ["west_path", "garden", "motorcycle_lot"]
-        ),
-        "cafeteria_parking_lot": Object.create(link_state).constructor(
-            {lat: 16.995663, lng: -96.751800},
-            ["cafeteria", "multisport_field", "motorcycle_lot"]
-        ),
-        "motorcycle_lot": Object.create(link_state).constructor(
-            {lat: 16.995630, lng: -96.752386},
-            ["central_plaza", "cafeteria_parking_lot", "soccer_field", "fast_soccer_field"]
-        ),
-        "multisport_field": Object.create(link_state).constructor(
-            {lat: 16.994908, lng: -96.751880},
-            ["cafeteria_parking_lot", "soccer_field", "tenis_field"]
-        ),
-        "tenis_field": Object.create(link_state).constructor(
-            {lat: 16.994419, lng: -96.751958},
-            ["multisport_field", "soccer_field"]
-        ),
-        "soccer_field": Object.create(link_state).constructor(
-            {lat: 16.995317, lng: -96.752479},
-            ["multisport_field", "motorcycle_lot", "fast_soccer_field", "gym", "tenis_field", "archery_zone"]
-        ),
-        "fast_soccer_field": Object.create(link_state).constructor(
-            {lat: 16.995340, lng: -96.752929},
-            ["soccer_field", "gym", "motorcycle_lot"]
-        ),
-        "gym": Object.create(link_state).constructor(
-            {lat: 16.994658, lng: -96.753015},
-            ["fast_soccer_field", "soccer_field", "archery_zone"]
-        ),
-        "archery_zone": Object.create(link_state).constructor(
-            {lat: 16.994429, lng: -96.753083},
-            ["gym", "soccer_field"]
-        ),
-
-
-        // locations these must have icons and final places
-        "cuckoo_box": Object.create(link_state).constructor(
-            {lat: 16.996437, lng: -96.753485},
-            ["F_building", "dely_full"]
-        ),
-        "dely_full": Object.create(link_state).constructor(
-            {lat: 16.996145, lng: -96.753427},
-            ["C_building", "cuckoo_box", "D_building", "library"]
+        "E_building_inside": Object.create(link_state).constructor(
+            {lat: 16.996603, lng: -96.753191},
+            ["engineering_parking_lot", "engineering_school", "design_school", "comunication_school", "posgrades_department", "E_building_entrance"]
         ),
         "engineering_school": Object.create(link_state).constructor(
-            {lat: 16.996565, lng: -96.753392},
-            ["F_building"]
+            {lat: 16.996589, lng: -96.753296},
+            ["E_building_inside"]
         ),
         "design_school": Object.create(link_state).constructor(
-            {lat: 16.996608, lng: -96.753263},
-            ["F_building"]
+            {lat: 16.996616, lng: -96.753370},
+            ["E_building_inside", "posgrades_department"]
         ),
-        "comunication_scool": Object.create(link_state).constructor(
+        "comunication_school": Object.create(link_state).constructor(
             {lat: 16.996572, lng: -96.753146},
-            ["F_building"]
+            ["E_building_inside"]
         ),
         "posgrades_department": Object.create(link_state).constructor(
             {lat: 16.997616, lng: -96.753081},
-            ["F_building"]
+            ["E_building_inside", "design_school"]
+        ),
+        "E_building_entrance": Object.create(link_state).constructor(
+            {lat: 16.996487, lng: -96.753185},
+            ["E_building_inside", "E_building_lunch_zone", "west_path_E", "west_path_X"]
+        ),
+        "E_building_lunch_zone": Object.create(link_state).constructor(
+            {lat: 16.996470, lng: -96.753323},
+            ["E_building_entrance", "cuckoo_box", "west_path_X"]
+        ),
+        "cuckoo_box": Object.create(link_state).constructor(
+            {lat: 16.996430, lng: -96.753480},
+            ["E_building_lunch_zone", "dely_full"]
+        ),
+        "dely_full": Object.create(link_state).constructor(
+            {lat: 16.996140, lng: -96.753429},
+            ["cuckoo_box", "D_building_entrance", "library"]
+        ),
+        "C_building_entrance": Object.create(link_state).constructor(
+            {lat: 16.996218, lng: -96.753051},
+            ["west_path_C", "D_building_entrance", "C_building_inside"]
+        ),
+        "C_building_inside": Object.create(link_state).constructor(
+            {lat: 16.996328, lng: -96.753051},
+            ["C_building_entrance", "library", "court_room", "west_path_X"]
         ),
         "library": Object.create(link_state).constructor(
-            {lat: 16.996225, lng: -96.753277},
-            ["dely_full", "C_building"]
+            {lat: 16.996325, lng: -96.753277},
+            ["dely_full", "C_building_inside"]
         ),
         "court_room": Object.create(link_state).constructor(
             {lat: 16.996299, lng: -96.753152},
-            ["C_building"]
+            ["C_building_inside"]
         ),
+        "D_building_entrance": Object.create(link_state).constructor(
+            {lat: 16.996133, lng: -96.753055},
+            ["C_building_entrance", "dely_full", "D_building_inside"]
+        ),
+        "D_building_inside": Object.create(link_state).constructor(
+            {lat: 16.996056, lng: -96.753071},
+            ["D_building_entrance", "medicine_auditorium", "medicine_school"]
+        ), // E building
         "medicine_school": Object.create(link_state).constructor(
             {lat: 16.996032, lng: -96.753318},
-            ["D_building"]
+            ["D_building_inside"]
         ),
         "medicine_auditorium": Object.create(link_state).constructor(
             {lat: 16.995993, lng: -96.753152},
-            ["D_building"]
+            ["D_building_inside"]
+        ),
+        "west_path_E": Object.create(link_state).constructor(
+            {lat: 16.996482, lng: -96.753021},
+            ["E_building_entrance", "west_path_X", "west_path_T", "west_path_C"]
+        ), // C building
+        "west_path_C": Object.create(link_state).constructor(
+            {lat: 16.996218, lng: -96.752963},
+            ["C_building_entrance", "west_path_T", "west_path_M", "west_path_E"]
+        ), // irrelevant
+        "west_path_X": Object.create(link_state).constructor(
+            {lat: 16.996475, lng: -96.752860},
+            ["west_path_E", "west_path_R", "west_path_M", "E_building_entrance", "E_building_lunch_zone"]
+        ),  // T shaped
+        "west_path_T": Object.create(link_state).constructor(
+            {lat: 16.996348, lng: -96.752963},
+            ["west_path_R", "west_path_C", "west_path_E"]
+        ),  // central plaza
+        "west_path_M": Object.create(link_state).constructor(
+            {lat: 16.996211, lng: -96.752866},
+            ["west_path_C", "west_path_R", "central_plaza_W", "west_path_X"]
+        ), // roundabout
+        "west_path_R": Object.create(link_state).constructor(
+            {lat: 16.996350, lng: -96.752857},
+            ["west_path_M", "west_path_X", "west_path_T", "roundabout_W"]
+        ),
+        "roundabout_W": Object.create(link_state).constructor(
+            {lat: 16.996353, lng: -96.752569},
+            ["west_path_R", "roundabout_S", "roundabout_N"]
+        ),
+        "roundabout_N": Object.create(link_state).constructor(
+            {lat: 16.996466, lng: -96.752469},
+            ["entrance", "roundabout_W", "roundabout_E"]
+        ),
+        "roundabout_E": Object.create(link_state).constructor(
+            {lat: 16.996368, lng: -96.752366},
+            ["roundabout_S", "roundabout_N", "chess_board", "A_elbow"]
+        ),
+        "roundabout_S": Object.create(link_state).constructor(
+            {lat: 16.996275, lng: -96.752466},
+            ["roundabout_E", "roundabout_W"]
+        ),
+        "entrance": Object.create(link_state).constructor(
+            {lat: 16.996688, lng: -96.752445},
+            ["roundabout_N", "A_elbow", "police_booth"]
+        ),
+        "police_booth": Object.create(link_state).constructor(
+            {lat: 16.996799, lng: -96.752452},
+            ["entrance"]
+        ),
+        "chess_board": Object.create(link_state).constructor(
+            {lat: 16.996301, lng: -96.752199},
+            ["roundabout_E", "A_elbow", "garden"]
+        ),
+        "A_elbow": Object.create(link_state).constructor(
+            {lat: 16.996465, lng: -96.752190},
+            ["roundabout_E", "entrance", "chess_board", "A_link", "B_building_north", ]
+        ),
+        "A_link": Object.create(link_state).constructor(
+            {lat: 16.996457, lng: -96.751970},
+            ["A_elbow", "A_building", "garden", "B_building_north"]
+        ),
+        "language_center": Object.create(link_state).constructor(
+            {lat: 16.996372, lng: -96.751909},
+            ["A_elbow"]
+        ),
+        "A_building": Object.create(link_state).constructor(
+            {lat: 16.996555, lng: -96.751959},
+            ["A_link", "gastronomy_school", "turism_school"]
         ),
         "gastronomy_school": Object.create(link_state).constructor(
             {lat: 16.996617, lng: -96.751865},
@@ -176,24 +305,40 @@
             {lat: 16.996613, lng: -96.752245},
             ["A_building"]
         ),
-        "language_center": Object.create(link_state).constructor(
-            {lat: 16.996366, lng: -96.751847},
-            ["A_building", "B_building"]
+        "B_building_north": Object.create(link_state).constructor(
+            {lat: 16.996450, lng: -96.751725},
+            ["A_link", "B_building_inside", "B_building_north", "A_elbow", "teachers_parking_lot"]
+        ),
+        "teachers_parking_lot": Object.create(link_state).constructor(
+            {lat: 16.996468, lng: -96.751562},
+            ["B_building_north"]
+        ),
+        "B_building_inside": Object.create(link_state).constructor(
+            {lat: 16.996321, lng: -96.751705},
+            ["B_building_north", "psicologic_orientation_department", "administrative_services", "B_building_south"]
         ),
         "psicologic_orientation_department": Object.create(link_state).constructor(
-            {lat: 16.996316, lng: -96.751781},
-            ["B_building"]
+            {lat: 16.996295, lng: -96.751791},
+            ["B_building_inside", "garden"]
         ),
         "administrative_services": Object.create(link_state).constructor(
-            {lat: 16.996319, lng: -96.751630},
-            ["B_building"]
+            {lat: 16.996322, lng: -96.751581},
+            ["B_building_inside"]
+        ),
+        "B_building_south": Object.create(link_state).constructor(
+            {lat: 16.996221, lng: -96.751707},
+            ["cafeteria", "A_Store", "B_building_inside"]
         ),
         "A_Store": Object.create(link_state).constructor(
-            {lat: 16.996243, lng: -96.751632},
-            ["B_building", "cafeteria"]
+            {lat: 16.996263, lng: -96.751632},
+            ["B_building_south"]
+        ),
+        "cafeteria": Object.create(link_state).constructor(
+            {lat: 16.995996, lng: -96.751693},
+            ["B_building_south", "dance_room", "Albet_Einstein_auditorium", "Cuckoo_Coffee", "stationery", "chapel", "music_room"]
         ),
         "Albet_Einstein_auditorium": Object.create(link_state).constructor(
-            {lat: 16.996565, lng: -96.753392}, // pending
+            {lat: 16.996077, lng: -96.751503},
             ["cafeteria"]
         ),
         "Cuckoo_Coffee": Object.create(link_state).constructor(
@@ -201,22 +346,147 @@
             ["cafeteria"]
         ),
         "stationery": Object.create(link_state).constructor(
-            {lat: 16.995920, lng: -96.751732},
-            ["cafeteria"]
+            {lat: 16.995888, lng: -96.751693},
+            ["cafeteria", "cafeteria_parking_lot"]
         ),
         "chapel": Object.create(link_state).constructor(
-            {lat: 16.995925, lng: -96.751853},
-            ["cafeteria"]
+            {lat: 16.995952, lng: -96.751855},
+            ["cafeteria", "dance_room"]
         ),
         "music_room": Object.create(link_state).constructor(
-            {lat: 16.995919, lng: -96.751938},
-            ["cafeteria", "garden"]
+            {lat: 16.995952, lng: -96.751931},
+            ["cafeteria", "dance_room"]
         ),
         "dance_room": Object.create(link_state).constructor(
-            {lat: 16.995915, lng: -96.752021},
-            ["garden"]
+            {lat: 16.995956, lng: -96.752017},
+            ["cafeteria", "tree_link", "chapel", "music_room", "motorcycle_parking_lot_N"]
+        ),
+        "tree_link": Object.create(link_state).constructor(
+            {lat: 16.996041, lng: -96.752190},
+            ["garden", "dance_room", "central_plaza_E"]
+        ),
+        "garden": Object.create(link_state).constructor(
+            {lat: 16.996209, lng: -96.751978},
+            ["A_link", "tree_link", "psicologic_orientation_department"]
+        ),
+        "central_plaza": Object.create(link_state).constructor(
+            {lat: 16.995936, lng: -96.752470},
+            ["central_plaza_W", "central_plaza_E", "monument"]
+        ),
+        "central_plaza_W": Object.create(link_state).constructor(
+            {lat: 16.996025, lng: -96.752695},
+            ["central_plaza", "west_path_M"]
+        ),
+        "central_plaza_E": Object.create(link_state).constructor(
+            {lat: 16.995976, lng: -96.752320},
+            ["central_plaza", "tree_link"]
+        ),
+        "cafeteria_parking_lot": Object.create(link_state).constructor(
+            {lat: 16.995662, lng: -96.751802},
+            ["stationery", "multisport_field", "motorcycle_parking_lot"]
+        ),
+        "monument": Object.create(link_state).constructor(
+            {lat: 16.995655, lng: -96.752479},
+            ["central_plaza", "motorcycle_parking_lot", "sports_elbow"]
+        ),
+        "motorcycle_parking_lot": Object.create(link_state).constructor(
+            {lat: 16.995659, lng: -96.752198},
+            ["monument", "cafeteria_parking_lot", "motorcycle_parking_lot_N"]
+        ),
+        "motorcycle_parking_lot_N": Object.create(link_state).constructor(
+            {lat: 16.995659, lng: -96.752198},
+            ["motorcycle_parking_lot", "dance_room"]
+        ),
+        "sports_elbow": Object.create(link_state).constructor(
+            {lat: 16.995359, lng: -96.752927},
+            ["sports_NE", "monument", "sports_S"]
+        ),
+        "sports_NE": Object.create(link_state).constructor(
+            {lat: 16.994781, lng: -96.752928},
+            ["sports_elbow", "sports_S", "sports_NW"]
+        ),
+        "sports_NW": Object.create(link_state).constructor(
+            {lat: 16.994779, lng: -96.753022},
+            ["sports_NE", "sports_B", "gym"]
+        ), // soccer field
+        "sports_S": Object.create(link_state).constructor(
+            {lat: 16.994661, lng: -96.752924},
+            ["sports_elbow", "soccer_field", "sports_NE", "gym"]
+        ), // backstage
+        "sports_B": Object.create(link_state).constructor(
+            {lat: 16.994783, lng: -96.753206},
+            ["fast_soccer_field", "sports_NW"]
+        ),
+        "multisport_field": Object.create(link_state).constructor(
+            {lat: 16.994900, lng: -96.751801},
+            ["tenis_field", "cafeteria_parking_lot"]
+        ),
+        "tenis_field": Object.create(link_state).constructor(
+            {lat: 16.994608, lng: -96.751818},
+            ["soccer_field", "multisport_field"]
+        ),
+        "soccer_field": Object.create(link_state).constructor(
+            {lat: 16.994593, lng: -96.752483},
+            ["tenis_field", "gym"]
+        ),
+        "fast_soccer_field": Object.create(link_state).constructor(
+            {lat: 16.995095, lng: -96.753219},
+            ["gym", "monument"]
+        ),
+        "gym": Object.create(link_state).constructor(
+            {lat: 16.994660, lng: -96.753021},
+            ["sports_NW", "sports_S", "archery_zone"]
+        ),
+        "archery_zone": Object.create(link_state).constructor(
+            {lat: 16.994592, lng: -96.753026},
+            ["gym"]
         )
     };
+
+    /* ------------------------------------------------ */
+    /* ------------ find closest node to user --------- */
+    /* ------------------------------------------------ */
+
+    function findClosestCoordinates(userCoordinates, mapDatabase) {
+        let closestCoordinates = null;
+        let minDistance = Number.MAX_VALUE;
+
+        for (const key in mapDatabase) {
+            if (mapDatabase.hasOwnProperty(key)) {
+                const coordinates = mapDatabase[key].coordinates;
+                const distance = calculateDistance(userCoordinates, coordinates);
+
+                if (distance < minDistance) {
+                    closestCoordinates = key;
+                    minDistance = distance;
+                }
+            }
+        }
+
+        return closestCoordinates;
+    }
+
+
+    function calculateDistance(coords1, coords2) {
+        const lat1 = coords1.lat;
+        const lng1 = coords1.lng;
+        const lat2 = coords2.lat;
+        const lng2 = coords2.lng;
+
+        const distance = Math.sqrt((lat2 - lat1) ** 2 + (lng2 - lng1) ** 2);
+
+        return distance;
+    }
+
+    // get user coordinates and find closest node
+    let userCoordinates = { lat: 16.995616, lng: -96.753155 };
+    let starting_node = findClosestCoordinates(userCoordinates, map_database);
+    //!!!let first_time = true;!!!
+
+    console.log("Closest Coordinates:", starting_node);
+
+    // starting nodes
+    //let starting_node = "police_booth";
 
     // predecesor array for disjkstra route
     let predecessor;
@@ -240,16 +510,20 @@
             queue.sort((a, b) => a.cost - b.cost);
             const { node, cost } = queue.shift();
 
+            //console.log("iteration node: ", node);
+
             if (visited[node]) continue;
 
             visited[node] = true;
 
+            //console.log("Cheking node connections");
             for (const neighbor of map_database[node].neighbors) {
                 const newDistance = distance[node] + 1;
                 if (newDistance < distance[neighbor]) {
                     distance[neighbor] = newDistance;
                     predecessor[neighbor] = node;
                     queue.push({ node: neighbor, cost: newDistance });
+                    //console.log("adding path to: ", neighbor);
                 }
             }
         }
@@ -265,16 +539,17 @@
             node = predecessor[node];
         }
         route.push(map_database[starting_node].coordinates);
+        //!!!route.push(userCoordinates);!!!
 
-        for(i = route.length-1; i >= 0; --i) {
+        /*for(i = route.length-1; i >= 0; --i) {
             console.log("Next Hop: ", route[i]);
-        }
+        }*/
         return route;
     }
 
-    /* -------------------------------------------------------- */
-    /* --------------------- map creation --------------------- */
-    /* -------------------------------------------------------- */
+    /* ------------------------------------------------- */
+    /* ------------------ map creation ----------------- */
+    /* ------------------------------------------------- */
 
     function iniciarMap(){
         var zonaDelimitada = {
@@ -286,9 +561,15 @@
 
         var coord = {lat:16.9956106 ,lng: -96.7527389};
         var coordCafeteria = {lat: 16.995888, lng: -96.751476};
+        var coordCB = {lat: 16.996440630852607, lng: -96.75343632121756};
+        var coordajedrez = {lat: 16.99604693405557, lng: -96.7520685290419}
         var coordIngenieria = {lat: 16.996577, lng: -96.753338};
         var coordGym = {lat: 16.994731, lng: -96.753082};
         var coordMed = {lat: 16.995969, lng: -96.753193};
+        var coordEst = {lat: 16.99522687664391, lng: -96.7515722692146};
+        var coordEst2 = {lat: 16.996594866043072, lng: -96.7514552321965};
+        var coordEst3 = {lat: 16.99677869084291, lng: -96.75321143006741};
+        var coordgasrto = {lat:16.99660532350971, lng:-96.75214547917045};
         var coordBasquet = {lat: 16.994806, lng: -96.751965};
         var coordFutbol = {lat: 16.99461, lng: -96.75249};
         var coordBiblioteca = {lat: 16.99628, lng: -96.75340};
@@ -298,15 +579,11 @@
         var coordD = {lat: 16.99603093409722, lng: -96.75322036154847};
         var coordE = { lat: 16.99655805391819, lng: -96.75318884559634}
 
-        /* -------------------------------------------------------- */
-        /* ----------------- map starting values ------------------ */
-        /* -------------------------------------------------------- */
-
         var map = new google.maps.Map(document.getElementById('map'),{
-            zoom: 18,
+            zoom: 20,
             center: coord,
             draggable: true, //desplazar en el mapa
-            minZoom: 18,
+            minZoom: 20,
             streetViewControl: false, //Quitar muñequito de google
             fullscreenControl: false, //quitar la opcion de pantalla completa
             mapTypeControl: true, //quitar la opcion de satelite
@@ -326,43 +603,26 @@
         });
 
 
-        /* --------------------------------------------------------- */
-        /* --------------------- map icons ------------------------- */
-        /* --------------------------------------------------------- */
+        /* --------------------------------------------- */
+        /* ----------------- pop-up icons -------------- */
+        /* --------------------------------------------- */
 
-        /* ------------- engineering parking lot -------------------- */
-
-
-
-
-        /* ---------------------- F building ------------------------ */
-
-
-
-
-
-        /* ----------------------- C building ----------------------- */
-
-
-
-
-
-
-
-        /* ----------------------- D building ------------------------ */
-
-
-
-
-
-        /* ----------------------- chess board ------------------------ */
-
-
-
-
-
-
-        /* ---------------------- A building ------------------------ */
+        var iconoajedrez = {
+            url: 'Ajedrez.png',
+            scaledSize: new google.maps.Size(50, 50)
+        };
+        var markerajedrez = new google.maps.Marker({
+            position: coordajedrez,
+            map: map,
+            icon: iconoajedrez
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+        // Add a click event listener to the marker
+        markerajedrez.addListener("click", function() {
+            infoWindow.open(map, markerajedrez); // Open the info window when marker is clicked
+        });
 
         //Edifico A
         var iconoA = {
@@ -370,8 +630,7 @@
             scaledSize: new google.maps.Size(50, 50)
         };
         var markerA = new google.maps.Marker({
-            //position: coordA,
-            position: map_database["A_building"].coordinates,
+            position: coordA,
             map: map,
             icon: iconoA
         });
@@ -382,8 +641,6 @@
         markerA.addListener("click", function() {
             infoWindowA.open(map, markerA); // Open the info window when marker is clicked
         });
-
-        /* ---------------------- B building ------------------------ */
 
         var iconoB = {
             url: 'B.png',
@@ -473,6 +730,58 @@
             infoWindowCafeteria.open(map, markerCafeteria); // Open the info window when marker is clicked
         });
 
+        var iconoEstacionamiento = {
+            url: 'logoEst.png',
+            scaledSize: new google.maps.Size(50, 50)
+        };
+        var markerEstacionamiento = new google.maps.Marker({
+            position: coordEst,
+            map: map,
+            icon: iconoEstacionamiento
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+        // Add a click event listener to the marker
+        markerEstacionamiento.addListener("click", function() {
+            infoWindow.open(map, markerEstacionamiento); // Open the info window when marker is clicked
+        });
+
+        //estacionamiento 2
+        var iconoEstacionamiento2 = {
+            url: 'logoEst.png',
+            scaledSize: new google.maps.Size(50, 50)
+        };
+        var markerEstacionamiento2 = new google.maps.Marker({
+            position: coordEst2,
+            map: map,
+            icon: iconoEstacionamiento
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+        // Add a click event listener to the marker
+        markerEstacionamiento2.addListener("click", function() {
+            infoWindow.open(map, markerEstacionamiento2); // Open the info window when marker is clicked
+        });
+
+        //Estacionamiento 3
+        var iconoEstacionamiento3 = {
+            url: 'logoEst.png',
+            scaledSize: new google.maps.Size(50, 50)
+        };
+        var markerEstacionamiento3 = new google.maps.Marker({
+            position: coordEst3,
+            map: map,
+            icon: iconoEstacionamiento3
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+        // Add a click event listener to the marker
+        markerEstacionamiento3.addListener("click", function() {
+            infoWindow.open(map, markerEstacionamiento3); // Open the info window when marker is clicked
+        });
 
 
         var iconoIngenieria = {
@@ -494,15 +803,12 @@
         });
 
 
-        /* ------------------- multisport field ---------------------- */
-
         var iconoBasquet = {
             url: 'logoBasq.png',
             scaledSize: new google.maps.Size(50, 50)
         };
         var markerBasquet = new google.maps.Marker({
-            //position: coordBasquet,
-            position: map_database["multisport_field"].coordinates,
+            position: coordBasquet,
             map: map,
             icon: iconoBasquet
         });
@@ -514,15 +820,12 @@
             infoWindowBasquet.open(map, markerBasquet); // Open the info window when marker is clicked
         });
 
-        /* --------------------- futbol soccer ---------------------- */
-
         var iconoFutbol = {
             url: 'futbolLogo.png',
             scaledSize: new google.maps.Size(50, 50)
         };
         var markerFutbol = new google.maps.Marker({
-            //position: coordFutbol,
-            position: map_database["soccer_field"].coordinates,
+            position: coordFutbol,
             map: map,
             icon: iconoFutbol
         });
@@ -534,16 +837,13 @@
             infoWindowFutbol.open(map, markerFutbol); // Open the info window when marker is clicked
         });
 
-        /* ---------------------- gym ------------------------ */
-
         var iconoGym = {
             url: 'logoGym.png',
             scaledSize: new google.maps.Size(50, 50)
         };
 
         var markerGym = new google.maps.Marker({
-            position: map_database["gym"].coordinates,
-            //position: coordGym,
+            position: coordGym,
             map: map,
             icon: iconoGym
         });
@@ -556,18 +856,42 @@
             infoWindow.open(map, markerGym); // Open the info window when marker is clicked
         });
 
-        /* --------------------- archery zone ----------------------- */
+        var iconoArchery = {
+            url: 'Archery2.png',
+            scaledSize: new google.maps.Size(30, 30)
+        };
 
+        var markerArchery = new google.maps.Marker({
+            position: coordGym,
+            map: map,
+            icon: iconoArchery
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
 
+        // Add a click event listener to the marker
+        markerArchery.addListener("click", function() {
+            infoWindow.open(map, markerArchery); // Open the info window when marker is clicked
+        });
 
-        /* -----------------------Cuckoo Box ------------------------ */
+        var iconoCB = {
+            url: 'logo2.png',
+            scaledSize: new google.maps.Size(25, 25)
+        };
+        var markerCB = new google.maps.Marker({
+            position: coordCB,
+            map: map,
+            icon: iconoCB
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+        // Add a click event listener to the marker
+        markerCB.addListener("click", function() {
+            infoWindow.open(map, markerCB); // Open the info window when marker is clicked
+        });
 
-
-
-        /* ----------------------- Dely Full ------------------------ */
-
-
-        /* ---------------------- ingeniería ------------------------ */
         var iconoIngenieria = {
             url: 'logoInge.png',
             originalSize: new google.maps.Size(50, 50),
@@ -575,8 +899,7 @@
         };
 
         var markerIngenieria = new google.maps.Marker({
-            //position: coordIngenieria,
-            position: map_database["engineering_school"].coordinates,
+            position: coordIngenieria,
             map: map,
             icon: iconoIngenieria
         });
@@ -590,24 +913,12 @@
             infoWindow.open(map, markerIngenieria); // Open the info window when marker is clicked
         });
 
-        /* ------------------------ diseño ------------------------ */
-
-
-        /* -------------------- comunicacion ---------------------- */
-
-
-        /* ---------------------- posgrados ----------------------- */
-
-
-        /* ---------------------- biblioteca ------------------------ */
-
         var iconoBiblioteca = {
             url: 'logoBiblio.png',
             scaledSize: new google.maps.Size(50, 50)
         };
         var markerBiblioteca = new google.maps.Marker({
-            //position: coordBiblioteca,
-            position: map_database["library"].coordinates,
+            position: coordBiblioteca,
             map: map,
             icon: iconoBiblioteca
         });
@@ -619,18 +930,13 @@
             infoWindowBiblioteca.open(map, markerBiblioteca); // Open the info window when marker is clicked
         });
 
-        /* --------------- sala de juicios orales ------------------ */
-
-        /* ---------------------- medicina ------------------------ */
-
         var iconoMedicina = {
             url: 'logoMedicina.png',
             scaledSize: new google.maps.Size(50, 50)
         };
 
         var markerMedicina = new google.maps.Marker({
-            //position: coordMed,
-            position: map_database["medicine_school"].coordinates,
+            position: coordMed,
             map: map,
             icon: iconoMedicina
         });
@@ -643,40 +949,25 @@
             infoWindow.open(map, markerMedicina); // Open the info window when marker is clicked
         });
 
-        /* ----------------- auditorio de medicina ------------------- */
-
-
-        /* ---------------------- gastronomia ------------------------ */
-
-
-        /* ---------------------- turismo ------------------------ */
-
-
-        /* ------------------- centro de lenguas --------------------- */
-
-        /* ---------------- orientación psicológica ------------------ */
-
-
-        /* ------------------ administracion escolar ------------------ */
-
-
-        /* ---------------------- A-Store ------------------------ */
-
-
-        /* ---------------- auditorio Albert Einstein ----------------- */
-
-
-        /* --------------------- Cuckoo Coffee ----------------------- */
-
-        var iconoCafeteria = {
-            url: 'logo2.png',
-            originalSize: new google.maps.Size(30, 30),
-            scaledSize: new google.maps.Size(30, 30),
+        var iconogastro = {
+            url: 'gastro2.png',
+            scaledSize: new google.maps.Size(30, 30)
         };
+        var markergastro = new google.maps.Marker({
+            position: coordgasrto,
+            map: map,
+            icon: iconogastro
+        });
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
+        });
+        // Add a click event listener to the marker
+        markergastro.addListener("click", function() {
+            infoWindow.open(map, markergastro); // Open the info window when marker is clicked
+        });
 
         var markerCafeteria = new google.maps.Marker({
-            position: map_database["Cuckoo_Coffee"].coordinates,
-            //position: coordCafeteria,
+            position: coordCafeteria,
             map: map,
             icon: iconoCafeteria
         });
@@ -691,182 +982,7 @@
         });
 
 
-        /* ---------------- papeleria ----------------- */
 
-
-
-
-        /* ---------------- capilla ----------------- */
-
-
-        /* ---------------- salon de musica ----------------- */
-
-
-        /* ---------------- salon de danza ----------------- */
-
-
-
-
-
-
-
-        /* ----------------------------------------------------------- */
-        /* -------------- zoom adaptation size for icons ------------- */
-        /* ----------------------------------------------------------- */
-
-        // Listen to the "zoom_changed" event of the map
-        google.maps.event.addListener(map, 'zoom_changed', function() {
-            var zoomLevel = map.getZoom();
-
-            // Adjust the scaled size of the marker icon based on the zoom level
-            var scaleFactor = Math.pow(2, zoomLevel - 18); // Adjust the scaling factor as needed
-            var cafeteriaScaledSize = new google.maps.Size(
-                iconoCafeteria.originalSize.width * scaleFactor,
-                iconoCafeteria.originalSize.height * scaleFactor
-            );
-
-            markerCafeteria.setIcon({
-                url: iconoCafeteria.url,
-                scaledSize: cafeteriaScaledSize
-            });
-
-            var ingenieriaScaledSize = new google.maps.Size(
-                iconoIngenieria.originalSize.width * scaleFactor,
-                iconoIngenieria.originalSize.height * scaleFactor
-            );
-
-            markerIngenieria.setIcon({
-                url: iconoIngenieria,
-                scaledSize: ingenieriaScaledSize
-            });
-        });
-
-        /* --------------- sala de juicios orales ------------------ */
-
-        /* ---------------------- medicina ------------------------ */
-
-        var iconoMedicina = {
-            url: 'logoMedicina.png',
-            scaledSize: new google.maps.Size(50, 50)
-        };
-
-        var markerMedicina = new google.maps.Marker({
-            //position: coordMed,
-            position: map_database["medicine_school"].coordinates,
-            map: map,
-            icon: iconoMedicina
-        });
-        var infoWindow = new google.maps.InfoWindow({
-            content: "This is the pop-up window content." // Replace with your desired content
-        });
-
-        // Add a click event listener to the marker
-        markerMedicina.addListener("click", function() {
-            infoWindow.open(map, markerMedicina); // Open the info window when marker is clicked
-        });
-
-        /* ----------------- auditorio de medicina ------------------- */
-
-
-        /* ---------------------- gastronomia ------------------------ */
-
-
-        /* ---------------------- turismo ------------------------ */
-
-
-        /* ------------------- centro de lenguas --------------------- */
-
-        /* ---------------- orientación psicológica ------------------ */
-
-
-        /* ------------------ administracion escolar ------------------ */
-
-
-        /* ---------------------- A-Store ------------------------ */
-
-
-        /* ---------------- auditorio Albert Einstein ----------------- */
-
-
-        /* --------------------- Cuckoo Coffee ----------------------- */
-
-        var iconoCafeteria = {
-            url: 'logo2.png',
-            originalSize: new google.maps.Size(30, 30),
-            scaledSize: new google.maps.Size(30, 30),
-        };
-
-        var markerCafeteria = new google.maps.Marker({
-            position: map_database["Cuckoo_Coffee"].coordinates,
-            //position: coordCafeteria,
-            map: map,
-            icon: iconoCafeteria
-        });
-
-        var infoWindowCafeteria = new google.maps.InfoWindow({
-            content: "Cuckoo <br> Horario: <br> Lun-Vie 8:00-19:00. <br> Sab 8:00-13:30 <br> 4,9 ⭐⭐⭐⭐⭐"
-        });
-
-        markerCafeteria.addListener("click", function() {
-            infoWindowCafeteria.open(map, markerCafeteria); // Open the info window when marker is clicked
-            updateRoute("Cuckoo_Coffee");
-        });
-
-
-        /* ---------------- papeleria ----------------- */
-
-
-
-
-        /* ---------------- capilla ----------------- */
-
-
-        /* ---------------- salon de musica ----------------- */
-
-
-        /* ---------------- salon de danza ----------------- */
-
-
-
-
-
-
-
-        /* ----------------------------------------------------------- */
-        /* -------------- zoom adaptation size for icons ------------- */
-        /* ----------------------------------------------------------- */
-
-        // Listen to the "zoom_changed" event of the map
-        google.maps.event.addListener(map, 'zoom_changed', function() {
-            var zoomLevel = map.getZoom();
-
-            // Adjust the scaled size of the marker icon based on the zoom level
-            var scaleFactor = Math.pow(2, zoomLevel - 18); // Adjust the scaling factor as needed
-            var cafeteriaScaledSize = new google.maps.Size(
-                iconoCafeteria.originalSize.width * scaleFactor,
-                iconoCafeteria.originalSize.height * scaleFactor
-            );
-
-            markerCafeteria.setIcon({
-                url: iconoCafeteria.url,
-                scaledSize: cafeteriaScaledSize
-            });
-
-            var ingenieriaScaledSize = new google.maps.Size(
-                iconoIngenieria.originalSize.width * scaleFactor,
-                iconoIngenieria.originalSize.height * scaleFactor
-            );
-
-            markerIngenieria.setIcon({
-                url: iconoIngenieria,
-                scaledSize: ingenieriaScaledSize
-            });
-        });
-
-
-        /* ----------------------------------------------------------------------- */
-        /* --------------------- map icons for directions------------------------- */
-        /* ----------------------------------------------------------------------- */
 
 
         var iconoParaDirecciones = {
@@ -939,58 +1055,58 @@
         });
 
         markerDirectionCafeteria.addListener('click', function() {
-
-            //Aqui debe ir la funcion para el enrutamiento
-
+            updateRoute("Cuckoo_Coffee", function() {
+                starting_node = "Cuckoo_Coffee";
+            });
         });
 
         markerDirectionMedicina.addListener('click', function() {
-
-            //Aqui debe ir la funcion para el enrutamiento
-
+            updateRoute("medicine_school", function() {
+                starting_node = "medicine_school";
+            });
         });
 
 
         markerDirectionIngenieria.addListener('click', function() {
-
-            //Aqui debe ir la funcion para el enrutamiento
-
+            updateRoute("engineering_school", function() {
+                starting_node = "engineering_school";
+            });
         });
 
         markerDirectionBiblioteca.addListener('click', function() {
-
-            //Aqui debe ir la funcion para el enrutamiento
-
+            updateRoute("library", function() {
+                starting_node = "library";
+            });
         });
 
         markerDirectionEdificioA.addListener('click', function() {
-
-            //Aqui debe ir la funcion para el enrutamiento
-
+            updateRoute("A_building", function() {
+                starting_node = "A_building";
+            });
         });
 
         markerDirectionEdificioB.addListener('click', function() {
-
-            //Aqui debe ir la funcion para el enrutamiento
-
+            updateRoute("B_building_inside", function() {
+                starting_node = "B_building_inside";
+            });
         });
 
         markerDirectionBasquet.addListener('click', function() {
-
-            //Aqui debe ir la funcion para el enrutamiento
-
+            updateRoute("multisport_field", function() {
+                starting_node = "multisport_field";
+            });
         });
 
         markerDirectionGym.addListener('click', function() {
-
-            //Aqui debe ir la funcion para el enrutamiento
-
+            updateRoute("gym", function() {
+                starting_node = "gym";
+            });
         });
 
         markerDirectionFut.addListener('click', function() {
-
-            //Aqui debe ir la funcion para el enrutamiento
-
+            updateRoute("soccer_field", function() {
+                starting_node = "soccer_field";
+            });
         });
 
 
@@ -1012,25 +1128,34 @@
             {lat:16.996899,lng:-96.752458},
         ];
 
-        /* --------------------------------------------------------- */
-        /* ---------------------- path finding --------------------- */
-        /* --------------------------------------------------------- */
+        /* --------------------------------------------- */
+        /* ---------- path finding algorithm ----------- */
+        /* --------------------------------------------- */
 
-        /* --------------------- enable trace route ---------------- */
+        /* ------------ enable trace route ------------- */
 
         // Create a DirectionsService instance
         let directionsService = new google.maps.DirectionsService();
 
         // array that stores the path without starting and final nodes
         let inner_path = printRoute();
+        /*!!!if(!first_time) {
+            inner_path.pop();
+            //first_time = false;
+        }!!!*/
+        first_time = false;
         inner_path.pop();
         inner_path.shift();
+        /*if(first_time) {
+            inner_path.push(starting_node);
+            first_time = false;
+        }*/
 
         // Define the directions request
         let request = {
-            origin: map_database[starting_node].coordinates,
-            destination: map_database[final_node].coordinates,
-            waypoints: inner_path,
+            origin: userCoordinates,
+            destination: map_database[starting_node].coordinates,
+            waypoints: [],
             travelMode: google.maps.TravelMode.WALKING,
         };
 
@@ -1043,7 +1168,7 @@
                 directionsRenderer.setDirections(response);
 
                 // Create a Polyline for the custom route
-                let waypoints = printRoute(final_node);
+                let waypoints = printRoute(starting_node);
 
                 let polyline = new google.maps.Polyline({
                     path: waypoints,
@@ -1056,12 +1181,28 @@
                 polyline.setMap(map);
             }
         });
-        /* --------- update route when user press a button--------- */
 
-        // update route when user press a button
-        function updateRoute(destiny_node) {
+
+        /* --------------------------------------------- */
+        /* --- update route when user press a button --- */
+        /* --------------------------------------------- */
+
+        // Define global variables to store references to DirectionsRenderer and Polyline
+        let directionsRenderer;
+        let polyline;
+
+        function updateRoute(destiny_node, callback) {
             // Create a new DirectionsService instance
             let directionsService = new google.maps.DirectionsService();
+
+            // Remove previous path from the map if it exists
+            if (directionsRenderer) {
+                directionsRenderer.setMap(null);
+            }
+            if (polyline) {
+                polyline.setMap(null);
+            }
+
             // Define the directions request with the updated destination
             let request = {
                 origin: map_database[starting_node].coordinates,
@@ -1074,14 +1215,14 @@
             directionsService.route(request, function (response, status) {
                 if (status === google.maps.DirectionsStatus.OK) {
                     // Display the directions on the map
-                    let directionsRenderer = new google.maps.DirectionsRenderer();
+                    directionsRenderer = new google.maps.DirectionsRenderer();
                     directionsRenderer.setMap(map);
                     directionsRenderer.setDirections(response);
 
                     // Create a Polyline for the custom route
                     let waypoints = printRoute(destiny_node);
 
-                    let polyline = new google.maps.Polyline({
+                    polyline = new google.maps.Polyline({
                         path: waypoints,
                         geodesic: true,
                         strokeColor: "#FF0000",
@@ -1090,13 +1231,19 @@
                     });
 
                     polyline.setMap(map);
+
+                    // Call the callback function to indicate that updateRoute has completed
+                    if (typeof callback === 'function') {
+                        callback();
+                    }
                 }
             });
         }
 
-        /* ---------------------------------------------------------*/
-        /* -------------------- user geolocalization ---------------*/
-        /* ---------------------------------------------------------*/
+
+        /* -------------------------------------------- */
+        /* ------------ user geolocalization ---------- */
+        /* -------------------------------------------- */
 
         // Crear el marcador de la ubicación del usuario
         var marker = new google.maps.Marker({
@@ -1119,13 +1266,147 @@
                 var pos = {
                     //lat: position.coords.latitude,
                     //lng: position.coords.longitude
-                    lat: 16.99595,
-                    lng: -96.75157
+                    lat: 16.996499,
+                    lng: -96.752934
                 };
+                //Cafetería
                 if(pos.lat >= 16.995900 && pos.lat <=16.996000 && pos.lng >= -96.75158 && pos.lng <= -96.75140){
                     var tour3d = document.getElementById("tourd");
                     tour3d.innerHTML = `
-                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/23/p/23" width="1100" height="950" style="border:0;" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/23/p/23" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //pasillo cafeteria
+                if(pos.lat >= 16.996101 && pos.lat <=16.996247 && pos.lng >= -96.751768 && pos.lng <= -96.751664){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/9/p/9" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //edificio B
+                if(pos.lat >= 16.996286 && pos.lat <=16.996432 && pos.lng >= -96.751817 && pos.lng <= -96.751639){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/8/p/8" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //afuera Cafeteria
+                if(pos.lat >= 16.995930 && pos.lat <=16.996036 && pos.lng >= -96.751784 && pos.lng <= -96.751626){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/10/p/10" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //Pasillo Edf A-B
+                if(pos.lat >= 16.996441 && pos.lat <=16.996556 && pos.lng >= -96.751862 && pos.lng <= -96.751600){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/7/p/7" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //Enfrente Edf A
+                if(pos.lat >= 16.996441 && pos.lat <=16.996556 && pos.lng >= -96.752113 && pos.lng <= -96.751920){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/5/p/5" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //ajedrez
+                if(pos.lat >= 16.996274 && pos.lat <=16.996411 && pos.lng >= -96.752333 && pos.lng <= -96.752202){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/4/p/4" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //fuente
+                if(pos.lat >= 16.996227 && pos.lat <=16.996469 && pos.lng >= -96.752570 && pos.lng <= -96.752361){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/0/p/3" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //Pasillo-1 Edf E
+                if(pos.lat >= 16.996438 && pos.lat <=16.996543 && pos.lng >= -96.753078 && pos.lng <= -96.752868){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/2/p/0" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //Pasillo-2 Edf E
+                if(pos.lat >= 16.996438 && pos.lat <=16.996543 && pos.lng >= -96.753349 && pos.lng <= -96.753192){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/19/p/19" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //Cucko Box
+                if(pos.lat >= 16.996438 && pos.lat <=16.996543 && pos.lng >= -96.753526 && pos.lng <= -96.753416){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/18/p/18" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //pasillo-1 Edf C
+                if(pos.lat >= 16.996283 && pos.lat <=16.996399 && pos.lng >= -96.75299 && pos.lng <= -96.752866){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/21/p/21" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //fuente izq
+                if(pos.lat >= 16.996301 && pos.lat <=16.996396 && pos.lng >= -96.752736 && pos.lng <= -96.752614){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/1/p/1" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //Edf C
+                if(pos.lat >= 16.996172 && pos.lat <=16.996250 && pos.lng >= -96.753068 && pos.lng <= -96.752952){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/15/p/15" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //fuente izq 2
+                if(pos.lat >= 16.996172 && pos.lat <=16.996250 && pos.lng >= -96.752817 && pos.lng <= -96.752639){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/3/p/2" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //Pasillo Edf C-D
+                if(pos.lat >= 16.996139 && pos.lat <=16.996251 && pos.lng >= -96.753263 && pos.lng <= -96.753132){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/16/p/16" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //ingeniería
+                if(pos.lat >= 16.996575 && pos.lat <=16.996664 && pos.lng >= -96.753416 && pos.lng <= -96.753282){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/44/p/44" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //ingeniería2
+                if(pos.lat >= 16.996575 && pos.lat <=16.996664 && pos.lng >= -96.753258 && pos.lng <= -96.753176){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/20/p/20" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //Estacionamiento Ing-1
+                if(pos.lat >= 16.996717 && pos.lat <=16.996857 && pos.lng >= -96.753294 && pos.lng <= -96.753154){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/39/p/39" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //Estacionamiento Ing-2
+                if(pos.lat >= 16.996717 && pos.lat <=16.996857 && pos.lng >= -96.753541 && pos.lng <= -96.753388){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/40/p/40" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 `
                 }
                 // Centrar el mapa en la ubicación del usuario

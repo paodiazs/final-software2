@@ -1264,10 +1264,8 @@
         if (navigator.geolocation) {
             navigator.geolocation.watchPosition(function(position) {
                 var pos = {
-                    //lat: position.coords.latitude,
-                    //lng: position.coords.longitude
-                    lat: 16.996499,
-                    lng: -96.752934
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
                 };
                 //Cafetería
                 if(pos.lat >= 16.995900 && pos.lat <=16.996000 && pos.lng >= -96.75158 && pos.lng <= -96.75140){

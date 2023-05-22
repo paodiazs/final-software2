@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>Cafetería</title>
+	<title>Servicios administrativos</title>
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/main.css">
 </head>
@@ -108,7 +108,7 @@
 <!-- ====== Contenido de pagina ======-->
 <section class="section">
 	<div class="container">
-		<h1 style="text-align: center;">Medicina</h1>
+		<h1 style="text-align: center;">Servicios al alumno</h1>
 		<div class="row">
 			<div class="col-xs-12 col-sm-8">
 
@@ -125,7 +125,7 @@
 					</ol>
 					<div class="carousel-inner" role="listbox">
 						<div class="item active">
-							<img src="assets/img/502_61813065.jpg" alt="">
+							<img src="assets/img/post.jpg" alt="">
 						</div>
 						<div class="item">
 							<img src="assets/img/post.jpg" alt="">
@@ -157,24 +157,27 @@
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-4">
-				<h2 id="content-title">Medicina</h2>
-				<p id="content-text">Disfuta de la gran variedad de alimentos que la cafetería Cuckoo tiene para ti, ven a comer antes o depués de tus clases para recargar energía, además de que puedes consultar el menú completo desde tu celular y encargar a que hora te gustaría recibir tus alimentos</p>
-				<!--<div class="full-width" style="padding:10px; background-color: #F5F5F5; margin: 7px 0; text-align: left;">
-					<p class="lead text-center"><strong><small>Contacto</small></strong></p>
-					<p class="lead text-center contact-info" id="contact-phone"><img src="./assets/icons/whatsapp.svg" alt="WhatsApp" class="contact-icons"><strong> 951 501 6250</strong></p>
-					<p class="lead text-center contact-info" id="contact-mail"><img src="./assets/icons/mail.svg" alt="Correo" class="contact-icons"><strong> atencionalumnado.uao@anahuac.mx</strong></p>
-				</div>-->
+				<h2 id="content-title">CASA</h2>
+				<p id="content-text">El Centro de Atención y Servicios al Alumnado es un servicio proporcionado a los alumnos para recibir ayuda en su proceso de inscripción, o con cualquier otra situación académica que les pueda surgir. Los alumnos pueden contar con Ana, su asistente digital que los puede atender a cualquier hora por WhatsApp.</p>
+				<p id="special-link"></p>
 				<div class="full-width post-user-info">
 					<div>
-						<p class="lead text-center"><strong><small>Horario</small></strong></p>
+						<p class="lead text-center" id="schedule-title"><strong><small>Horario</small></strong></p>
 						<p class="full-width" id="schedule">8:00 - 18:00 hrs</p>
 					</div>
 				</div>
+				<div class="full-width" style="padding:10px; background-color: #F5F5F5; margin: 7px 0; text-align: left;">
+					<p class="lead text-center" id="contact-title"><strong><small>Contacto</small></strong></p>
+					<p class="lead text-center contact-info" id="contact-phone"><img src="./assets/icons/whatsapp.svg" alt="WhatsApp" class="contact-icons"><strong> 951 501 6250</strong></p>
+					<p class="lead text-center contact-info" id="contact-mail"><img src="./assets/icons/mail.svg" alt="Correo" class="contact-icons"><strong> atencionalumnado.uao@anahuac.mx</strong></p>
+				</div>
 				<div class="clearfix"></div>
-				<a href="#!" class="btn btn-success btn-block" style="background-color: #fa6400">
-					<p class="lead text-light" style="margin: 7px 0;">
-						<i class="fa fa-map-marker fa-fw" aria-hidden="true"></i> Ver ubicación en el mapa
-					</p></a>
+				<div id="map-link">
+					<a class="btn btn-success btn-block" style="background-color: #fa6400" onclick="mapDirection('casa')">
+						<p class="lead text-light" style="margin: 7px 0;">
+							<i class="fa fa-map-marker fa-fw" aria-hidden="true"></i> Ver ubicación en el mapa
+						</p></a>
+				</div>
 			</div>
 
 			<script src="./js/dynamic-carousel.js"></script>
@@ -186,7 +189,8 @@
 						"951 501 6250",
 						"atencionalumnado.uao@anahuac.mx",
 						"9:00 - 18:00 hrs",
-						"#"
+						"casa",
+						""
 					],
 					[
 						"Caja",
@@ -194,7 +198,8 @@
 						"",
 						"caja.uao@anahuac.mx",
 						"9:00 - 18:00 hrs",
-						"#"
+						"administrative_services",
+						""
 					],
 					[
 						"Administración Escolar",
@@ -202,7 +207,8 @@
 						"",
 						"aescolar.uao@anahuac.mx",
 						"9:00 - 18:00 hrs",
-						"#"
+						"administrative_services",
+						""
 					],
 					[
 						"Acompañamiento Sanamente",
@@ -210,7 +216,8 @@
 						"951 128 2357",
 						"sanamente.uao@anahuac.mx",
 						"9:00 - 18:00 hrs",
-						"#"
+						"psicologic_orientation_department",
+						""
 					],
 					[
 						"Centro de Lenguas",
@@ -218,7 +225,8 @@
 						"",
 						"diego.arroyo@anahuac.mx",
 						"9:00 - 18:00 hrs",
-						"#"
+						"language_center",
+						""
 					],
 					[
 						"Soporte Técnico",
@@ -226,7 +234,8 @@
 						"",
 						"soporte.uao@anahuac.mx",
 						"9:00 - 18:00 hrs",
-						"#"
+						"A_building",
+						""
 					],
 					[
 						"A-STORE",
@@ -234,7 +243,8 @@
 						"",
 						"",
 						"9:00 - 18:00 hrs",
-						"#"
+						"A_Store",
+						""
 					]
 				];
 			</script>

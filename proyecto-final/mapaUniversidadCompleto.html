@@ -281,10 +281,14 @@
         ),
         "B_building_north": Object.create(link_state).constructor(
             {lat: 16.996450, lng: -96.751725},
-            ["A_link", "B_building_inside", "B_building_north", "A_elbow", "teachers_parking_lot"]
+            ["A_link", "B_building_inside", "B_building_north", "A_elbow", "teachers_parking_lot", "casa"]
         ),
         "teachers_parking_lot": Object.create(link_state).constructor(
             {lat: 16.996468, lng: -96.751562},
+            ["B_building_north"]
+        ),
+        "casa": Object.create(link_state).constructor(
+            {lat: 16.996376, lng: -96.751761},
             ["B_building_north"]
         ),
         "B_building_inside": Object.create(link_state).constructor(
@@ -293,7 +297,7 @@
         ),
         "psicologic_orientation_department": Object.create(link_state).constructor(
             {lat: 16.996295, lng: -96.751791},
-            ["B_building_inside", "garden"]
+            ["B_building_inside"]
         ),
         "administrative_services": Object.create(link_state).constructor(
             {lat: 16.996322, lng: -96.751581},
@@ -341,7 +345,7 @@
         ),
         "garden": Object.create(link_state).constructor(
             {lat: 16.996209, lng: -96.751978},
-            ["A_link", "tree_link", "psicologic_orientation_department"]
+            ["A_link", "tree_link"]
         ),
         "central_plaza": Object.create(link_state).constructor(
             {lat: 16.995936, lng: -96.752470},
@@ -455,12 +459,18 @@
     // get user coordinates and find closest node
     let userCoordinates = { lat: 16.995616, lng: -96.753155 };
     let starting_node = findClosestCoordinates(userCoordinates, map_database);
-    //!!!let first_time = true;!!!
+
+
+
+    // start with destination node if user was redirected from info page.
+    const this_url = new URLSearchParams(window.location.search);
+    const final_node = this_url.get('final_node');
+    let destiny_node = final_node || starting_node;
+
+    console.log("Destiny: " + destiny_node);
+
 
     console.log("Closest Coordinates:", starting_node);
-
-    // starting nodes
-    //let starting_node = "police_booth";
 
     // predecesor array for disjkstra route
     let predecessor;
@@ -1113,23 +1123,15 @@
 
         // array that stores the path without starting and final nodes
         let inner_path = printRoute();
-        /*!!!if(!first_time) {
-            inner_path.pop();
-            //first_time = false;
-        }!!!*/
-        first_time = false;
+
         inner_path.pop();
         inner_path.shift();
-        /*if(first_time) {
-            inner_path.push(starting_node);
-            first_time = false;
-        }*/
 
         // Define the directions request
         let request = {
             origin: userCoordinates,
-            destination: map_database[starting_node].coordinates,
-            waypoints: [],
+            destination: map_database[destiny_node].coordinates,
+            waypoints: inner_path,
             travelMode: google.maps.TravelMode.WALKING,
         };
 
@@ -1142,7 +1144,7 @@
                 directionsRenderer.setDirections(response);
 
                 // Create a Polyline for the custom route
-                let waypoints = printRoute(starting_node);
+                let waypoints = printRoute(destiny_node);
 
                 let polyline = new google.maps.Polyline({
                     path: waypoints,

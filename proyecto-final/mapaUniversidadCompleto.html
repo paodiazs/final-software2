@@ -4,7 +4,7 @@
     <title>Mapa UAO</title>
     <meta charset="UTF-8">
 
-    <style>
+    <style id="css-mobile">
         /* Estilos para el cuerpo y el documento HTML */
         body, html {
             height: 100%; /* Establece la altura al 100% de la ventana del navegador */
@@ -12,7 +12,6 @@
             padding: 0; /* Elimina el relleno (padding) alrededor del cuerpo y el documento HTML */
             background-color: orange; /* Establece el color de fondo a naranja */
         }
-
         /* INICIO DEL MENU DESPLEGABLE */
         /* Estilos para el ícono del menú */
         .menu-icon {
@@ -37,7 +36,7 @@
             position: fixed; /* Establece la posición fija en relación con la ventana del navegador */
             top: 0; /* Establece la posición superior a 0 píxeles desde la parte superior de la ventana del navegador */
             left: -100%; /* Cambia la posición inicial del menú fuera de la ventana del navegador */
-            width: 70%; /* Cambia el ancho del menú al 100% de la ventana del navegador */
+            width: 50%; /* Cambia el ancho del menú al 100% de la ventana del navegador */
             height: 100%; /* Establece la altura del menú al 100% de la ventana del navegador */
             background-color: #fff; /* Establece el color de fondo del menú a blanco */
             transition: left 0.5s ease; /* Agrega una transición suave a la propiedad 'left' con una duración de 0.3 segundos y una aceleración suave */
@@ -99,9 +98,108 @@
             height: 100%; /* Establece la altura al 100% para que se ajuste al contenedor */
         }
     </style>
+    <style id="css-desktop">
+        /* Estilos para el cuerpo y el documento HTML */
+        body, html {
+            height: 100%; /* Establece la altura al 100% de la ventana del navegador */
+            margin: 0; /* Elimina los márgenes alrededor del cuerpo y el documento HTML */
+            padding: 0; /* Elimina el relleno (padding) alrededor del cuerpo y el documento HTML */
+            background-color: orange; /* Establece el color de fondo a naranja */
+        }
+
+        /* Estilos para el contenedor del mapa */
+        #map {
+            height: 60vh; /* Establece la altura al 90% de la ventana del navegador */
+            width: 60vw; /* Establece el ancho al 40% de la ventana del navegador */
+
+            margin: 14vh 2vw 10vh 10vw;
+            border: 12px solid black; /* Establece un borde de 12 píxeles de ancho y color negro */
+            border-radius: 15px; /* Establece un radio de borde de 15 píxeles para crear esquinas redondeadas */
+            flex: 1;
+        }
+
+        /* INICIO DEL MENU DESPLEGABLE */
+        /* Estilos para el ícono del menú */
+        .menu-icon {
+            position: absolute; /* Establece la posición absoluta en relación con el elemento primario */
+            top: 10px; /* Establece la posición superior a 10 píxeles desde la parte superior del elemento primario */
+            left: 10px; /* Establece la posición izquierda a 10 píxeles desde el borde izquierdo del elemento primario */
+            z-index: 1000; /* Establece el orden de apilamiento del elemento */
+            cursor: pointer; /* Cambia el cursor al puntero cuando se coloca sobre el elemento */
+            padding: 10px; /* Establece un relleno de 10 píxeles alrededor del ícono */
+        }
+
+        .menu-icon span {
+            display: block; /* Establece el elemento como bloque */
+            width: 70px; /* Establece el ancho del elemento a 24 píxeles */
+            height: 15px; /* Establece la altura del elemento a 2 píxeles */
+            background-color: #000; /* Establece el color de fondo del elemento a negro */
+            margin-bottom: 4px; /* Establece un margen inferior de 4 píxeles */
+        }
+
+        /* Estilos para el menú */
+        .menu {
+            position: fixed; /* Establece la posición fija en relación con la ventana del navegador */
+            top: 0; /* Establece la posición superior a 0 píxeles desde la parte superior de la ventana del navegador */
+            left: -100%; /* Cambia la posición inicial del menú fuera de la ventana del navegador */
+            width: 20%; /* Cambia el ancho del menú al 20% de la ventana del navegador */
+            height: 100%; /* Establece la altura del menú al 100% de la ventana del navegador */
+            background-color: #fff; /* Establece el color de fondo del menú a blanco */
+            transition: left 0.5s ease; /* Agrega una transición suave a la propiedad 'left' con una duración de 0.3 segundos y una aceleración suave */
+        }
+
+        .menu.open {
+            left: 0; /* Muestra el menú desplazándolo hacia la izquierda hasta la posición 0 */
+        }
+
+        .menu ul {
+            list-style-type: none; /* Elimina los estilos de lista predeterminados */
+            padding: 0; /* Elimina el relleno (padding) alrededor de la lista */
+            margin: 20px; /* Establece un margen de 20 píxeles alrededor de la lista */
+        }
+
+        .menu ul li {
+            margin-bottom: 10px; /* Establece un margen inferior de 10 píxeles entre elementos de lista */
+        }
+
+        .menu ul li a {
+            text-decoration: none; /* Elimina la decoración de subrayado del enlace */
+            color: #000; /* Establece el color del texto a negro */
+            font-weight: bold; /* Establece el peso de la fuente en negrita */
+            font-size: 50px; /* Establece el tamaño de la fuente en 30 píxeles */
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* FINAL DEL MENU DESPLEGABLE */
+
+        /* estilo invisible */
+        .invisible-char {
+            opacity: 0;
+        }
+        #tourd iframe{
+
+            height: 50vh;
+            width: 40vw;
+            /* Establece el ancho al 40% de la ventana del navegador */
+            border: 0;
+
+
+        }
+        /*creacion de fila de contenido*/
+        .row{
+            display: flex;
+
+        }
+        #tourd{
+            flex: 1;
+            position: relative;
+            margin: 20vh 5vw 5vh 5vw;
+        }
+
+    </style>
 </head>
 <body>
-<div >
+<div class="row">
     <div id="map"></div>
     <div id="tourd" >
         <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -118,14 +216,20 @@
 <div class="menu">
     <ul>
         <li><a href="#"><span class="invisible-char">&#8203;</span></a></li>
-        <li><a href="#">Opción 1</a></li>
-        <li><a href="#">Opción 2</a></li>
-        <li><a href="#">Opción 3</a></li>
-        <li><a href="#">Opción 4</a></li>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="javascript:location.reload(true)">Refrescar</a></li>
     </ul>
 </div>
 
-
+<script>
+    // Detectar el tipo de dispositivo y aplicar el CSS correspondiente
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    if (isMobile) {
+        document.getElementById('css-desktop').disabled = true; // Desactivar el CSS de escritorio
+    } else {
+        document.getElementById('css-mobile').disabled = true; // Desactivar el CSS de dispositivos móviles
+    }
+</script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>

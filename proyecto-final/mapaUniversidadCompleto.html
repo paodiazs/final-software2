@@ -13,15 +13,6 @@
             background-color: orange; /* Establece el color de fondo a naranja */
         }
 
-        /* Estilos para el contenedor del mapa */
-        #map {
-            height: 90vh; /* Establece la altura al 90% de la ventana del navegador */
-            width: 100vw; /* Establece el ancho al 100% de la ventana del navegador */
-            margin: 5vh auto; /* Establece un margen superior e inferior de 5% y centrado horizontalmente */
-            border: 12px solid black; /* Establece un borde de 12 píxeles de ancho y color negro */
-            border-radius: 15px; /* Establece un radio de borde de 15 píxeles para crear esquinas redondeadas */
-        }
-
         /* INICIO DEL MENU DESPLEGABLE */
         /* Estilos para el ícono del menú */
         .menu-icon {
@@ -80,11 +71,42 @@
         .invisible-char {
             opacity: 0;
         }
+        /* Estilos para el contenedor del iframe */
+        #map {
+            position: relative; /* Cambia la posición a relativa para que los elementos internos se posicionen en relación con este contenedor */
+            height: 90vh; /* Establece la altura al 90% de la ventana del navegador */
+            width: 100vw; /* Establece el ancho al 100% de la ventana del navegador */
+            margin: 5vh auto; /* Establece un margen superior e inferior de 5% y centrado horizontalmente */
+            border: 12px solid black; /* Establece un borde de 12 píxeles de ancho y color negro */
+            border-radius: 15px; /* Establece un radio de borde de 15 píxeles para crear esquinas redondeadas */
+        }
+
+        /* Estilos para el contenedor del iframe */
+
+        #tourd {
+            position: absolute; /* Cambia la posición a absoluta para que se pueda posicionar de manera precisa */
+            bottom:-11vh;
+            right: 36vw; /* Establece la posición derecha a 10 píxeles desde el borde derecho del contenedor padre */
+            width: 60vw; /* Establece el ancho al 50% del contenedor padre */
+            height: 60vh; /* Establece la altura al 50% del contenedor padre */
+        }
+
+        /* Estilos adicionales para hacer que el iframe sea responsivo */
+
+        #tourd iframe {
+            border: 0;
+            width: 100%; /* Establece el ancho al 100% para que se ajuste al contenedor */
+            height: 100%; /* Establece la altura al 100% para que se ajuste al contenedor */
+        }
     </style>
 </head>
 <body>
-<div id="map"></div>
-
+<div >
+    <div id="map"></div>
+    <div id="tourd" >
+        <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</div>
 <!-- ICONO DEL MENU -->
 <div class="menu-icon" onclick="toggleMenu()">
     <span></span>
@@ -1247,11 +1269,201 @@
                 var pos = {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
-                };
+
+                };              
                 // Centrar el mapa en la ubicación del usuario
                 map.setCenter(pos);
                 // Actualizar la posición del marcador
                 marker.setPosition(pos);
+                //Cafetería
+                if(pos.lat >= 16.995900 && pos.lat <=16.996000 && pos.lng >= -96.75158 && pos.lng <= -96.75140){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/23/p/23" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //pasillo cafeteria
+                if(pos.lat >= 16.996101 && pos.lat <=16.996247 && pos.lng >= -96.751768 && pos.lng <= -96.751664){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/9/p/9" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //edificio B
+                if(pos.lat >= 16.996286 && pos.lat <=16.996432 && pos.lng >= -96.751817 && pos.lng <= -96.751639){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/8/p/8" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //afuera Cafeteria
+                if(pos.lat >= 16.995930 && pos.lat <=16.996036 && pos.lng >= -96.751784 && pos.lng <= -96.751626){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/10/p/10" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //Pasillo Edf A-B
+                if(pos.lat >= 16.996441 && pos.lat <=16.996556 && pos.lng >= -96.751862 && pos.lng <= -96.751600){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/7/p/7" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //Enfrente Edf A
+                if(pos.lat >= 16.996441 && pos.lat <=16.996556 && pos.lng >= -96.752113 && pos.lng <= -96.751920){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/5/p/5" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //ajedrez
+                if(pos.lat >= 16.996274 && pos.lat <=16.996411 && pos.lng >= -96.752333 && pos.lng <= -96.752202){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/4/p/4" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //fuente
+                if(pos.lat >= 16.996227 && pos.lat <=16.996469 && pos.lng >= -96.752570 && pos.lng <= -96.752361){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/0/p/3" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //Pasillo-1 Edf E
+                if(pos.lat >= 16.996438 && pos.lat <=16.996543 && pos.lng >= -96.753078 && pos.lng <= -96.752868){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/2/p/0" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //Pasillo-2 Edf E
+                if(pos.lat >= 16.996438 && pos.lat <=16.996543 && pos.lng >= -96.753349 && pos.lng <= -96.753192){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/19/p/19" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //Cucko Box
+                if(pos.lat >= 16.996438 && pos.lat <=16.996543 && pos.lng >= -96.753526 && pos.lng <= -96.753416){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/18/p/18" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //pasillo-1 Edf C
+                if(pos.lat >= 16.996267427747682 && pos.lat <=16.996380290365558 && pos.lng >=  -96.75300958284186 && pos.lng <= -96.75295593865954){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/21/p/21" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //fuente izq
+                if(pos.lat >= 16.996267427747682 && pos.lat <=16.996441851764857 && pos.lng >= -96.75277623064876 && pos.lng <= -96.75262870914737){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/1/p/1" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //Edf C
+                if(pos.lat >= 16.9961699554321 && pos.lat <=16.99624947232493 && pos.lng >= -96.75310346016092 && pos.lng <= -96.75300421842361){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/15/p/15" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //fuente izq 2
+                if(pos.lat >= 16.9961699554321 && pos.lat <=16.99624947232493 && pos.lng >= -96.7529157055228 && pos.lng <= -96.75280573494904){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/3/p/2" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //Pasillo Edf C-D
+                if(pos.lat >= 16.996139 && pos.lat <=16.996251 && pos.lng >= -96.753263 && pos.lng <= -96.753132){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/16/p/16" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //ingeniería
+                if(pos.lat >= 16.996575 && pos.lat <=16.996664 && pos.lng >= -96.753416 && pos.lng <= -96.753282){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/44/p/44" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //ingeniería2
+                if(pos.lat >= 16.996575 && pos.lat <=16.996664 && pos.lng >= -96.753258 && pos.lng <= -96.753176){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/20/p/20" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //Estacionamiento Ing-1
+                if(pos.lat >= 16.996717 && pos.lat <=16.996857 && pos.lng >= -96.753294 && pos.lng <= -96.753154){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/39/p/39" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //Estacionamiento Ing-2
+                if(pos.lat >= 16.996717 && pos.lat <=16.996857 && pos.lng >= -96.753541 && pos.lng <= -96.753388){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/40/p/40" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //plazaC-1
+                if(pos.lat >= 16.99590062376828 && pos.lat <=16.99599296609593 && pos.lng >= -96.75258847602973 && pos.lng <= -96.75234975941841){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/13/p/13" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //pastoral
+                if(pos.lat >= 16.995910884024333 && pos.lat <=16.996010921538428 && pos.lng >= -96.75204398759873 && pos.lng <= -96.75186964400618){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/11/p/11" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //placaC-2
+                if(pos.lat >= 16.9955125345236 && pos.lat <=16.995663873627862 && pos.lng >= -96.75263151526336 && pos.lng <= -96.75234720109705){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/28/p/28" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //gym
+                if(pos.lat >= 16.994612192567782 && pos.lat <=16.994830224489085 && pos.lng >= -96.75303116440573 && pos.lng <= -96.75287827848612){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/32/p/32" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //gym-2
+                if(pos.lat >= 16.994696840284995 && pos.lat <=16.994817399088966 && pos.lng >= -96.75326183438972 && pos.lng <= -96.75310358405189){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/33/p/33" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //gym-3
+                if(pos.lat >= 16.99489435148077 && pos.lat <=16.995197030565247 && pos.lng >= -96.75298020243359 && pos.lng <= -96.75288900732365){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/31/p/31" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
+                //arbol
+                if(pos.lat >= 16.99599032326787 && pos.lat <=16.996098055927487 && pos.lng >= -96.75227083041062 && pos.lng <= -96.75212062670013){
+                    var tour3d = document.getElementById("tourd");
+                    tour3d.innerHTML = `
+                    <iframe src="http://www.vtility.net/virtualtour/6xNNID78A4#!s/12/p/12" allowfullscreen="True" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                `
+                }
             }, function() {
                 // Error al obtener la ubicación del usuario
                 handleLocationError(true, marker, map.getCenter());

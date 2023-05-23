@@ -107,6 +107,9 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
+    // routes map lines
+    let directionsRenderer;
+    let polyline;
 
     //Funcion para que el menu desplegable funcione
     function toggleMenu() {
@@ -405,11 +408,11 @@
         ),
         "soccer_field": Object.create(link_state).constructor(
             {lat: 16.994593, lng: -96.752483},
-            ["tenis_field", "gym"]
+            ["tenis_field", "sports_S"]
         ),
         "fast_soccer_field": Object.create(link_state).constructor(
             {lat: 16.995095, lng: -96.753219},
-            ["gym", "monument"]
+            ["sports_B"]
         ),
         "gym": Object.create(link_state).constructor(
             {lat: 16.994660, lng: -96.753021},
@@ -457,7 +460,7 @@
     }
 
     // get user coordinates and find closest node
-    let userCoordinates = { lat: 16.995616, lng: -96.753155 };
+    let userCoordinates = { lat: (Math.random() * (16.996627 - 16.994251) + 16.994251), lng: (Math.random() * (-96.751913 - -96.753586) + -96.753586) };;
     let starting_node = findClosestCoordinates(userCoordinates, map_database);
 
 
@@ -467,10 +470,10 @@
     const final_node = this_url.get('final_node');
     let destiny_node = final_node || starting_node;
 
-    console.log("Destiny: " + destiny_node);
+    //console.log("Destiny: " + destiny_node);
 
 
-    console.log("Closest Coordinates:", starting_node);
+    //console.log("Closest Coordinates:", starting_node);
 
     // predecesor array for disjkstra route
     let predecessor;
@@ -514,20 +517,23 @@
     }
 
     function printRoute(node) {
+
+        userCoordinates = { lat: (Math.random() * (16.996627 - 16.994251) + 16.994251), lng: (Math.random() * (-96.751913 - -96.753586) + -96.753586) };
+
+        starting_node = findClosestCoordinates(userCoordinates, map_database);
+
         dijkstra(starting_node);
 
         let route = []; // stack used to inverse route order in case needed
 
         while (predecessor[node] != null) {
             route.push(map_database[node].coordinates);
+            //console.log("Next Hop: ", node);
             node = predecessor[node];
         }
         route.push(map_database[starting_node].coordinates);
-        //!!!route.push(userCoordinates);!!!
-
-        /*for(i = route.length-1; i >= 0; --i) {
-            console.log("Next Hop: ", route[i]);
-        }*/
+        //console.log("Next Hop: ", node);
+        
         return route;
     }
 
@@ -1040,56 +1046,56 @@
 
         markerDirectionCafeteria.addListener('click', function() {
             updateRoute("Cuckoo_Coffee", function() {
-                starting_node = "Cuckoo_Coffee";
+                //starting_node = "Cuckoo_Coffee";
             });
         });
 
         markerDirectionMedicina.addListener('click', function() {
             updateRoute("medicine_school", function() {
-                starting_node = "medicine_school";
+                //starting_node = "medicine_school";
             });
         });
 
 
         markerDirectionIngenieria.addListener('click', function() {
             updateRoute("engineering_school", function() {
-                starting_node = "engineering_school";
+                //starting_node = "engineering_school";
             });
         });
 
         markerDirectionBiblioteca.addListener('click', function() {
             updateRoute("library", function() {
-                starting_node = "library";
+                //starting_node = "library";
             });
         });
 
         markerDirectionEdificioA.addListener('click', function() {
             updateRoute("A_building", function() {
-                starting_node = "A_building";
+                //starting_node = "A_building";
             });
         });
 
         markerDirectionEdificioB.addListener('click', function() {
             updateRoute("B_building_inside", function() {
-                starting_node = "B_building_inside";
+                //starting_node = "B_building_inside";
             });
         });
 
         markerDirectionBasquet.addListener('click', function() {
             updateRoute("multisport_field", function() {
-                starting_node = "multisport_field";
+                //starting_node = "multisport_field";
             });
         });
 
         markerDirectionGym.addListener('click', function() {
             updateRoute("gym", function() {
-                starting_node = "gym";
+                //starting_node = "gym";
             });
         });
 
         markerDirectionFut.addListener('click', function() {
             updateRoute("soccer_field", function() {
-                starting_node = "soccer_field";
+                //starting_node = "soccer_field";
             });
         });
 
@@ -1119,7 +1125,7 @@
         /* ------------ enable trace route ------------- */
 
         // Create a DirectionsService instance
-        let directionsService = new google.maps.DirectionsService();
+        directionsService = new google.maps.DirectionsService();
 
         // array that stores the path without starting and final nodes
         let inner_path = printRoute();
@@ -1139,14 +1145,14 @@
         directionsService.route(request, function (response, status) {
             if (status === google.maps.DirectionsStatus.OK) {
                 // Display the directions on the map
-                let directionsRenderer = new google.maps.DirectionsRenderer();
+                directionsRenderer = new google.maps.DirectionsRenderer();
                 directionsRenderer.setMap(map);
                 directionsRenderer.setDirections(response);
 
                 // Create a Polyline for the custom route
                 let waypoints = printRoute(destiny_node);
 
-                let polyline = new google.maps.Polyline({
+                polyline = new google.maps.Polyline({
                     path: waypoints,
                     geodesic: true,
                     strokeColor: "#FF0000",
@@ -1164,12 +1170,11 @@
         /* --------------------------------------------- */
 
         // Define global variables to store references to DirectionsRenderer and Polyline
-        let directionsRenderer;
-        let polyline;
+        
 
         function updateRoute(destiny_node, callback) {
             // Create a new DirectionsService instance
-            let directionsService = new google.maps.DirectionsService();
+            directionsService = new google.maps.DirectionsService();
 
             // Remove previous path from the map if it exists
             if (directionsRenderer) {

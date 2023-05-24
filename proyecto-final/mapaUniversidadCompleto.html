@@ -909,15 +909,13 @@
             map: map,
             icon: iconoIngenieria
         });
-        var infoWindow = new google.maps.InfoWindow({//mensaje del pop-up
-            content: "Edificio de Ingeniería. Laboratorios Cisco" // Replace with your desired content
+        var infoWindow = new google.maps.InfoWindow({
+            content: "This is the pop-up window content." // Replace with your desired content
         });
         // Add a click event listener to the marker
         markerIngenieria.addListener("click", function() {
-            infoWindow.open(map, markerIngenieria); // Abre la ventana de info cuando el marcador se le da click 
-        });*/
-       
-
+            infoWindow.open(map, markerIngenieria); // Open the info window when marker is clicked
+        });
 
         var iconoBasquet = {
             url: 'logoBasq.png',
@@ -964,7 +962,7 @@
             icon: iconoGym
         });
         var infoWindow = new google.maps.InfoWindow({
-            content: "Gimnasio Universitario" // Replace with your desired content
+            content: "This is the pop-up window content." // Replace with your desired content
         });
 
         // Add a click event listener to the marker

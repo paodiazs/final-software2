@@ -715,7 +715,7 @@ login.html & newaccount.html*/
 /*=========================
 =========== Luis Mario icons*/
 .contact-info {
-	text-align: left;
+	text-align: center;
 	color: #F09000;
 	font-size: 15px;
 }
@@ -723,4 +723,5 @@ login.html & newaccount.html*/
 .contact-icons {
 	width: 20px;
 	height: 20px;
+
 }

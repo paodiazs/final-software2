@@ -899,23 +899,6 @@
             infoWindowEstacionamiento.open(map, markerEstacionamiento3); // Open the info window when marker is clicked
         });
 
-/* var iconoIngenieria = {//varibale que gaurda la imagen 
-            url: 'logoInge.png',
-            scaledSize: new google.maps.Size(50, 50)
-        };
-
-        var markerIngenieria = new google.maps.Marker({ //posicion geográfica
-            position: coordIngenieria,
-            map: map,
-            icon: iconoIngenieria
-        });
-        var infoWindow = new google.maps.InfoWindow({
-            content: "This is the pop-up window content." // Replace with your desired content
-        });
-        // Add a click event listener to the marker
-        markerIngenieria.addListener("click", function() {
-            infoWindow.open(map, markerIngenieria); // Open the info window when marker is clicked
-        });
 
         var iconoBasquet = {
             url: 'logoBasq.png',
@@ -1017,13 +1000,13 @@
             icon: iconoIngenieria
         });
 
-        var infoWindow = new google.maps.InfoWindow({
+        var infoWindowIngenieria = new google.maps.InfoWindow({
             content: "Edificio de Ingeniería. Laboratorios y salón cisco" // Replace with your desired content
         });
 
         // Add a click event listener to the marker
         markerIngenieria.addListener("click", function() {
-            infoWindow.open(map, markerIngenieria); // Open the info window when marker is clicked
+            infoWindowIngenieria.open(map, markerIngenieria); // Open the info window when marker is clicked
         });
         
 
@@ -1072,12 +1055,12 @@
             map: map,
             icon: iconogastro
         });
-        var infoWindowCafeteria = new google.maps.InfoWindow({
-            content: "Cuckoo <br> Horario: <br> Lun-Vie 8:00-19:00. <br> Sab 8:00-13:30 <br> 4,9 ⭐⭐⭐⭐⭐" // Replace with your desired content
+        var infoWindowgastro = new google.maps.InfoWindow({
+            content: "Gastronomia" // Replace with your desired content
         });
         // Add a click event listener to the marker
         markergastro.addListener("click", function() {
-            infoWindowCafeteria.open(map, markergastro); // Open the info window when marker is clicked
+            infoWindowgastro.open(map, markergastro); // Open the info window when marker is clicked
         });
 
         var markerCafeteria = new google.maps.Marker({

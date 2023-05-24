@@ -1333,7 +1333,9 @@
         /* -------------------------------------------- */
         /* ------------ user geolocalization ---------- */
         /* -------------------------------------------- */
-        
+
+
+        /*
         // Crear el marcador de la ubicación del usuario
         var marker = new google.maps.Marker({
             map: map,
@@ -1348,6 +1350,22 @@
             },
             zIndex: 1000
         });
+
+         */
+
+        var iconoUsuario = {
+            url: 'leonback.png',
+            scaledSize: new google.maps.Size(30, 30)
+        };
+
+        var marker = new google.maps.Marker({
+            map: map,
+            icon: iconoUsuario,
+            zIndex: 1000
+        });
+
+
+
 
         // Obtener la ubicación del usuario en tiempo real
         if (navigator.geolocation) {

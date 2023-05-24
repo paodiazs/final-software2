@@ -586,7 +586,7 @@
     }
 
     // get user coordinates and find closest node
-    let userCoordinates = { lat: (Math.random() * (16.996627 - 16.994251) + 16.994251), lng: (Math.random() * (-96.751913 - -96.753586) + -96.753586) };;
+    //let userCoordinates = { lat: (Math.random() * (16.996627 - 16.994251) + 16.994251), lng: (Math.random() * (-96.751913 - -96.753586) + -96.753586) };;
     let starting_node = findClosestCoordinates(userCoordinates, map_database);
 
 
@@ -644,7 +644,7 @@
 
     function printRoute(node) {
 
-        userCoordinates = { lat: (Math.random() * (16.996627 - 16.994251) + 16.994251), lng: (Math.random() * (-96.751913 - -96.753586) + -96.753586) };
+       // userCoordinates = { lat: (Math.random() * (16.996627 - 16.994251) + 16.994251), lng: (Math.random() * (-96.751913 - -96.753586) + -96.753586) };
 
         starting_node = findClosestCoordinates(userCoordinates, map_database);
 
@@ -1374,10 +1374,12 @@
         if (navigator.geolocation) {
             navigator.geolocation.watchPosition(function(position) {
                 var pos = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-
+                    //lat: position.coords.latitude,
+                    //lng: position.coords.longitude
+                    lat: 16.99651376117998, 
+                    lng: -96.75205000814374
                 };              
+                userCoordinates=pos;
                 // Centrar el mapa en la ubicación del usuario
                 map.setCenter(pos);
                 // Actualizar la posición del marcador

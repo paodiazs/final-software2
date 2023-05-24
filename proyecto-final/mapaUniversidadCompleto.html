@@ -676,6 +676,7 @@
         };
 
         var coord = {lat:16.9956106 ,lng: -96.7527389};
+        var coordArchery ={ lat: 16.99435048931256,lng: -96.75306680507046}
         var coordCafeteria = {lat: 16.995888, lng: -96.751476};
         var coordCB = {lat: 16.996440630852607, lng: -96.75343632121756};
         var coordajedrez = {lat: 16.99604693405557, lng: -96.7520685290419}
@@ -945,7 +946,7 @@
             icon: iconoGym
         });
         var infoWindow = new google.maps.InfoWindow({
-            content: "This is the pop-up window content." // Replace with your desired content
+            content: "Gimnasio" // Replace with your desired content
         });
 
         // Add a click event listener to the marker
@@ -959,17 +960,17 @@
         };
 
         var markerArchery = new google.maps.Marker({
-            position: coordGym,
+            position: coordArchery,
             map: map,
             icon: iconoArchery
         });
-        var infoWindow = new google.maps.InfoWindow({
-            content: "Cancha de arquería." // Replace with your desired content
+        var infoWindowArchery  = new google.maps.InfoWindow({
+            content: "Campo de arquería." // Replace with your desired content
         });
 
         // Add a click event listener to the marker
         markerArchery.addListener("click", function() {
-            infoWindow.open(map, markerArchery); // Open the info window when marker is clicked
+            infoWindowArchery.open(map, markerArchery); // Open the info window when marker is clicked
         });
 
         var iconoCB = {
@@ -981,12 +982,12 @@
             map: map,
             icon: iconoCB
         });
-        var infoWindow = new google.maps.InfoWindow({
-            content: "Cuckoo <br> Horario: <br> Lun-Vie 8:00-19:00. <br> Sab 8:00-13:30 <br> 4,9 ⭐⭐⭐⭐⭐" // Replace with your desired content
+        var infoWindowCB = new google.maps.InfoWindow({
+            content: "Cuckoo Box <br> Horario: <br> Lun-Vie 9:00-18:00." // Replace with your desired content
         });
         // Add a click event listener to the marker
         markerCB.addListener("click", function() {
-            infoWindow.open(map, markerCB); // Open the info window when marker is clicked
+            infoWindowCB.open(map, markerCB); // Open the info window when marker is clicked
         });
         var iconoIngenieria = {
             url: 'logoInge.png',
